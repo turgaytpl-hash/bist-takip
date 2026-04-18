@@ -25,6 +25,7 @@ AYL  = BASE / "aylik"
 HAF_TAKAS   = HAF / "haftalik_takas.csv"
 HAF_MKK     = HAF / "haftalik_mkk.csv"
 HAF_OZEL    = HAF / "ozel_fon_haftalik.csv"
+HAF_POZISYON = HAF / "haftalik_pozisyon.csv"
 AYL_TAKAS   = AYL / "aylik_takas.csv"
 AYL_MKK     = AYL / "aylik_mkk.csv"
 AYL_OZEL    = AYL / "ozel_fon_aylik.csv"
@@ -70,12 +71,16 @@ def aylik_donemler() -> list:
 def haftalik_ekle(donem: str,
                   yab_df: pd.DataFrame,
                   mkk_df: pd.DataFrame,
-                  ozel: dict) -> tuple[bool, str]:
+                  ozel: dict,
+                  fon_df: pd.DataFrame = None,
+                  emk_df: pd.DataFrame = None) -> tuple[bool, str]:
     """
-    donem   : '2025_16'
-    yab_df  : takas parser çıktısı (Hisse, 2.Adet, Adet Fark, Tks(2))
-    mkk_df  : MKK parser çıktısı (Hisse, PP_Fark, Lot_Fark)
+    donem   : '2026_01_01'
+    yab_df  : yabancı takas (Hisse, 2.Adet, Adet Fark, Tks(2))
+    mkk_df  : MKK parser (Hisse, PP_Fark, Lot_Fark)
     ozel    : {'TERA': df, 'BULLS': df, 'PUSULA': df}
+    fon_df  : yatırım fonu takas (opsiyonel)
+    emk_df  : emeklilik fonu takas (opsiyonel)
     """
     mesajlar = []
 
@@ -317,6 +322,16 @@ def aylik_ana_tablo(donemler: list = None) -> pd.DataFrame:
 
 def pozisyon_getir(donem: str = None) -> pd.DataFrame:
     df = _oku(POZISYON)
+    if df.empty:
+        return df
+    if donem:
+        return df[df["donem"] == donem]
+    son = sorted(df["donem"].unique())[-1]
+    return df[df["donem"] == son]
+
+
+def haftalik_pozisyon_getir(donem: str = None) -> pd.DataFrame:
+    df = _oku(HAF_POZISYON)
     if df.empty:
         return df
     if donem:

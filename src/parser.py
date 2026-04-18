@@ -77,9 +77,10 @@ def mkk_oku(kaynak) -> pd.DataFrame:
 
     def parse_num(x):
         if isinstance(x, str):
-            return pd.to_numeric(
-                x.strip().replace(".", "").replace(",", "."), errors="coerce"
-            )
+            x = x.strip()
+            # Türkçe format: sadece virgül -> nokta (73,61 -> 73.61)
+            x = x.replace(",", ".")
+            return pd.to_numeric(x, errors="coerce")
         return pd.to_numeric(x, errors="coerce")
 
     for col in df.columns[1:]:
@@ -87,8 +88,7 @@ def mkk_oku(kaynak) -> pd.DataFrame:
 
     # Sadece gerçek hisseler (endeks kodları değil)
     df = df[~df["Hisse"].isin(["XU030", "XU050", "XU100", "XUTUM", "XBANK"])]
-    df = df[df["Hisse"].astype(str).str.match(r"^[A-Z]{4,6}$")]
-    df = df[df["Kur_Lot_1"].notna() & df["Kur_Lot_2"].notna()]
+    df = df[df["Kur_Oran_1"].notna() & df["Kur_Oran_2"].notna()]
 
     # Ana hesaplamalar — MADDE 3
     df["PP_Fark"]  = (df["Kur_Oran_2"] - df["Kur_Oran_1"]).round(2)   # ← kullanılacak
