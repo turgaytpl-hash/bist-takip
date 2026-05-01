@@ -1,0 +1,184 @@
+[
+  {
+    "id": "DYOBY_1",
+    "hisse": "DYOBY",
+    "seviye": 17.99,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "RS 200MA Kırılımı"
+    ],
+    "not": "RS 200 MA = 17,50  Direncin hacimli kırılımını takip et.",
+    "eklenme_tarihi": "2026-04-25",
+    "durum": "tetiklendi",
+    "tetikleme_tarihi": "2026-04-29 11:30",
+    "tetikleme_fiyat": 21.66
+  },
+  {
+    "id": "DYOBY_2",
+    "hisse": "DYOBY",
+    "seviye": 15.9,
+    "yon": "asagi",
+    "teknik_alarmlar": [
+      "20 Reverse"
+    ],
+    "not": "10 MA reverse takip et ",
+    "eklenme_tarihi": "2026-04-25",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "ONCSM_1",
+    "hisse": "ONCSM",
+    "seviye": 303.16,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "MACD Erken"
+    ],
+    "not": "Oyuncular hazırlıkları yapmış. Tahtaya ilgi çekiliyor. Yatırım ve Emeklilk fonları el artırıyor. Büyük ihtimalle Bankof mal verecek ve %5 lik dilimi yukarı kıracaklar. ",
+    "eklenme_tarihi": "2026-04-26",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "DUNYH_1",
+    "hisse": "DUNYH",
+    "seviye": 134.5,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "MACD Erken"
+    ],
+    "not": "Tahtada Ekim 25 de tipe değişim oldu. Bulls tahtanın %45 aldı. Tahta sahipli arkadan oyuncular geliyor.",
+    "eklenme_tarihi": "2026-04-26",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "PASEU_1",
+    "hisse": "PASEU",
+    "seviye": 135.8,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "MACD Erken"
+    ],
+    "not": "Hisse haftalıkta 20 ortalama üzerine yerleşirse alıma geç. Hissede yerli ve yabancı fonlar var.",
+    "eklenme_tarihi": "2026-04-26",
+    "durum": "tetiklendi",
+    "tetikleme_tarihi": "2026-04-27 19:36",
+    "tetikleme_fiyat": 140.4
+  },
+  {
+    "id": "LILAK_1",
+    "hisse": "LILAK",
+    "seviye": 39.1,
+    "yon": "asagi",
+    "teknik_alarmlar": [
+      "20 Reverse"
+    ],
+    "not": "Büyük çoğunluk yatırım fonları, 39,10 altında 20 reverse testi yapmak isterse alınır.",
+    "eklenme_tarihi": "2026-04-26",
+    "durum": "tetiklendi",
+    "tetikleme_tarihi": "2026-04-29 11:30",
+    "tetikleme_fiyat": 36.1
+  },
+  {
+    "id": "LILAK_2",
+    "hisse": "LILAK",
+    "seviye": 42.5,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "20 Reverse"
+    ],
+    "not": "42,50 üzerinde alış için uygun,",
+    "eklenme_tarihi": "2026-04-26",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "OZSUB_1",
+    "hisse": "OZSUB",
+    "seviye": 24.7,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "20 Reverse"
+    ],
+    "not": "Direnç kırılımı sonrası takip ilk oyuncu İNFO ağırlık artırdı.",
+    "eklenme_tarihi": "2026-04-26",
+    "durum": "tetiklendi",
+    "tetikleme_tarihi": "2026-04-29 11:30",
+    "tetikleme_fiyat": 26.12
+  },
+  {
+    "id": "NETCD_1",
+    "hisse": "NETCD",
+    "seviye": 171.4,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "20 Reverse"
+    ],
+    "not": "Yeni halka arz Info ve Yatırım fonları ağırlık artırıyor. Zirve kırılımı sonrası takip",
+    "eklenme_tarihi": "2026-04-26",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "NETCD_2",
+    "hisse": "NETCD",
+    "seviye": 153.5,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "20 Reverse"
+    ],
+    "not": "Yatay direnç kırılımı hacimli kırılır ise takip",
+    "eklenme_tarihi": "2026-04-26",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "ENDAE_1",
+    "hisse": "ENDAE",
+    "seviye": 17.75,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "Altın Tavuk"
+    ],
+    "not": "Yatırm fonları alıma başladı. Direnç kırılımı sonrası takip ",
+    "eklenme_tarihi": "2026-04-26",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "LILAK_3",
+    "hisse": "LILAK",
+    "seviye": 35.2,
+    "yon": "asagi",
+    "teknik_alarmlar": [
+      "20 Reverse"
+    ],
+    "not": "50 günlük ortalama test ediliyor. ",
+    "eklenme_tarihi": "2026-04-30",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "BESTE_1",
+    "hisse": "BESTE",
+    "seviye": 27.4,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "Altın Tavuk"
+    ],
+    "not": "27,40 üzeri takip",
+    "eklenme_tarihi": "2026-04-30",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  }
+]
