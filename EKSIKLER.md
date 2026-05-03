@@ -1,5 +1,5 @@
 # BIST Akıllı Para Takip — Eksikler & Yapılacaklar
-Son güncelleme: 03.05.2026
+Son güncelleme: 03.05.2026 (2. oturum)
 
 ---
 
@@ -52,6 +52,24 @@ Son güncelleme: 03.05.2026
 | 17 | Backtest | MKK sinyal (pp_fark >= %5) + fiyat getirisi | 🔴 Yüksek |
 | 18 | BIST Yön Tayini | Breadth ratio, kurum/yabancı hacim, MA skorları | 🟠 Orta |
 | 19 | Genel Akış | Tarama → Hisse Detay → Alarm/Trade Stratejisi ekle | 🟠 Orta |
+| 20 | Hisse Detay (Teknik) | Layout yeniden düzenlenmeli — metrik gruplar netleşmeli | 🟠 Orta |
+| 21 | Hisse Detay (Teknik) | Tarama sonuçları üste alınmalı | 🟠 Orta |
+| 22 | Hisse Detay (Teknik) | Alarm Ekle butonu eklenmeli | 🟠 Orta |
+| 23 | BIST FD Tarama | Ortalama Sıkışması taraması — 200/150/50/20 MA arası mesafe daralıyor + MACD > 0, haftalık | 🔴 Yüksek |
+| 24 | Bebek Hisse + BIST FD | Haftalık 20MA/50MA yakınlaşma erken uyarı + kesişim alarmı | 🔴 Yüksek |
+| 25 | Strateji Backtest | 3 tarama kombinasyonu — Haftalık Kesişim + MACD Erken + Altın Tavuk | 🟠 Orta |
+| 26 | MACD Erken Uyarı | 200MA filtresi ekle — fiyat 200MA %0-%30 üstünde + 200MA yukarı eğimli | 🔴 Yüksek |
+
+---
+
+## 💡 STRATEJİ SİSTEMİ — 3 KATMANLI
+
+```
+1. Haftalık 20/50MA Kesişimi  → Trend başlangıcı / ilk giriş sinyali
+2. MACD Erken Uyarı           → Geri çekilmede ikinci alım (200MA filtreli)
+3. Altın Tavuk                → Trend güçlü, pozisyon koru
+```
+Bu üçlü birleşince tam trading sistemi oluyor. Backtest öncelikli.
 
 ---
 
@@ -61,12 +79,15 @@ Son güncelleme: 03.05.2026
 - Tarama → Hisse Detay tıklama entegrasyonu
 - Sesli alarm sistemi (Windows toast veya tarayıcı sesi)
 - Kurum Takas Detayı pivot tablo (tek satır/kurum, Günlük Δ, Haftalık Δ, Aylık Δ, Trend)
+- BIST Yön Tayini: Breadth/kurum/hacim Excel modülü (mevcut Excel'den beslenecek)
 
 ---
 
 ## 📋 SIRADAKI OTURUM ÖNCELİK SIRASI
 1. #10 Değişim% kolonu göster (5 dk)
 2. #1-2 Hisse Detay dönem filtresi + sıralama
-3. #11-13 Performans Takip MAX fiyat + zaman bazlı getiri
-4. #14 Alarm banner temizleme
-5. #17 Backtest modülü
+3. #26 MACD Erken Uyarı 200MA filtresi
+4. #23-24 Ortalama Sıkışması + Haftalık Kesişim taramaları
+5. #11-13 Performans Takip MAX fiyat + zaman bazlı getiri
+6. #14 Alarm banner temizleme
+7. #17 Backtest modülü
