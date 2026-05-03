@@ -71,6 +71,7 @@ with tab_hisse:
         hisse_kurum_detay, _oku as takas_oku_raw,
         AKILLI_PARA, BUYUK_YERLI
     )
+    from mkk_depo import hisse_mkk_getir
 
     st.subheader("🔍 Hisse Bazlı Detay")
     default_hisse = st.session_state.get("secili_hisse", "")
@@ -82,13 +83,63 @@ with tab_hisse:
     if sembol:
         st.session_state["secili_hisse"] = sembol
 
-        # Takas kurum detayı
+        # ── MKK GRAFİKLERİ ───────────────────────────────────────────────────
+        df_aylik    = hisse_mkk_getir(sembol, "aylik",    son_n=4)
+        df_haftalik = hisse_mkk_getir(sembol, "haftalik", son_n=4)
+
+        col_mkk_a, col_mkk_h = st.columns(2)
+
+        with col_mkk_a:
+            st.markdown(f"#### 📅 {sembol} — MKK Aylık (Son 4 Ay)")
+            if df_aylik.empty:
+                st.info("Aylık MKK verisi yok.")
+            else:
+                renkler_a = ["#C0392B" if v < 0 else "#1A5276" for v in df_aylik["pp_fark"]]
+                fig_a = go.Figure(go.Bar(
+                    x=df_aylik["donem"].tolist(),
+                    y=df_aylik["pp_fark"].tolist(),
+                    marker_color=renkler_a,
+                    text=[f"{v:+.2f}" for v in df_aylik["pp_fark"]],
+                    textposition="outside",
+                ))
+                fig_a.update_layout(
+                    height=280,
+                    margin=dict(l=10, r=10, t=20, b=40),
+                    plot_bgcolor="#FAFAFA", paper_bgcolor="white",
+                    yaxis=dict(zeroline=True, zerolinecolor="#888", zerolinewidth=1),
+                )
+                st.plotly_chart(fig_a, use_container_width=True)
+
+        with col_mkk_h:
+            st.markdown(f"#### 📆 {sembol} — MKK Haftalık (Son 4 Hafta)")
+            if df_haftalik.empty:
+                st.info("Haftalık MKK verisi yok.")
+            else:
+                renkler_h = ["#C0392B" if v < 0 else "#1A5276" for v in df_haftalik["pp_fark"]]
+                fig_h = go.Figure(go.Bar(
+                    x=df_haftalik["donem"].tolist(),
+                    y=df_haftalik["pp_fark"].tolist(),
+                    marker_color=renkler_h,
+                    text=[f"{v:+.2f}" for v in df_haftalik["pp_fark"]],
+                    textposition="outside",
+                ))
+                fig_h.update_layout(
+                    height=280,
+                    margin=dict(l=10, r=10, t=20, b=40),
+                    plot_bgcolor="#FAFAFA", paper_bgcolor="white",
+                    yaxis=dict(zeroline=True, zerolinecolor="#888", zerolinewidth=1),
+                )
+                st.plotly_chart(fig_h, use_container_width=True)
+
+        st.divider()
+
+        # ── KURUM TAKAS DETAYI ────────────────────────────────────────────────
         takas_det = hisse_kurum_detay(sembol)
         if not takas_det.empty:
             st.markdown(f"#### 🏦 {sembol} — Kurum Takas Detayı")
             st.dataframe(takas_det, hide_index=True, use_container_width=True)
 
-        # Pozisyon pasta
+        # ── POZİSYON PASTA ────────────────────────────────────────────────────
         t2_df = takas_oku_raw()
         if not t2_df.empty:
             t2_hisse = t2_df[t2_df["hisse"] == sembol].copy()

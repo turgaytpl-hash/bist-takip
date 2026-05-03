@@ -162,3 +162,24 @@ def pivot_olustur(donemler: list, tip: str, kolon: str = "pp_fark") -> pd.DataFr
     pivot["TREND"] = pivot.apply(trend, axis=1)
     pivot = pivot.sort_values("KÜMÜLATİF", ascending=False).reset_index(drop=True)
     return pivot
+
+
+def hisse_mkk_getir(hisse: str, tip: str, son_n: int = 4) -> pd.DataFrame:
+    """
+    Tek bir hisse için son N dönemin MKK pp_fark değerlerini döndürür.
+    Hisse Detay sekmesindeki bar grafik için kullanılır.
+
+    Döndürür: DataFrame — kolonlar: donem, pp_fark
+    """
+    donemler = donemler_listele(tip)
+    if not donemler:
+        return pd.DataFrame()
+
+    son_donemler = sorted(donemler, reverse=True)[:son_n]
+    df = veri_getir(son_donemler, tip)
+    if df.empty:
+        return pd.DataFrame()
+
+    df_hisse = df[df["hisse"].str.upper() == hisse.upper()][["donem", "pp_fark"]].copy()
+    df_hisse = df_hisse.sort_values("donem").reset_index(drop=True)
+    return df_hisse
