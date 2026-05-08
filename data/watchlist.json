@@ -1,19 +1,5 @@
 [
   {
-    "id": "DYOBY_1",
-    "hisse": "DYOBY",
-    "seviye": 17.99,
-    "yon": "yukari",
-    "teknik_alarmlar": [
-      "RS 200MA Kırılımı"
-    ],
-    "not": "RS 200 MA = 17,50  Direncin hacimli kırılımını takip et.",
-    "eklenme_tarihi": "2026-04-25",
-    "durum": "tetiklendi",
-    "tetikleme_tarihi": "2026-04-29 11:30",
-    "tetikleme_fiyat": 21.66
-  },
-  {
     "id": "DYOBY_2",
     "hisse": "DYOBY",
     "seviye": 15.9,
@@ -80,8 +66,8 @@
     "not": "Büyük çoğunluk yatırım fonları, 39,10 altında 20 reverse testi yapmak isterse alınır.",
     "eklenme_tarihi": "2026-04-26",
     "durum": "tetiklendi",
-    "tetikleme_tarihi": "2026-04-29 11:30",
-    "tetikleme_fiyat": 36.1
+    "tetikleme_tarihi": "2026-05-03 17:38",
+    "tetikleme_fiyat": 35.02
   },
   {
     "id": "LILAK_2",
@@ -108,8 +94,8 @@
     "not": "Direnç kırılımı sonrası takip ilk oyuncu İNFO ağırlık artırdı.",
     "eklenme_tarihi": "2026-04-26",
     "durum": "tetiklendi",
-    "tetikleme_tarihi": "2026-04-29 11:30",
-    "tetikleme_fiyat": 26.12
+    "tetikleme_tarihi": "2026-05-03 17:38",
+    "tetikleme_fiyat": 26.92
   },
   {
     "id": "NETCD_1",
@@ -163,9 +149,9 @@
     ],
     "not": "50 günlük ortalama test ediliyor. ",
     "eklenme_tarihi": "2026-04-30",
-    "durum": "bekliyor",
-    "tetikleme_tarihi": null,
-    "tetikleme_fiyat": null
+    "durum": "tetiklendi",
+    "tetikleme_tarihi": "2026-05-03 17:38",
+    "tetikleme_fiyat": 35.02
   },
   {
     "id": "BESTE_1",
@@ -177,6 +163,34 @@
     ],
     "not": "27,40 üzeri takip",
     "eklenme_tarihi": "2026-04-30",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "ATATP_1",
+    "hisse": "ATATP",
+    "seviye": 155.4,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "MACD Erken"
+    ],
+    "not": "HAFTALIK 20 ORTALAMA ÜZERİNE ATTI. 155,40 ÜZERİ HIZLANIR",
+    "eklenme_tarihi": "2026-05-03",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "BIOEN_1",
+    "hisse": "BIOEN",
+    "seviye": 20.5,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "20 Reverse"
+    ],
+    "not": "Günlükte 200 ortalamaya tepki verdi. haftalıkta ortalamalar üzerine geçmeye isteği var.",
+    "eklenme_tarihi": "2026-05-03",
     "durum": "bekliyor",
     "tetikleme_tarihi": null,
     "tetikleme_fiyat": null

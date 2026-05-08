@@ -392,8 +392,24 @@ def bebek_hisse_sekme():
         st.divider()
         st.markdown("**📤 Takas Verisi Yükle**")
 
-        tarih = st.text_input("Tarih", placeholder="24.04.2026", key="y_tarih")
         dosya = st.file_uploader("Excel (tüm hisseler)", type=["xlsx","xls"], key="y_dosya_gun")
+
+        # Dosya adından tarihi otomatik al
+        tarih = ""
+        if dosya:
+            import re
+            isim = dosya.name.replace(".xlsx","").replace(".xls","")
+            m = re.match(r'(\d{4})-(\d{2})-(\d{2})', isim)
+            if m:
+                tarih = isim
+            else:
+                m2 = re.match(r'(\d{2})\.(\d{2})\.(\d{4})', isim)
+                if m2:
+                    tarih = f"{m2.group(3)}-{m2.group(2)}-{m2.group(1)}"
+            if tarih:
+                st.info(f"📅 Tarih: **{tarih}**")
+            else:
+                tarih = st.text_input("Tarih (otomatik okunamadı)", key="y_tarih")
 
         if dosya and tarih and st.button("💾 Tümünü Yükle", key="y_btn_gun", type="primary"):
             try:
@@ -815,11 +831,15 @@ def bebek_hisse_sekme():
         st.markdown("### 🔍 Dönem Detayı — Pozisyon Değişimi")
 
         if len(donemler) >= 2:
-            son   = donemler[-1]
+            son    = donemler[-1]
             onceki = donemler[-2]
 
             df_son    = df_tum[df_tum["donem"] == son].copy()
             df_onceki = df_tum[df_tum["donem"] == onceki].copy()
+
+            # Duplikasyon önle — Kurum bazında grupla (aynı kurum birden fazla satırda olabilir)
+            df_son    = df_son.groupby("Kurum", as_index=False).agg({"2.Adet": "sum", "2.Pay": "sum"})
+            df_onceki = df_onceki.groupby("Kurum", as_index=False).agg({"2.Adet": "sum", "2.Pay": "sum"})
 
             # Sıralama ekle
             df_son["sira_son"]       = df_son["2.Adet"].rank(ascending=False, method="min").astype(int)
@@ -887,7 +907,7 @@ def bebek_hisse_sekme():
                 })
 
             df_goster = pd.DataFrame(rows)
-            st.caption(f"📅 {onceki} → {son}")
+            st.caption(f"🏷️ {sec} | 📅 {onceki} → {son}")
             st.dataframe(df_goster, use_container_width=True,
                          hide_index=True, height=500)
 

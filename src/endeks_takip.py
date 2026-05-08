@@ -213,7 +213,7 @@ def endeks_takip_sekme():
                     f"<div style='border-left:4px solid {renk};padding:6px 10px;"
                     f"margin:4px 0;background:#F0FFF4;border-radius:0 4px 4px 0;'>"
                     f"<b>{r['senet']}</b> → #{int(r['sira'])}"
-                    f"<span style='color:{renk};margin-left:8px;'>↑ {int(r['onceki_sira'])}→{int(r['sira'])}</span>"
+                    f"<span style='color:{renk};margin-left:8px;'>↑ {int(r['onceki_sira']) if pd.notna(r.get('onceki_sira')) else '?'}→{int(r['sira'])}</span>"
                     f"<span style='margin-left:8px;font-size:11px;'>{etiket}</span>"
                     f"<br><span style='font-size:11px;color:#555;'>Etki: %{r['endeks_etkisi']:.2f} | Beta: {r['beta']:.2f}</span>"
                     f"</div>",

@@ -289,66 +289,6 @@ def bebek_hisse_sekme():
     st.header("🐣 Bebek Hisse Avcısı")
     st.caption("Yeni halka arz hisselerinde akıllı para takibi")
 
-    # ── SİNYAL LOG PANELİ ────────────────────────────────────────────────────
-    log_df = sinyal_log_oku()
-
-    # Sinyal log yenile butonu
-    col_yenile, _ = st.columns([1, 3])
-    with col_yenile:
-        if st.button("🔄 Sinyal Log'unu Yenile", key="sinyal_yenile"):
-            with st.spinner("Tüm veriler taranıyor, fiyatlar çekiliyor..."):
-                for hisse_kod, bilgi in BEBEK_HİSSELER.items():
-                    df_h = yukle(hisse_kod)
-                    if not df_h.empty:
-                        # Tüm dönemleri tara
-                        donemler = sorted(df_h["donem"].unique().tolist())
-                        for donem in donemler:
-                            df_donem = df_h[df_h["donem"] == donem].copy()
-                            sinyal_guncelle_donem(hisse_kod, df_donem, bilgi["t2"], donem)
-            st.success("✅ Sinyal log güncellendi!")
-            st.rerun()
-    if not log_df.empty:
-        aktif = log_df[log_df["durum"] != "⚪ KAPANDI"].copy()
-        if not aktif.empty:
-            bingo = aktif[aktif["durum"] == "🎯 BİNGO!"]
-            takip = aktif[aktif["durum"] == "📈 TAKİPTE"]
-
-            st.markdown("### 🎯 Sinyal Takip Paneli")
-            col_b, col_t = st.columns(2)
-
-            with col_b:
-                st.markdown("**🎯 BİNGO! (%5+)**")
-                if bingo.empty:
-                    st.caption("Henüz BİNGO yok")
-                for _, r in bingo.iterrows():
-                    getiri = ((r["son_fiyat"] - r["ilk_fiyat"]) / r["ilk_fiyat"] * 100) if r["ilk_fiyat"] > 0 else 0
-                    st.markdown(
-                        f"<div style='border-left:4px solid #1A7A3E;padding:6px 10px;"
-                        f"background:#F0FFF4;border-radius:0 4px 4px 0;margin:4px 0;'>"
-                        f"<b>{r['hisse']}</b> — {r['kurum'][:20]}<br>"
-                        f"<span style='font-size:12px;'>İlk: {r['ilk_tarih']} @ {r['ilk_fiyat']:.2f}₺ (%{r['ilk_oran']:.1f})<br>"
-                        f"Son: {r['son_tarih']} @ {r['son_fiyat']:.2f}₺ (%{r['son_oran']:.1f})<br>"
-                        f"<b style='color:#1A7A3E;'>Getiri: {getiri:+.1f}%</b></span></div>",
-                        unsafe_allow_html=True
-                    )
-
-            with col_t:
-                st.markdown("**📈 Takipte (%3-5)**")
-                if takip.empty:
-                    st.caption("Takipte sinyal yok")
-                for _, r in takip.iterrows():
-                    getiri = ((r["son_fiyat"] - r["ilk_fiyat"]) / r["ilk_fiyat"] * 100) if r["ilk_fiyat"] > 0 else 0
-                    st.markdown(
-                        f"<div style='border-left:4px solid #E67E22;padding:6px 10px;"
-                        f"background:#FFF8F0;border-radius:0 4px 4px 0;margin:4px 0;'>"
-                        f"<b>{r['hisse']}</b> — {r['kurum'][:20]}<br>"
-                        f"<span style='font-size:12px;'>İlk: {r['ilk_tarih']} @ {r['ilk_fiyat']:.2f}₺ (%{r['ilk_oran']:.1f})<br>"
-                        f"Son: {r['son_tarih']} @ {r['son_fiyat']:.2f}₺ (%{r['son_oran']:.1f})<br>"
-                        f"<b style='color:#E67E22;'>Getiri: {getiri:+.1f}%</b></span></div>",
-                        unsafe_allow_html=True
-                    )
-            st.divider()
-
     # ── Kümülatif panel yardımcı fonksiyonu ──────────────────────────────────
     def kumul_panel(kod):
         df = yukle(kod)
@@ -586,7 +526,7 @@ def bebek_hisse_sekme():
             df_onc = df_tum[df_tum["donem"] == donemler[-2]]
             satir  = df_onc[df_onc["Kurum"] == kurum_adi]
             if satir.empty: return None
-            return t2pct(satir.iloc[0]["2.Adet"])
+            return t2pct(satir["2.Adet"].sum())  # sum ile duplikasyonu önle
 
         def alis_alarm(fark_pct, onc_pct, cur_pct):
             """Alış tarafı alarm — mevcut T2 oranı bazlı."""
@@ -610,6 +550,11 @@ def bebek_hisse_sekme():
             return "🟡 AZALIYOR"
 
         # ── T2 bazlı hesapla ─────────────────────────────────────────────────
+        # Duplikasyon önle — aynı kurum birden fazla satırda olabilir
+        df_son = df_son.groupby("Kurum", as_index=False).agg({
+            "2.Adet": "sum", "2.Pay": "sum", "Adet Fark": "sum"
+        })
+
         df_son["_cur_pct"]  = df_son["2.Adet"].apply(t2pct)
         df_son["_fark_pct"] = df_son["Adet Fark"].abs().apply(t2pct)
 
@@ -815,11 +760,15 @@ def bebek_hisse_sekme():
         st.markdown("### 🔍 Dönem Detayı — Pozisyon Değişimi")
 
         if len(donemler) >= 2:
-            son   = donemler[-1]
+            son    = donemler[-1]
             onceki = donemler[-2]
 
             df_son    = df_tum[df_tum["donem"] == son].copy()
             df_onceki = df_tum[df_tum["donem"] == onceki].copy()
+
+            # Duplikasyon önle — Kurum bazında grupla (aynı kurum birden fazla satırda olabilir)
+            df_son    = df_son.groupby("Kurum", as_index=False).agg({"2.Adet": "sum", "2.Pay": "sum"})
+            df_onceki = df_onceki.groupby("Kurum", as_index=False).agg({"2.Adet": "sum", "2.Pay": "sum"})
 
             # Sıralama ekle
             df_son["sira_son"]       = df_son["2.Adet"].rank(ascending=False, method="min").astype(int)
@@ -887,7 +836,7 @@ def bebek_hisse_sekme():
                 })
 
             df_goster = pd.DataFrame(rows)
-            st.caption(f"📅 {onceki} → {son}")
+            st.caption(f"🏷️ {sec} | 📅 {onceki} → {son}")
             st.dataframe(df_goster, use_container_width=True,
                          hide_index=True, height=500)
 
