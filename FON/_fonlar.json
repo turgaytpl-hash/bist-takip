@@ -1,6 +1,6 @@
 {
   "Mart-2026": {
-    "PHE PORTFÖY DAĞILIM RAPOR ŞUBAT": {
+    "PHE": {
       "fon_adi": "PHE-PUSULA PORT. HİS. SEN. FN.(HİSSE SENEDİ YĞN.)",
       "kurucu": "PUSULA PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 11253235047.65,
@@ -397,264 +397,7 @@
         }
       ]
     },
-    "PHE MART 2026": {
-      "fon_adi": "PHE-PUSULA PORT. HİS. SEN. FN.(HİSSE SENEDİ YĞN.)",
-      "kurucu": "PUSULA PORTFÖY YÖNETİMİ A.Ş.",
-      "nvd": 20874300023.6,
-      "hisseler": [
-        {
-          "hisse": "ODINE",
-          "piyasa_fiy": 548.503696,
-          "alis_fiy": 870.0,
-          "alis_tarihi": "31/03/26",
-          "nominal": 1928561.0,
-          "toplam_deger": 1677848070.0,
-          "fpd_pct": 10.08,
-          "format": "klasik"
-        },
-        {
-          "hisse": "HEDEF",
-          "piyasa_fiy": 105.457837,
-          "alis_fiy": 122.7,
-          "alis_tarihi": "31/03/26",
-          "nominal": 12544993.0,
-          "toplam_deger": 1539270641.1000001,
-          "fpd_pct": 9.26,
-          "format": "klasik"
-        },
-        {
-          "hisse": "TERA",
-          "piyasa_fiy": 244.353839,
-          "alis_fiy": 355.0,
-          "alis_tarihi": "26/03/26",
-          "nominal": 3957292.0,
-          "toplam_deger": 1404838660.0,
-          "fpd_pct": 8.45,
-          "format": "klasik"
-        },
-        {
-          "hisse": "THYAO",
-          "piyasa_fiy": 295.224286,
-          "alis_fiy": 294.25,
-          "alis_tarihi": "31/03/26",
-          "nominal": 3662899.0,
-          "toplam_deger": 1077808030.75,
-          "fpd_pct": 6.48,
-          "format": "klasik"
-        },
-        {
-          "hisse": "KTLEV",
-          "piyasa_fiy": 45.045563,
-          "alis_fiy": 78.2,
-          "alis_tarihi": "23/03/26",
-          "nominal": 11908930.0,
-          "toplam_deger": 931278326.0,
-          "fpd_pct": 5.61,
-          "format": "klasik"
-        },
-        {
-          "hisse": "SASA",
-          "piyasa_fiy": 2.422365,
-          "alis_fiy": 2.34,
-          "alis_tarihi": "31/03/26",
-          "nominal": 390138313.0,
-          "toplam_deger": 912923652.42,
-          "fpd_pct": 5.49,
-          "format": "klasik"
-        },
-        {
-          "hisse": "DAPGM",
-          "piyasa_fiy": 12.543991,
-          "alis_fiy": 14.4,
-          "alis_tarihi": "31/03/26",
-          "nominal": 57831574.0,
-          "toplam_deger": 832774665.6,
-          "fpd_pct": 5.01,
-          "format": "klasik"
-        },
-        {
-          "hisse": "TCELL",
-          "piyasa_fiy": 116.393163,
-          "alis_fiy": 105.9,
-          "alis_tarihi": "31/03/26",
-          "nominal": 7391484.0,
-          "toplam_deger": 782758155.6,
-          "fpd_pct": 4.71,
-          "format": "klasik"
-        },
-        {
-          "hisse": "MGROS",
-          "piyasa_fiy": 641.052237,
-          "alis_fiy": 602.5,
-          "alis_tarihi": "31/03/26",
-          "nominal": 1225545.0,
-          "toplam_deger": 738390862.5,
-          "fpd_pct": 4.44,
-          "format": "klasik"
-        },
-        {
-          "hisse": "PEKGY",
-          "piyasa_fiy": 12.824811,
-          "alis_fiy": 14.3,
-          "alis_tarihi": "27/03/26",
-          "nominal": 43155000.0,
-          "toplam_deger": 617116500.0,
-          "fpd_pct": 3.71,
-          "format": "klasik"
-        },
-        {
-          "hisse": "PASEU",
-          "piyasa_fiy": 124.730901,
-          "alis_fiy": 124.0,
-          "alis_tarihi": "27/03/26",
-          "nominal": 4899925.0,
-          "toplam_deger": 607590700.0,
-          "fpd_pct": 3.65,
-          "format": "klasik"
-        },
-        {
-          "hisse": "TATEN",
-          "piyasa_fiy": 12.143151,
-          "alis_fiy": 11.61,
-          "alis_tarihi": "23/03/26",
-          "nominal": 42859043.0,
-          "toplam_deger": 497593489.23,
-          "fpd_pct": 2.99,
-          "format": "klasik"
-        },
-        {
-          "hisse": "SAHOL",
-          "piyasa_fiy": 98.564075,
-          "alis_fiy": 89.4,
-          "alis_tarihi": "31/03/26",
-          "nominal": 4847367.0,
-          "toplam_deger": 433354609.8,
-          "fpd_pct": 2.61,
-          "format": "klasik"
-        },
-        {
-          "hisse": "ISCTR",
-          "piyasa_fiy": 13.428103,
-          "alis_fiy": 13.17,
-          "alis_tarihi": "31/03/26",
-          "nominal": 32329009.0,
-          "toplam_deger": 425773048.53,
-          "fpd_pct": 2.56,
-          "format": "klasik"
-        },
-        {
-          "hisse": "KCHOL",
-          "piyasa_fiy": 198.791152,
-          "alis_fiy": 194.8,
-          "alis_tarihi": "31/03/26",
-          "nominal": 2116296.0,
-          "toplam_deger": 412254460.8,
-          "fpd_pct": 2.48,
-          "format": "klasik"
-        },
-        {
-          "hisse": "AKBNK",
-          "piyasa_fiy": 70.213532,
-          "alis_fiy": 66.0,
-          "alis_tarihi": "31/03/26",
-          "nominal": 6036011.0,
-          "toplam_deger": 398376726.0,
-          "fpd_pct": 2.4,
-          "format": "klasik"
-        },
-        {
-          "hisse": "EREGL",
-          "piyasa_fiy": 29.133809,
-          "alis_fiy": 28.22,
-          "alis_tarihi": "31/03/26",
-          "nominal": 5022659.0,
-          "toplam_deger": 141739436.98,
-          "fpd_pct": 0.85,
-          "format": "klasik"
-        },
-        {
-          "hisse": "PGSUS",
-          "piyasa_fiy": 181.127471,
-          "alis_fiy": 175.5,
-          "alis_tarihi": "31/03/26",
-          "nominal": 751425.0,
-          "toplam_deger": 131875087.5,
-          "fpd_pct": 0.79,
-          "format": "klasik"
-        },
-        {
-          "hisse": "YKBNK",
-          "piyasa_fiy": 34.496965,
-          "alis_fiy": 33.02,
-          "alis_tarihi": "31/03/26",
-          "nominal": 3843540.0,
-          "toplam_deger": 126913690.8,
-          "fpd_pct": 0.76,
-          "format": "klasik"
-        },
-        {
-          "hisse": "ENKAI",
-          "piyasa_fiy": 96.768677,
-          "alis_fiy": 93.45,
-          "alis_tarihi": "25/03/26",
-          "nominal": 1234219.0,
-          "toplam_deger": 115337765.55,
-          "fpd_pct": 0.69,
-          "format": "klasik"
-        },
-        {
-          "hisse": "MPARK",
-          "piyasa_fiy": 453.878267,
-          "alis_fiy": 425.5,
-          "alis_tarihi": "23/03/26",
-          "nominal": 200000.0,
-          "toplam_deger": 85100000.0,
-          "fpd_pct": 0.51,
-          "format": "klasik"
-        },
-        {
-          "hisse": "KOPOL",
-          "piyasa_fiy": 6.56739,
-          "alis_fiy": 5.47,
-          "alis_tarihi": "30/03/26",
-          "nominal": 12581762.0,
-          "toplam_deger": 68822238.14,
-          "fpd_pct": 0.41,
-          "format": "klasik"
-        },
-        {
-          "hisse": "TRHOL",
-          "piyasa_fiy": 670.5,
-          "alis_fiy": 980.0,
-          "alis_tarihi": "09/03/26",
-          "nominal": 50000.0,
-          "toplam_deger": 49000000.0,
-          "fpd_pct": 0.29,
-          "format": "klasik"
-        },
-        {
-          "hisse": "AKSEN",
-          "piyasa_fiy": 78.88175,
-          "alis_fiy": 77.1,
-          "alis_tarihi": "31/03/26",
-          "nominal": 540773.0,
-          "toplam_deger": 41693598.3,
-          "fpd_pct": 0.25,
-          "format": "klasik"
-        },
-        {
-          "hisse": "TAVHL",
-          "piyasa_fiy": 306.033788,
-          "alis_fiy": 307.75,
-          "alis_tarihi": "31/03/26",
-          "nominal": 132950.0,
-          "toplam_deger": 40915362.5,
-          "fpd_pct": 0.25,
-          "format": "klasik"
-        }
-      ]
-    },
-    "AAV MART": {
+    "AAV": {
       "fon_adi": "AAV-ATA PORTFÖY İKİNCİ HİSSE SENEDİ FONU (HİSSE SENEDİ YOĞUN FON)",
       "kurucu": "ÜNVANI : Ata Portföy Yönetimi A.Ş.",
       "nvd": 288132886.61,
@@ -931,7 +674,7 @@
         }
       ]
     },
-    "AED MART": {
+    "AED": {
       "fon_adi": "AED-ATA PORTFÖY BİRİNCİ DEĞİŞKEN FON",
       "kurucu": "ÜNVANI : Ata Portföy Yönetimi A.Ş.",
       "nvd": 42333595.98,
@@ -1168,7 +911,7 @@
         }
       ]
     },
-    "AEV MART": {
+    "AEV": {
       "fon_adi": "AEV-ALLBATROSS PORTFÖY SANAYİ ŞİRKETLERİ HİSSE SENEDİ (TL)",
       "kurucu": "ALLBATROSS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 11130759.04,
@@ -1365,13 +1108,13 @@
         }
       ]
     },
-    "AK3 MART": {
+    "AK3": {
       "fon_adi": "AK3-AKPORTFÖY HISSE SENEDI(TL)FONU(HS YOGUN FON)",
       "kurucu": "AKPORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 8383423493.04,
       "hisseler": []
     },
-    "BHA MART": {
+    "BHA": {
       "fon_adi": "BHA-BULLS PORTFÖY HİSSE SENEDİ (TL) FONU (HİSSE SENEDİ",
       "kurucu": "BULLS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 118568326.2,
@@ -1788,7 +1531,7 @@
         }
       ]
     },
-    "BIH MART": {
+    "BIH": {
       "fon_adi": "BIH-PARDUS PYŞ BİRİNCİ HİSSE SENEDİ (TL) FONU (HSYF)",
       "kurucu": "PARDUS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 725583664.72,
@@ -2295,7 +2038,7 @@
         }
       ]
     },
-    "BMU MART": {
+    "BMU": {
       "fon_adi": "BMU-BULLS PORTFÖY MUTLAK GETİRİ HEDEFLİ HİSSE SENEDİ",
       "kurucu": "BULLS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 808693167.33,
@@ -2312,7 +2055,7 @@
         }
       ]
     },
-    "CPT MART": {
+    "CPT": {
       "fon_adi": "CPT-ROTA PORTFÖY ÇİP TEKNOLOJİLERİ DEĞİŞKEN FON",
       "kurucu": "ÜNVANI : ROTA PORTFÖY YÖNETİMİ A.Ş",
       "nvd": 318526440.32,
@@ -2359,13 +2102,13 @@
         }
       ]
     },
-    "DFI MART": {
+    "DFI": {
       "fon_adi": "DFI-ATLAS PORTFÖY İKİNCİ SERBEST (TL) FON",
       "kurucu": "ÜNVANI : ATLAS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 16051492984.86,
       "hisseler": []
     },
-    "DOH MART": {
+    "DOH": {
       "fon_adi": "DOH-TERA PORTFÖY DÖRDÜNCÜ HİSSE SENEDİ SERBEST TL FON",
       "kurucu": "TERA PORTFOY YÖNETİMİ A.Ş.",
       "nvd": 751586597.69,
@@ -2522,7 +2265,7 @@
         }
       ]
     },
-    "GL1 MART": {
+    "GL1": {
       "fon_adi": "GL1-AZİMUT PYŞ BİRİNCİ HİSSE SENEDİ FONU (HİS",
       "kurucu": "AZİMUT PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 1228525001.76,
@@ -2779,7 +2522,7 @@
         }
       ]
     },
-    "HGM MART": {
+    "HGM": {
       "fon_adi": "HGM-HEDEF PORT. İKİNCİ HİS. SND. (TL) FON (HSY)",
       "kurucu": "HEDEF PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 114746135.0,
@@ -3106,7 +2849,7 @@
         }
       ]
     },
-    "HIM MART": {
+    "HIM": {
       "fon_adi": "HIM-HEDEF POR. 2. MTL.GT. HDFLİ HS. SB. FON(HSY",
       "kurucu": "HEDEF PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 419300578.59,
@@ -3363,13 +3106,13 @@
         }
       ]
     },
-    "HRZ MART": {
+    "HRZ": {
       "fon_adi": "HRZ-AKTİF PORTFÖY BIST HALKA ARZ ŞİRKETLERİ HİSSE SENEDİ (TL)",
       "kurucu": "AKTİF PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 156700204.97,
       "hisseler": []
     },
-    "HVZ MART": {
+    "HVZ": {
       "fon_adi": "HVZ-ALL.P.BİRİNCİ HİSSE SENEDİ(TL) FONU(HSYF)",
       "kurucu": "ALLBATROSS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 100698268.42,
@@ -3576,7 +3319,7 @@
         }
       ]
     },
-    "IHA MART": {
+    "IHA": {
       "fon_adi": "IHA-ALLBATROSS POR.İKİNCİ HİSSESENEDİ(TL)FON(HSYF)",
       "kurucu": "ALLBATROSS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 11369131.21,
@@ -3993,7 +3736,7 @@
         }
       ]
     },
-    "KHA MART": {
+    "KHA": {
       "fon_adi": "KHA-PARDUS PYŞ İKİNCİ HİSSE SENEDİ (TL) FONU (HSYF)",
       "kurucu": "PARDUS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 927959728.83,
@@ -4350,7 +4093,7 @@
         }
       ]
     },
-    "KHT MART": {
+    "KHT": {
       "fon_adi": "KHT-ALLBATROSS P.KARTAL HİSSE S.SERB.TL FON(HSYF)",
       "kurucu": "ALLBATROSS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 25773713.01,
@@ -4517,7 +4260,7 @@
         }
       ]
     },
-    "OMG MART": {
+    "OMG": {
       "fon_adi": "OMG-AZİMUT PORTFÖY İKİNCİ HİSSE SENEDİ FONU(HİSSE SENEDİ",
       "kurucu": "AZİMUT PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 1164670121.57,
@@ -4754,7 +4497,7 @@
         }
       ]
     },
-    "PBR MART": {
+    "PBR": {
       "fon_adi": "PBR-PUSULA PORTFÖY BİRİNCİ DEĞİŞKEN FON",
       "kurucu": "PUSULA PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 9594298415.55,
@@ -4911,264 +4654,7 @@
         }
       ]
     },
-    "PHE MART": {
-      "fon_adi": "PHE-PUSULA PORT. HİS. SEN. FN.(HİSSE SENEDİ YĞN.)",
-      "kurucu": "PUSULA PORTFÖY YÖNETİMİ A.Ş.",
-      "nvd": 20874300023.6,
-      "hisseler": [
-        {
-          "hisse": "ODINE",
-          "piyasa_fiy": 548.503696,
-          "alis_fiy": 870.0,
-          "alis_tarihi": "31/03/26",
-          "nominal": 1928561.0,
-          "toplam_deger": 1677848070.0,
-          "fpd_pct": 10.08,
-          "format": "klasik"
-        },
-        {
-          "hisse": "HEDEF",
-          "piyasa_fiy": 105.457837,
-          "alis_fiy": 122.7,
-          "alis_tarihi": "31/03/26",
-          "nominal": 12544993.0,
-          "toplam_deger": 1539270641.1000001,
-          "fpd_pct": 9.26,
-          "format": "klasik"
-        },
-        {
-          "hisse": "TERA",
-          "piyasa_fiy": 244.353839,
-          "alis_fiy": 355.0,
-          "alis_tarihi": "26/03/26",
-          "nominal": 3957292.0,
-          "toplam_deger": 1404838660.0,
-          "fpd_pct": 8.45,
-          "format": "klasik"
-        },
-        {
-          "hisse": "THYAO",
-          "piyasa_fiy": 295.224286,
-          "alis_fiy": 294.25,
-          "alis_tarihi": "31/03/26",
-          "nominal": 3662899.0,
-          "toplam_deger": 1077808030.75,
-          "fpd_pct": 6.48,
-          "format": "klasik"
-        },
-        {
-          "hisse": "KTLEV",
-          "piyasa_fiy": 45.045563,
-          "alis_fiy": 78.2,
-          "alis_tarihi": "23/03/26",
-          "nominal": 11908930.0,
-          "toplam_deger": 931278326.0,
-          "fpd_pct": 5.61,
-          "format": "klasik"
-        },
-        {
-          "hisse": "SASA",
-          "piyasa_fiy": 2.422365,
-          "alis_fiy": 2.34,
-          "alis_tarihi": "31/03/26",
-          "nominal": 390138313.0,
-          "toplam_deger": 912923652.42,
-          "fpd_pct": 5.49,
-          "format": "klasik"
-        },
-        {
-          "hisse": "DAPGM",
-          "piyasa_fiy": 12.543991,
-          "alis_fiy": 14.4,
-          "alis_tarihi": "31/03/26",
-          "nominal": 57831574.0,
-          "toplam_deger": 832774665.6,
-          "fpd_pct": 5.01,
-          "format": "klasik"
-        },
-        {
-          "hisse": "TCELL",
-          "piyasa_fiy": 116.393163,
-          "alis_fiy": 105.9,
-          "alis_tarihi": "31/03/26",
-          "nominal": 7391484.0,
-          "toplam_deger": 782758155.6,
-          "fpd_pct": 4.71,
-          "format": "klasik"
-        },
-        {
-          "hisse": "MGROS",
-          "piyasa_fiy": 641.052237,
-          "alis_fiy": 602.5,
-          "alis_tarihi": "31/03/26",
-          "nominal": 1225545.0,
-          "toplam_deger": 738390862.5,
-          "fpd_pct": 4.44,
-          "format": "klasik"
-        },
-        {
-          "hisse": "PEKGY",
-          "piyasa_fiy": 12.824811,
-          "alis_fiy": 14.3,
-          "alis_tarihi": "27/03/26",
-          "nominal": 43155000.0,
-          "toplam_deger": 617116500.0,
-          "fpd_pct": 3.71,
-          "format": "klasik"
-        },
-        {
-          "hisse": "PASEU",
-          "piyasa_fiy": 124.730901,
-          "alis_fiy": 124.0,
-          "alis_tarihi": "27/03/26",
-          "nominal": 4899925.0,
-          "toplam_deger": 607590700.0,
-          "fpd_pct": 3.65,
-          "format": "klasik"
-        },
-        {
-          "hisse": "TATEN",
-          "piyasa_fiy": 12.143151,
-          "alis_fiy": 11.61,
-          "alis_tarihi": "23/03/26",
-          "nominal": 42859043.0,
-          "toplam_deger": 497593489.23,
-          "fpd_pct": 2.99,
-          "format": "klasik"
-        },
-        {
-          "hisse": "SAHOL",
-          "piyasa_fiy": 98.564075,
-          "alis_fiy": 89.4,
-          "alis_tarihi": "31/03/26",
-          "nominal": 4847367.0,
-          "toplam_deger": 433354609.8,
-          "fpd_pct": 2.61,
-          "format": "klasik"
-        },
-        {
-          "hisse": "ISCTR",
-          "piyasa_fiy": 13.428103,
-          "alis_fiy": 13.17,
-          "alis_tarihi": "31/03/26",
-          "nominal": 32329009.0,
-          "toplam_deger": 425773048.53,
-          "fpd_pct": 2.56,
-          "format": "klasik"
-        },
-        {
-          "hisse": "KCHOL",
-          "piyasa_fiy": 198.791152,
-          "alis_fiy": 194.8,
-          "alis_tarihi": "31/03/26",
-          "nominal": 2116296.0,
-          "toplam_deger": 412254460.8,
-          "fpd_pct": 2.48,
-          "format": "klasik"
-        },
-        {
-          "hisse": "AKBNK",
-          "piyasa_fiy": 70.213532,
-          "alis_fiy": 66.0,
-          "alis_tarihi": "31/03/26",
-          "nominal": 6036011.0,
-          "toplam_deger": 398376726.0,
-          "fpd_pct": 2.4,
-          "format": "klasik"
-        },
-        {
-          "hisse": "EREGL",
-          "piyasa_fiy": 29.133809,
-          "alis_fiy": 28.22,
-          "alis_tarihi": "31/03/26",
-          "nominal": 5022659.0,
-          "toplam_deger": 141739436.98,
-          "fpd_pct": 0.85,
-          "format": "klasik"
-        },
-        {
-          "hisse": "PGSUS",
-          "piyasa_fiy": 181.127471,
-          "alis_fiy": 175.5,
-          "alis_tarihi": "31/03/26",
-          "nominal": 751425.0,
-          "toplam_deger": 131875087.5,
-          "fpd_pct": 0.79,
-          "format": "klasik"
-        },
-        {
-          "hisse": "YKBNK",
-          "piyasa_fiy": 34.496965,
-          "alis_fiy": 33.02,
-          "alis_tarihi": "31/03/26",
-          "nominal": 3843540.0,
-          "toplam_deger": 126913690.8,
-          "fpd_pct": 0.76,
-          "format": "klasik"
-        },
-        {
-          "hisse": "ENKAI",
-          "piyasa_fiy": 96.768677,
-          "alis_fiy": 93.45,
-          "alis_tarihi": "25/03/26",
-          "nominal": 1234219.0,
-          "toplam_deger": 115337765.55,
-          "fpd_pct": 0.69,
-          "format": "klasik"
-        },
-        {
-          "hisse": "MPARK",
-          "piyasa_fiy": 453.878267,
-          "alis_fiy": 425.5,
-          "alis_tarihi": "23/03/26",
-          "nominal": 200000.0,
-          "toplam_deger": 85100000.0,
-          "fpd_pct": 0.51,
-          "format": "klasik"
-        },
-        {
-          "hisse": "KOPOL",
-          "piyasa_fiy": 6.56739,
-          "alis_fiy": 5.47,
-          "alis_tarihi": "30/03/26",
-          "nominal": 12581762.0,
-          "toplam_deger": 68822238.14,
-          "fpd_pct": 0.41,
-          "format": "klasik"
-        },
-        {
-          "hisse": "TRHOL",
-          "piyasa_fiy": 670.5,
-          "alis_fiy": 980.0,
-          "alis_tarihi": "09/03/26",
-          "nominal": 50000.0,
-          "toplam_deger": 49000000.0,
-          "fpd_pct": 0.29,
-          "format": "klasik"
-        },
-        {
-          "hisse": "AKSEN",
-          "piyasa_fiy": 78.88175,
-          "alis_fiy": 77.1,
-          "alis_tarihi": "31/03/26",
-          "nominal": 540773.0,
-          "toplam_deger": 41693598.3,
-          "fpd_pct": 0.25,
-          "format": "klasik"
-        },
-        {
-          "hisse": "TAVHL",
-          "piyasa_fiy": 306.033788,
-          "alis_fiy": 307.75,
-          "alis_tarihi": "31/03/26",
-          "nominal": 132950.0,
-          "toplam_deger": 40915362.5,
-          "fpd_pct": 0.25,
-          "format": "klasik"
-        }
-      ]
-    },
-    "PIL MART": {
+    "PIL": {
       "fon_adi": "PIL - ROTA PORTFÖY PIL TEKNOLOJILERI VE ENERJI FON SEPETI FONU",
       "kurucu": "ÜNVANI : ROTA PORTFÖY YÖNETİMİ A.Ş",
       "nvd": 501901138.57,
@@ -5185,7 +4671,7 @@
         }
       ]
     },
-    "PPH MART": {
+    "PPH": {
       "fon_adi": "PPH-PARDUS PYŞ BIST 100 DIŞ ŞİR HİS SEN (TL) FONU (HSYF)",
       "kurucu": "PARDUS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 106890891.76,
@@ -5472,13 +4958,13 @@
         }
       ]
     },
-    "RBH MART": {
+    "RBH": {
       "fon_adi": "RBH MART",
       "kurucu": "",
       "nvd": 0.0,
       "hisseler": []
     },
-    "RBN MART": {
+    "RBN": {
       "fon_adi": "RBN-RE-PIE PORTFÖY BEŞİNCİ HİSSE SENEDİ SERBEST (",
       "kurucu": "RE-PIE PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 39692727.25,
@@ -5655,7 +5141,7 @@
         }
       ]
     },
-    "RHI MART": {
+    "RHI": {
       "fon_adi": "RHI - BİRİNCİ HİSSE SENEDİ (TL) FONU",
       "kurucu": "RE-PIE PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 110677562.77,
@@ -6102,7 +5588,7 @@
         }
       ]
     },
-    "RKH MART": {
+    "RKH": {
       "fon_adi": "RKH - KATILIM HİSSE SENEDİ SERBEST (TL) FON",
       "kurucu": "RE-PIE PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 7765850.47,
@@ -6339,7 +5825,7 @@
         }
       ]
     },
-    "RTH MART": {
+    "RTH": {
       "fon_adi": "RTH-RE-PIE PORTFÖY BİRİNCİ HİSSE SENEDİ SERBEST FO",
       "kurucu": "RE-PIE PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 33105932.48,
@@ -6636,13 +6122,13 @@
         }
       ]
     },
-    "ST1 MART": {
+    "ST1": {
       "fon_adi": "STRATEJI PORTFÖY BIRINCI HISSE SENEDI FONU (HISSE SENEDI YOGUN FON)",
       "kurucu": "UNVANI STRATEJI PORTFÖY YÖNETIMI A.S",
       "nvd": 653504993.01,
       "hisseler": []
     },
-    "THF MART": {
+    "THF": {
       "fon_adi": "THF-TERA PORTFÖY HİSSE SENEDİ (TL) FONU (HİSSE SENEDİ YOĞUN",
       "kurucu": "TERA PORTFOY YÖNETİMİ A.Ş.",
       "nvd": 841767965.19,
@@ -6949,13 +6435,13 @@
         }
       ]
     },
-    "THV MART": {
+    "THV": {
       "fon_adi": "THV MART",
       "kurucu": "",
       "nvd": 0.0,
       "hisseler": []
     },
-    "TLY MART": {
+    "TLY": {
       "fon_adi": "TLY-TERA PORTFÖY BİRİNCİ SERBEST FON",
       "kurucu": "Tera Portföy A.Ş",
       "nvd": 95942091668.24,
@@ -7102,7 +6588,7 @@
         }
       ]
     },
-    "TLZ  MART": {
+    "TLZ": {
       "fon_adi": "TLZ-ATA PORTFÖY KATILIM HİSSE SENEDİ (TL) FONU (HİSSE SENEDİ YOĞUN FON)",
       "kurucu": "ÜNVANI : Ata Portföy Yönetimi A.Ş.",
       "nvd": 51526123.54,
@@ -7349,37 +6835,37 @@
         }
       ]
     },
-    "TMG MART": {
+    "TMG": {
       "fon_adi": "TMG-İŞ PORTFÖY YABANCI HİSSE SENEDİ FONU",
       "kurucu": "İŞ PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 3936396000.8,
       "hisseler": []
     },
-    "TZD MART": {
+    "TZD": {
       "fon_adi": "TZD-ZİRAAT PORTFÖY HİSSE SENEDİ FONU HSYF",
       "kurucu": "ZİRAAT PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 1127986514.35,
       "hisseler": []
     },
-    "ZJL MART": {
+    "ZJL": {
       "fon_adi": "ZJL-ZİRAAT PORTFÖY BIST 100 DIŞI ŞİRKETLER HİSSE SENEDİ FONU HSYF",
       "kurucu": "ZİRAAT PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 388007923.12,
       "hisseler": []
     },
-    "ZJV MART": {
+    "ZJV": {
       "fon_adi": "ZJV-ZİRAAT PORTFÖY BIST 30 DIŞI YILDIZ PAZAR ŞİRKETLERİ HİSSE SENEDİ FONU HSYF",
       "kurucu": "ZİRAAT PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 167235146.25,
       "hisseler": []
     },
-    "ZPE MART": {
+    "ZPE": {
       "fon_adi": "ZPE-ZPY ZİRAAT PORTFÖY KATILIM HİSSE SENEDİ FONU (HSYF)",
       "kurucu": "ZİRAAT PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 1093163866.57,
       "hisseler": []
     },
-    "OHB MART": {
+    "OHB": {
       "fon_adi": "OHB-OYAK Portföy Birinci Hisse Senedi (TL) Fonu(Hisse Senedi Yoğun Fon)",
       "kurucu": "ÜNVANI : OYAK PORTFÖY YÖNETİMİ .AŞ.",
       "nvd": 1452049920.24,
@@ -7716,7 +7202,7 @@
         }
       ]
     },
-    "HNC MART": {
+    "HNC": {
       "fon_adi": "HNC-HEDEF PORTFÖY ÜÇÜNCÜ HİSSE SENEDİ FONU (HİSSE SENEDİ",
       "kurucu": "HEDEF PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 5745446.97,
@@ -7964,8 +7450,8 @@
       ]
     }
   },
-  "NISAN-2026": {
-    "AAV NISAN": {
+  "Nisan-2026": {
+    "AAV": {
       "fon_adi": "AAV-ATA PORTFÖY İKİNCİ HİSSE SENEDİ FONU (HİSSE SENEDİ YOĞUN FON)",
       "kurucu": "ÜNVANI : Ata Portföy Yönetimi A.Ş.",
       "nvd": 299684969.58,
@@ -8252,7 +7738,7 @@
         }
       ]
     },
-    "AED NISAN": {
+    "AED": {
       "fon_adi": "AED-ATA PORTFÖY BİRİNCİ DEĞİŞKEN FON",
       "kurucu": "ÜNVANI : Ata Portföy Yönetimi A.Ş.",
       "nvd": 39229637.9,
@@ -8399,7 +7885,7 @@
         }
       ]
     },
-    "AEV NISAN": {
+    "AEV": {
       "fon_adi": "AEV-ALLBATROSS PORTFÖY SANAYİ ŞİRKETLERİ HİSSE SENEDİ (TL)",
       "kurucu": "ALLBATROSS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 10135423.82,
@@ -8616,7 +8102,7 @@
         }
       ]
     },
-    "BHA NISAN": {
+    "BHA": {
       "fon_adi": "BHA-BULLS PORTFÖY HİSSE SENEDİ (TL) FONU (HİSSE SENEDİ",
       "kurucu": "BULLS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 95393203.51,
@@ -8993,7 +8479,7 @@
         }
       ]
     },
-    "BMU NİSAN": {
+    "BMU": {
       "fon_adi": "BMU-BULLS PORTFÖY MUTLAK GETİRİ HEDEFLİ HİSSE SENEDİ",
       "kurucu": "BULLS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 1192551583.54,
@@ -9010,7 +8496,7 @@
         }
       ]
     },
-    "CPT NISAN": {
+    "CPT": {
       "fon_adi": "CPT-ROTA PORTFÖY ÇİP TEKNOLOJİLERİ DEĞİŞKEN FON",
       "kurucu": "ÜNVANI : ROTA PORTFÖY YÖNETİMİ A.Ş",
       "nvd": 618302864.11,
@@ -9057,7 +8543,7 @@
         }
       ]
     },
-    "DOH NISAN": {
+    "DOH": {
       "fon_adi": "DOH-TERA PORTFÖY DÖRDÜNCÜ HİSSE SENEDİ SERBEST TL FON",
       "kurucu": "TERA PORTFOY YÖNETİMİ A.Ş.",
       "nvd": 910391420.19,
@@ -9254,7 +8740,7 @@
         }
       ]
     },
-    "GL1 NISAN": {
+    "GL1": {
       "fon_adi": "GL1-AZİMUT PYŞ BİRİNCİ HİSSE SENEDİ FONU (HİS",
       "kurucu": "AZİMUT PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 1246859284.6,
@@ -9511,7 +8997,7 @@
         }
       ]
     },
-    "HVZ NISAN": {
+    "HVZ": {
       "fon_adi": "HVZ-ALL.P.BİRİNCİ HİSSE SENEDİ(TL) FONU(HSYF)",
       "kurucu": "ALLBATROSS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 104632367.1,
@@ -9738,7 +9224,7 @@
         }
       ]
     },
-    "IHA NISAN": {
+    "IHA": {
       "fon_adi": "IHA-ALLBATROSS POR.İKİNCİ HİSSESENEDİ(TL)FON(HSYF)",
       "kurucu": "ALLBATROSS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 9484354.03,
@@ -10125,7 +9611,7 @@
         }
       ]
     },
-    "KHT NISAN": {
+    "KHT": {
       "fon_adi": "KHT-ALLBATROSS P.KARTAL HİSSE S.SERB.TL FON(HSYF)",
       "kurucu": "ALLBATROSS PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 20343018.24,
@@ -10252,7 +9738,7 @@
         }
       ]
     },
-    "OMG NISAN": {
+    "OMG": {
       "fon_adi": "OMG-AZİMUT PORTFÖY İKİNCİ HİSSE SENEDİ FONU(HİSSE SENEDİ",
       "kurucu": "AZİMUT PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 1249471322.91,
@@ -10509,7 +9995,7 @@
         }
       ]
     },
-    "PIL NISAN": {
+    "PIL": {
       "fon_adi": "PIL - ROTA PORTFÖY PIL TEKNOLOJILERI VE ENERJI FON SEPETI FONU",
       "kurucu": "ÜNVANI : ROTA PORTFÖY YÖNETİMİ A.Ş",
       "nvd": 558580495.71,
@@ -10526,31 +10012,31 @@
         }
       ]
     },
-    "RBN NISAN": {
+    "RBN": {
       "fon_adi": "RBN-RE-PIE PORTFÖY BEŞİNCİ HİSSE SENEDİ SERBEST (",
       "kurucu": "RE-PIE PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 43790473.95,
       "hisseler": []
     },
-    "RHI NISAN": {
+    "RHI": {
       "fon_adi": "RHI - BİRİNCİ HİSSE SENEDİ (TL) FONU",
       "kurucu": "RE-PIE PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 43762598.94,
       "hisseler": []
     },
-    "RKH NİSAN": {
+    "RKH": {
       "fon_adi": "RKH - KATILIM HİSSE SENEDİ SERBEST (TL) FON",
       "kurucu": "RE-PIE PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 8831391.23,
       "hisseler": []
     },
-    "RTH NISAN": {
+    "RTH": {
       "fon_adi": "RTH-RE-PIE PORTFÖY BİRİNCİ HİSSE SENEDİ SERBEST FO",
       "kurucu": "RE-PIE PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 28467883.51,
       "hisseler": []
     },
-    "THF NISAN": {
+    "THF": {
       "fon_adi": "THF-TERA PORTFÖY HİSSE SENEDİ (TL) FONU (HİSSE SENEDİ YOĞUN",
       "kurucu": "TERA PORTFOY YÖNETİMİ A.Ş.",
       "nvd": 1139082345.48,
@@ -10867,7 +10353,7 @@
         }
       ]
     },
-    "TLY NISAN": {
+    "TLY": {
       "fon_adi": "TLY-TERA PORTFÖY BİRİNCİ SERBEST FON",
       "kurucu": "Tera Portföy A.Ş",
       "nvd": 125664192208.04,
@@ -11014,7 +10500,7 @@
         }
       ]
     },
-    "TLZ NISAN": {
+    "TLZ": {
       "fon_adi": "TLZ-ATA PORTFÖY KATILIM HİSSE SENEDİ (TL) FONU (HİSSE SENEDİ YOĞUN FON)",
       "kurucu": "ÜNVANI : Ata Portföy Yönetimi A.Ş.",
       "nvd": 58539676.08,
@@ -11251,7 +10737,7 @@
         }
       ]
     },
-    "GSP NISAN": {
+    "GSP": {
       "fon_adi": "GSP-AZİMUT PORTFÖY KAR PAYI ÖDEYEN HISSE SENEDI",
       "kurucu": "AZİMUT PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 2933479491.42,
@@ -11508,7 +10994,7 @@
         }
       ]
     },
-    "MHF NISAN": {
+    "MHF": {
       "fon_adi": "MHF-MT Portföy BIST Halka Arz Şirketleri Hisse Senedi Fonu (HSY)",
       "kurucu": "MT PORTFÖY YÖNETİMİ A.Ş.",
       "nvd": 73616916.92,
@@ -11785,13 +11271,13 @@
         }
       ]
     },
-    "ST1 NISAN": {
+    "ST1": {
       "fon_adi": "ST1 NISAN",
       "kurucu": "",
       "nvd": 0.0,
       "hisseler": []
     },
-    "STI NISAN": {
+    "STI": {
       "fon_adi": "STI NISAN",
       "kurucu": "",
       "nvd": 0.0,

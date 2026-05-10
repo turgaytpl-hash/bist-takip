@@ -1,47 +1,5 @@
 [
   {
-    "id": "DYOBY_2",
-    "hisse": "DYOBY",
-    "seviye": 15.9,
-    "yon": "asagi",
-    "teknik_alarmlar": [
-      "20 Reverse"
-    ],
-    "not": "10 MA reverse takip et ",
-    "eklenme_tarihi": "2026-04-25",
-    "durum": "bekliyor",
-    "tetikleme_tarihi": null,
-    "tetikleme_fiyat": null
-  },
-  {
-    "id": "ONCSM_1",
-    "hisse": "ONCSM",
-    "seviye": 303.16,
-    "yon": "yukari",
-    "teknik_alarmlar": [
-      "MACD Erken"
-    ],
-    "not": "Oyuncular hazırlıkları yapmış. Tahtaya ilgi çekiliyor. Yatırım ve Emeklilk fonları el artırıyor. Büyük ihtimalle Bankof mal verecek ve %5 lik dilimi yukarı kıracaklar. ",
-    "eklenme_tarihi": "2026-04-26",
-    "durum": "bekliyor",
-    "tetikleme_tarihi": null,
-    "tetikleme_fiyat": null
-  },
-  {
-    "id": "DUNYH_1",
-    "hisse": "DUNYH",
-    "seviye": 134.5,
-    "yon": "yukari",
-    "teknik_alarmlar": [
-      "MACD Erken"
-    ],
-    "not": "Tahtada Ekim 25 de tipe değişim oldu. Bulls tahtanın %45 aldı. Tahta sahipli arkadan oyuncular geliyor.",
-    "eklenme_tarihi": "2026-04-26",
-    "durum": "bekliyor",
-    "tetikleme_tarihi": null,
-    "tetikleme_fiyat": null
-  },
-  {
     "id": "PASEU_1",
     "hisse": "PASEU",
     "seviye": 135.8,
@@ -54,34 +12,6 @@
     "durum": "tetiklendi",
     "tetikleme_tarihi": "2026-04-27 19:36",
     "tetikleme_fiyat": 140.4
-  },
-  {
-    "id": "LILAK_1",
-    "hisse": "LILAK",
-    "seviye": 39.1,
-    "yon": "asagi",
-    "teknik_alarmlar": [
-      "20 Reverse"
-    ],
-    "not": "Büyük çoğunluk yatırım fonları, 39,10 altında 20 reverse testi yapmak isterse alınır.",
-    "eklenme_tarihi": "2026-04-26",
-    "durum": "tetiklendi",
-    "tetikleme_tarihi": "2026-05-03 17:38",
-    "tetikleme_fiyat": 35.02
-  },
-  {
-    "id": "LILAK_2",
-    "hisse": "LILAK",
-    "seviye": 42.5,
-    "yon": "yukari",
-    "teknik_alarmlar": [
-      "20 Reverse"
-    ],
-    "not": "42,50 üzerinde alış için uygun,",
-    "eklenme_tarihi": "2026-04-26",
-    "durum": "bekliyor",
-    "tetikleme_tarihi": null,
-    "tetikleme_fiyat": null
   },
   {
     "id": "OZSUB_1",
@@ -191,6 +121,48 @@
     ],
     "not": "Günlükte 200 ortalamaya tepki verdi. haftalıkta ortalamalar üzerine geçmeye isteği var.",
     "eklenme_tarihi": "2026-05-03",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "LILAK_1",
+    "hisse": "LILAK",
+    "seviye": 24.0,
+    "yon": "asagi",
+    "teknik_alarmlar": [
+      "20 Reverse"
+    ],
+    "not": "Haftalık 20 ortalama test edildi. 24 TL altına düşmediği sürece alıma uygundur.",
+    "eklenme_tarihi": "2026-05-09",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "MIATK_1",
+    "hisse": "MIATK",
+    "seviye": 48.4,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "20 Reverse"
+    ],
+    "not": "48,40 KIRILIMI HACİMLİ OLDU. ARTIK ÖNÜ AÇIK.",
+    "eklenme_tarihi": "2026-05-09",
+    "durum": "bekliyor",
+    "tetikleme_tarihi": null,
+    "tetikleme_fiyat": null
+  },
+  {
+    "id": "SISE_1",
+    "hisse": "SISE",
+    "seviye": 50.8,
+    "yon": "yukari",
+    "teknik_alarmlar": [
+      "Altın Tavuk"
+    ],
+    "not": "50,80 HAFTALIK HACİMLİ KIRILDI, ÜZERİNDE KALDIĞI SÜRECE 55,55 HEDEFİ VAR . SONRA RALLİ ",
+    "eklenme_tarihi": "2026-05-09",
     "durum": "bekliyor",
     "tetikleme_tarihi": null,
     "tetikleme_fiyat": null

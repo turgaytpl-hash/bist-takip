@@ -17,6 +17,8 @@ from tarama_depo import (sinyal_kaydet, performans_hesapla,
                           tarama_ozet, son_sinyaller, db_ozet, TARAMALAR)
 from watchlist_tab import watchlist_sekme
 from fon_analizi_tab import tab_fon_analizi
+from makro_dashboard_tab import tab_makro_dashboard
+from mevsimsellik_tab import tab_mevsimsellik
 
 st.set_page_config(page_title="Teknik Analiz", layout="wide")
 st.title("📈 Teknik Analiz — BIST Tarayıcı")
@@ -470,12 +472,14 @@ def _yukle_db() -> pd.DataFrame:
     return pd.DataFrame()
 
 # ══════════════════════════════════════════════════════════════════════════════
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
+tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
     "🔔 Takip & Alarm",
     "🔍 Hisse Detay",
     "🚀 BIST FD Tarama",
     "📊 Performans Takip",
     "📁 Fon Analizi",
+    "🌍 Makro Kahini",
+    "📅 Mevsimsellik",
 ])
 
 with tab1:
@@ -862,3 +866,9 @@ with tab4:
 
 with tab5:
     tab_fon_analizi()
+
+with tab6:
+    tab_makro_dashboard()
+
+with tab7:
+    tab_mevsimsellik()
