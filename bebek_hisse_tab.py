@@ -332,7 +332,11 @@ def bebek_hisse_sekme():
         st.divider()
         st.markdown("**📤 Takas Verisi Yükle**")
 
-        tarih = st.text_input("Tarih", placeholder="24.04.2026", key="y_tarih")
+        from datetime import date
+        secilen_tarih = st.date_input("Tarih", value=date.today(), key="y_tarih",
+                                      format="DD.MM.YYYY",
+                                      help="Yüklenen verinin tarihi")
+        tarih = secilen_tarih.strftime("%d.%m.%Y")
         dosya = st.file_uploader("Excel (tüm hisseler)", type=["xlsx","xls"], key="y_dosya_gun")
 
         if dosya and tarih and st.button("💾 Tümünü Yükle", key="y_btn_gun", type="primary"):
@@ -417,8 +421,20 @@ def bebek_hisse_sekme():
                         if df_raw[col].dtype == object:
                             df_raw[col] = df_raw[col].astype(str)
 
+                    # Tarihi standart formata çevir: DD.MM.YYYY → YYYYMMDD
+                    from datetime import datetime as _dt
+                    try:
+                        if "." in tarih:
+                            _d = _dt.strptime(tarih.strip(), "%d.%m.%Y")
+                        elif "-" in tarih:
+                            _d = _dt.strptime(tarih.strip(), "%Y-%m-%d")
+                        else:
+                            _d = _dt.strptime(tarih.strip(), "%Y%m%d")
+                        donem_std = _d.strftime("%Y%m%d")
+                    except:
+                        donem_std = tarih.strip()
                     df_raw["hisse"]          = hisse_kod
-                    df_raw["donem"]          = tarih
+                    df_raw["donem"]          = donem_std
                     df_raw["yukleme_tarihi"] = datetime.now().strftime("%Y-%m-%d")
 
                     # Standart kolonları garantile
@@ -434,7 +450,10 @@ def bebek_hisse_sekme():
                     p = DATA_DIR / f"{hisse_kod}.parquet"
                     if p.exists():
                         mevcut  = pd.read_parquet(p)
-                        mevcut  = mevcut[mevcut["donem"] != tarih]
+                        # donem kolonunu string'e çevir, tip uyumsuzluğunu önle
+                        mevcut["donem"] = mevcut["donem"].astype(str).str.strip()
+                        mevcut  = mevcut[mevcut["donem"] != str(donem_std)]
+                        df_raw["donem"] = str(donem_std)
                         df_yeni = pd.concat([mevcut, df_raw], ignore_index=True)
                     else:
                         df_yeni = df_raw

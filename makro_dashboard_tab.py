@@ -147,11 +147,16 @@ def faz_belirle(skor):
     else:             return '🔴 YÜKSEK KRİZ', '#7b0000'
 
 def tab_makro_dashboard():
-    st.markdown("## 🌍 Makro Kahini v3")
-    st.caption("Yahoo Finance • VIX • BTC/Gold • Yield Curve • Z-Score • Ağırlıklı Skor (-10/+10)")
+    from breadth_tab import breadth_panel
 
-    if st.button("🔄 Güncelle", type="primary", key="makro_guncelle"):
-        st.cache_data.clear()
+    col_baslik, col_btn = st.columns([6, 1.2])
+    with col_baslik:
+        st.markdown("## 🌍 Makro Kahini v3")
+        st.caption("Yahoo Finance • VIX • BTC/Gold • Yield Curve • Z-Score • Ağırlıklı Skor (-10/+10)")
+    with col_btn:
+        st.markdown("<div style='margin-top:18px'></div>", unsafe_allow_html=True)
+        if st.button("🔄 Güncelle", type="primary", key="makro_guncelle", use_container_width=True):
+            st.cache_data.clear()
 
     with st.spinner("Veriler çekiliyor..."):
         df, df2y, hata = veri_cek()
@@ -208,6 +213,72 @@ def tab_makro_dashboard():
     faz, renk   = faz_belirle(skor)
     skor_bar    = int(max(0, min(100, (skor + 10) / 20 * 100)))
 
+    # ── Skor Geçmişi Kaydet ───────────────────────────────────────
+    import os, json
+    SKOR_PATH = "data/makro_skor_gecmisi.json"
+    os.makedirs("data", exist_ok=True)
+
+    bugun = datetime.now().strftime("%Y-%m-%d")
+    if os.path.exists(SKOR_PATH):
+        with open(SKOR_PATH, encoding='utf-8') as f:
+            gecmis = json.load(f)
+    else:
+        gecmis = []
+
+    # Bugün zaten kayıtlıysa güncelle, yoksa ekle
+    if gecmis and gecmis[-1]['tarih'] == bugun:
+        gecmis[-1]['skor'] = skor
+    else:
+        gecmis.append({'tarih': bugun, 'skor': skor})
+
+    # Son 52 hafta tut
+    gecmis = gecmis[-52:]
+    with open(SKOR_PATH, 'w', encoding='utf-8') as f:
+        json.dump(gecmis, f, ensure_ascii=False, indent=2)
+
+    # ── Erken Uyarı Alarmları ─────────────────────────────────────
+    alarm = None
+    if len(gecmis) >= 3:
+        son3 = [x['skor'] for x in gecmis[-3:]]
+        son5 = [x['skor'] for x in gecmis[-5:]] if len(gecmis) >= 5 else []
+
+        # Yield Curve inversiyon
+        yc_son = g.get('yield_curve_deg', 0) or 0
+        vix_son = g.get('vix_son', 0) or 0
+        dxy_30 = g.get('dxy_30d', 0) or 0
+
+        kombinasyon = sum([
+            yc_son < 0,
+            vix_son > 25,
+            dxy_30 > 5,
+        ])
+
+        if kombinasyon >= 3:
+            alarm = ("🚨 KRİZ ÖN UYARISI",
+                     "Yield Curve negatif + VIX 25+ + DXY güçlü — 3 sinyal aynı anda!",
+                     "#7f1d1d")
+        elif all(son3[i] > son3[i+1] for i in range(len(son3)-1)) and son3[0] - son3[-1] > 3:
+            alarm = ("🔴 DÜŞÜŞ TRENDİ",
+                     f"Skor 3 haftadır düşüyor: {son3[0]:+.1f} → {son3[-1]:+.1f}",
+                     "#92400e")
+        elif yc_son < 0:
+            alarm = ("⚠️ YİELD CURVE İNVERSİYON",
+                     f"10Y-2Y = %{yc_son:.2f} — tarihsel kriz öncüsü!",
+                     "#78350f")
+        elif len(son5) >= 5 and all(son5[i] >= son5[i+1] for i in range(len(son5)-1)):
+            alarm = ("🟡 5 HAFTA DÜŞÜŞ",
+                     f"Skor 5 haftadır sürekli düşüyor: {son5[0]:+.1f} → {son5[-1]:+.1f}",
+                     "#713f12")
+
+    # Alarm göster
+    if alarm:
+        alarim_baslik, alarm_aciklama, alarm_renk = alarm
+        st.markdown(f"""
+        <div style="background:{alarm_renk};padding:12px 16px;border-radius:8px;margin-bottom:12px">
+            <b style="color:white;font-size:16px">{alarim_baslik}</b>
+            <p style="color:#fca5a5;margin:4px 0 0 0;font-size:13px">{alarm_aciklama}</p>
+        </div>""", unsafe_allow_html=True)
+
     st.markdown(f"""
     <div style="background:{renk};padding:20px;border-radius:12px;margin-bottom:16px">
         <h2 style="color:white;margin:0;text-align:center">{faz}</h2>
@@ -242,24 +313,31 @@ def tab_makro_dashboard():
     # (İsim, 30G, 3Ay, z_key, ters, yorum, güncel, esik_pos, esik_neg)
     GOST = [
         ("Copper/Gold",    g['copper_gold_30d'], g['copper_gold_3ay'], 'copper_gold', False,
-         "↑ büyüme güçlü / ↓ resesyon", "", 2.0, -2.0),
+         "↑ büyüme güçlü / ↓ resesyon",
+         f"Güncel: {son(df,'copper_gold'):.3f}" if son(df,'copper_gold') else "", 2.0, -2.0),
         ("HYG/TLT Kredi",  g['hyg_tlt_30d'],     g['lqd_tlt_30d'],     'hyg_tlt',    False,
-         "↑ kredi sağlıklı / ↓ kriz sinyali", "", 1.0, -1.0),
+         "↑ kredi sağlıklı / ↓ kriz sinyali",
+         f"Güncel: {son(df,'hyg_tlt'):.2f}" if son(df,'hyg_tlt') else "", 1.0, -1.0),
         ("VIX Korku",      g['vix_30d'],          g['vix_3ay'],          'vix',         True,
          "↓ korku azaldı, risk iştahı yüksek / ↑ panik",
          f"Güncel: {g['vix_son']:.1f}" if g['vix_son'] else "", 2.0, -2.0),
         ("Yield Curve 10Y-2Y", yc_deg,            None,                 'yield_curve', False,
          yc_yorum, f"Güncel: {yc_son:.2f}%" if yc_son else "", 0.5, -999),
         ("SOX/SP500 Semi",  g['sox_sp500_30d'],   g['sox_sp500_3ay'],   None,          False,
-         "↑ büyüme devam / ↓ ekonomi yavaşlıyor", "", 2.0, -2.0),
+         "↑ büyüme devam / ↓ ekonomi yavaşlıyor",
+         f"Güncel: {son(df,'sox_sp500'):.3f}" if son(df,'sox_sp500') else "", 2.0, -2.0),
         ("EEM/SP500",       g['eem_sp500_30d'],   g['eem_sp500_3ay'],   None,          False,
-         "↑ global likidite bol / ↓ dolar baskısı", "", 2.0, -2.0),
+         "↑ global likidite bol / ↓ dolar baskısı",
+         f"Güncel: {son(df,'eem_sp500'):.3f}" if son(df,'eem_sp500') else "", 2.0, -2.0),
         ("BTC/Gold",        g['btc_gold_30d'],    g['btc_gold_3ay'],    'btc_gold',    False,
-         "↑ risk iştahı yüksek / ↓ güvenli liman talebi", "", 2.0, -2.0),
+         "↑ risk iştahı yüksek / ↓ güvenli liman talebi",
+         f"Güncel: {son(df,'btc_gold'):.1f}" if son(df,'btc_gold') else "", 2.0, -2.0),
         ("DXY Dolar",       g['dxy_30d'],         g['dxy_3ay'],         'dxy',         True,
-         "↑ risk-off, EM baskısı / ↓ EM için olumlu", "", 2.0, -2.0),
+         "↑ risk-off, EM baskısı / ↓ EM için olumlu",
+         f"Güncel: {son(df,'dxy'):.1f}" if son(df,'dxy') else "", 2.0, -2.0),
         ("Gold/SP500",      g['gold_sp500_30d'],  g['gold_sp500_3ay'],  None,          True,
-         "↑ yatırımcılar korunmaya geçiyor / ↓ risk-on", "", 2.0, -2.0),
+         "↑ yatırımcılar korunmaya geçiyor / ↓ risk-on",
+         f"Güncel: {son(df,'gold_sp500'):.4f}" if son(df,'gold_sp500') else "", 2.0, -2.0),
         ("Oil/Brent",       g['oil_30d'],         g['oil_3ay'],         'oil',         False,
          "↑ enerji maliyeti artıyor → enflasyon ve marj baskısı riski / ↓ talep zayıfladı",
          f"Güncel: {son(df,'oil'):.1f}$" if son(df,'oil') else "", 2.0, -2.0),
@@ -311,6 +389,116 @@ def tab_makro_dashboard():
         st.warning("🇹🇷 Dolar güçleniyor — EM baskısı var, BIST izle.")
     else:
         st.info("🇹🇷 Makro tablo nötr — BIST kendi dinamikleriyle hareket edebilir.")
+
+    # ── SKOR GEÇMİŞİ GRAFİĞİ ─────────────────────────────────────
+    with st.expander("📈 Makro Skor Geçmişi & Trend", expanded=True):
+        if len(gecmis) >= 2:
+            gecmis_df = pd.DataFrame(gecmis)
+            gecmis_df['tarih'] = pd.to_datetime(gecmis_df['tarih'])
+            gecmis_df = gecmis_df.sort_values('tarih')
+
+            # Trend hesapla
+            son_skor = gecmis_df['skor'].iloc[-1]
+            ilk_skor = gecmis_df['skor'].iloc[0]
+            trend    = son_skor - ilk_skor
+            haftalik = (son_skor - gecmis_df['skor'].iloc[-2]) if len(gecmis_df) >= 2 else 0
+
+            c1, c2, c3, c4 = st.columns(4)
+            c1.metric("Güncel Skor", f"{son_skor:+.1f}")
+            c2.metric("Haftalık Δ", f"{haftalik:+.1f}", delta=f"{haftalik:+.1f}")
+            c3.metric(f"{len(gecmis_df)} Haftalık Trend", f"{trend:+.1f}")
+            c4.metric("Min / Max", f"{gecmis_df['skor'].min():+.1f} / {gecmis_df['skor'].max():+.1f}")
+
+            import altair as alt
+            chart_df = gecmis_df.copy()
+            chart_df['renk'] = chart_df['skor'].apply(
+                lambda x: 'kriz' if x < -3 else ('dikkat' if x < 0 else 'pozitif'))
+
+            chart = alt.Chart(chart_df).mark_line(
+                point=True, strokeWidth=2
+            ).encode(
+                x=alt.X('tarih:T', title='Tarih'),
+                y=alt.Y('skor:Q', title='Makro Skor', scale=alt.Scale(domain=[-10, 10])),
+                color=alt.condition(
+                    alt.datum.skor > 0,
+                    alt.value('#16a34a'),
+                    alt.value('#dc2626')
+                ),
+                tooltip=['tarih:T', 'skor:Q']
+            ).properties(height=250)
+
+            # Sıfır çizgisi
+            zero_line = alt.Chart(pd.DataFrame({'y': [0]})).mark_rule(
+                strokeDash=[4, 4], color='gray', opacity=0.5
+            ).encode(y='y:Q')
+
+            st.altair_chart(chart + zero_line, use_container_width=True)
+
+            # Alarm bölgeleri
+            st.caption("🟢 > 0: Boğa  |  🔴 < 0: Ayı  |  ⚠️ < -3: Dikkat  |  🚨 < -6: Kriz bölgesi")
+        else:
+            st.info("Skor geçmişi biriktirilmektedir. Her Güncelle'de yeni kayıt eklenir.")
+
+    # ── BIG SHORT DEDEKTÖRÜ ───────────────────────────────────────
+    with st.expander("🚨 Big Short Dedektörü", expanded=True):
+        yc_son  = g.get('yield_curve_deg', 0) or 0
+        vix_son = g.get('vix_son', 0) or 0
+        cg_30   = g.get('copper_gold_30d', 0) or 0
+        hyg_30  = g.get('hyg_tlt_30d', 0) or 0
+        dxy_30  = g.get('dxy_30d', 0) or 0
+        skor_son = skor
+
+        sinyaller = [
+            ("Makro Skor < -4.0",     skor_son < -4.0,   f"Şu an: {skor_son:+.1f}",  skor_son < -6.0),
+            ("Yield Curve < 0%",      yc_son < 0,        f"Şu an: %{yc_son:.2f}",    yc_son < -0.5),
+            ("Copper/Gold < -15%",    cg_30 < -15,       f"Şu an: {cg_30:+.1f}%",    cg_30 < -25),
+            ("VIX > 30",              vix_son > 30,      f"Şu an: {vix_son:.1f}",     vix_son > 40),
+            ("HYG/TLT < -12%",        hyg_30 < -12,      f"Şu an: {hyg_30:+.1f}%",   hyg_30 < -20),
+            ("DXY > +8%",             dxy_30 > 8,        f"Şu an: {dxy_30:+.1f}%",   dxy_30 > 12),
+        ]
+
+        aktif = sum(1 for _, tetiklendi, _, _ in sinyaller if tetiklendi)
+        agir  = sum(1 for _, tetiklendi, _, agir in sinyaller if tetiklendi and agir)
+
+        # Seviye
+        if aktif >= 5:
+            seviye = "🚨 BIG SHORT — 2008 Seviyesi"
+            seviye_renk = "#7f1d1d"
+        elif aktif >= 4:
+            seviye = "🔴 GÜÇLÜ UYARI — 2020 Seviyesi"
+            seviye_renk = "#991b1b"
+        elif aktif >= 3:
+            seviye = "🟠 DİKKAT — 2018 Q4 Seviyesi"
+            seviye_renk = "#92400e"
+        elif aktif >= 1:
+            seviye = "🟡 ERKEN SİNYAL"
+            seviye_renk = "#78350f"
+        else:
+            seviye = "🟢 Kriz sinyali yok"
+            seviye_renk = "#14532d"
+
+        st.markdown(f"""
+        <div style="background:{seviye_renk};padding:10px 16px;border-radius:8px;margin-bottom:12px">
+            <b style="color:white;font-size:16px">{seviye}</b>
+            <span style="color:#fca5a5;margin-left:16px">Aktif: {aktif}/6 sinyal</span>
+        </div>""", unsafe_allow_html=True)
+
+        # Sinyal tablosu
+        for isim, tetiklendi, deger, agir_mi in sinyaller:
+            ikon  = "✅" if tetiklendi else "⬜"
+            renk  = "#dc2626" if (tetiklendi and agir_mi) else ("#f97316" if tetiklendi else "var(--color-text-secondary)")
+            st.markdown(
+                f"<div style='padding:4px 0;color:{renk};font-size:13px'>"
+                f"{ikon} <b>{isim}</b> — {deger}</div>",
+                unsafe_allow_html=True
+            )
+
+        st.divider()
+        st.caption("Tarihsel: 2008=5/6 ✅ | 2020=4/6 ✅ | 2018 Q4=3/6 ✅ | Şu an: 0/6")
+
+    # ── PİYASA GENİŞLİĞİ ─────────────────────────────────────────
+    with st.expander("📊 Piyasa Genişliği (Market Breadth)", expanded=False):
+        breadth_panel()
 
     # ── SKOR DETAYI ───────────────────────────────────────────────
     with st.expander("🧮 Skor Hesaplama Detayı"):

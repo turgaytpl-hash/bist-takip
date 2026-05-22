@@ -25,62 +25,25 @@ TAKAS_CSV = BASE / "kurum_takas.csv"
 
 # 15 kurum listesi
 # BIST FD Hisse Listesi (590 hisse)
-BIST_FD = {
-    'AAGYO', 'ACSEL', 'ADEL', 'ADESE', 'ADGYO', 'AEFES', 'AFYON', 'AGESA', 'AGHOL', 'AGROT',
-    'AGYO', 'AHGAZ', 'AHSGY', 'AKBNK', 'AKCNS', 'AKENR', 'AKFGY', 'AKFIS', 'AKFYE', 'AKGRT',
-    'AKHAN', 'AKMGY', 'AKSA', 'AKSEN', 'AKSGY', 'AKSUE', 'AKYHO', 'ALARK', 'ALBRK', 'ALCAR',
-    'ALCTL', 'ALFAS', 'ALGYO', 'ALKA', 'ALKIM', 'ALKLC', 'ALTNY', 'ALVES', 'ANELE', 'ANGEN',
-    'ANHYT', 'ANSGR', 'ARASE', 'ARCLK', 'ARDYZ', 'ARENA', 'ARFYE', 'ARMGD', 'ARSAN', 'ARTMS',
-    'ARZUM', 'ASELS', 'ASGYO', 'ASTOR', 'ASUZU', 'ATAGY', 'ATAKP', 'ATATP', 'ATATR', 'ATEKS',
-    'ATLAS', 'ATSYH', 'AVGYO', 'AVHOL', 'AVOD', 'AVPGY', 'AVTUR', 'AYCES', 'AYDEM', 'AYEN',
-    'AYGAZ', 'AZTEK', 'BAGFS', 'BAHKM', 'BAKAB', 'BALSU', 'BANVT', 'BARMA', 'BASGZ', 'BAYRK',
-    'BEGYO', 'BERA', 'BESLR', 'BESTE', 'BEYAZ', 'BFREN', 'BIENY', 'BIGCH', 'BIGEN', 'BIGTK',
-    'BIMAS', 'BINBN', 'BINHO', 'BIOEN', 'BIZIM', 'BJKAS', 'BLCYT', 'BLUME', 'BMSCH', 'BMSTL',
-    'BNTAS', 'BOBET', 'BORLS', 'BORSK', 'BOSSA', 'BRISA', 'BRKO', 'BRKSN', 'BRKVY', 'BRLSM',
-    'BRMEN', 'BRSAN', 'BRYAT', 'BSOKE', 'BTCIM', 'BUCIM', 'BULGS', 'BURCE', 'BURVA', 'BVSAN',
-    'BYDNR', 'CANTE', 'CASA', 'CATES', 'CCOLA', 'CELHA', 'CEMAS', 'CEMTS', 'CEMZY', 'CEOEM',
-    'CGCAM', 'CIMSA', 'CLEBI', 'CMBTN', 'CONSE', 'COSMO', 'CRDFA', 'CRFSA', 'CUSAN', 'CVKMD',
-    'CWENE', 'DAGI', 'DAPGM', 'DARDL', 'DCTTR', 'DENGE', 'DERHL', 'DERIM', 'DESA', 'DESPC',
-    'DEVA', 'DGATE', 'DGGYO', 'DGNMO', 'DIRIT', 'DITAS', 'DMRGD', 'DMSAS', 'DNISI',
-    'DOAS', 'DOCO', 'DOFER', 'DOFRB', 'DOGUB', 'DOHOL', 'DOKTA', 'DSTKF', 'DUNYH', 'DURDO',
-    'DURKN', 'DYOBY', 'DZGYO', 'EBEBK', 'ECILC', 'ECOGR', 'ECZYT', 'EDATA', 'EDIP', 'EFOR',
-    'EGEEN', 'EGEGY', 'EGEPO', 'EGGUB', 'EGPRO', 'EGSER', 'EKGYO', 'EKIZ', 'EKOS', 'EKSUN',
-    'ELITE', 'EMKEL', 'EMNIS', 'EMPAE', 'ENDAE', 'ENERY', 'ENJSA', 'ENKAI', 'ENSRI', 'ENTRA',
-    'EPLAS', 'ERBOS', 'ERCB', 'EREGL', 'ERSU', 'ESCAR', 'ESCOM', 'ESEN', 'ETILR', 'ETYAT',
-    'EUHOL', 'EUKYO', 'EUPWR', 'EUREN', 'EUYO', 'EYGYO', 'FADE', 'FENER', 'FLAP', 'FMIZP',
-    'FONET', 'FORMT', 'FORTE', 'FRIGO', 'FRMPL', 'FROTO', 'FZLGY', 'GARAN', 'GARFA', 'GATEG',
-    'GEDIK', 'GEDZA', 'GENIL', 'GENKM', 'GENTS', 'GEREL', 'GESAN', 'GIPTA', 'GLBMD', 'GLCVY',
-    'GLRMK', 'GLRYH', 'GLYHO', 'GMTAS', 'GOKNR', 'GOLTS', 'GOODY', 'GOZDE', 'GRNYO', 'GRSEL',
-    'GRTHO', 'GSDDE', 'GSDHO', 'GSRAY', 'GUBRF', 'GUNDG', 'GWIND', 'GZNMI', 'HALKB', 'HATEK',
-    'HATSN', 'HDFGS', 'HEDEF', 'HEKTS', 'HKTM', 'HLGYO', 'HOROZ', 'HRKET', 'HTTBT', 'HUBVC',
-    'HUNER', 'HURGZ', 'ICBCT', 'ICUGS', 'IDGYO', 'IEYHO', 'IHAAS', 'IHEVA', 'IHGZT', 'IHLAS',
-    'IHLGM', 'IHYAY', 'IMDAD', 'IMASM', 'INDES', 'INFO', 'INTEM', 'INVEO', 'IPEKE', 'ISATR',
-    'ISCTR', 'ISKPL', 'ISMEN', 'ISGYO', 'ISGSY', 'ISFIN', 'ISYAT', 'ITTFK', 'IZFAS', 'IZINV',
-    'IZENR', 'IZOCM', 'JANTS', 'KAPLM', 'KAREL', 'KARSN', 'KARTN', 'KATMR', 'KAYSE', 'KBORU',
-    'KCAER', 'KCHOL', 'KDMDI', 'KERVN', 'KERVT', 'KGYO', 'KIMMR', 'KLGYO', 'KLKIM', 'KLMSN',
-    'KLNMA', 'KLRHO', 'KLSER', 'KMPUR', 'KNFRT', 'KONTR', 'KOPOL', 'KOTON', 'KOZAA', 'KOZAL',
-    'KRDMA', 'KRDMB', 'KRDMD', 'KRGYO', 'KRONT', 'KRPLS', 'KRSTL', 'KRTEK', 'KSTUR', 'KTLEV',
-    'KTSKR', 'KUYAS', 'KZBGY', 'LIDER', 'LIDFA', 'LILAK', 'LKMNH', 'LMKDC', 'LOGO', 'LRSHO',
-    'LUKSK', 'LYDHO', 'MAALT', 'MACKO', 'MAGEN', 'MAKIM', 'MAKTK', 'MANAS', 'MARBL', 'MARKA',
-    'MAVI', 'MEDTR', 'MEGAP', 'MEPET', 'MERCN', 'MERIT', 'MERKO', 'METRO', 'METUR', 'MFGYO',
-    'MGROS', 'MHRGY', 'MIATK', 'MIPAZ', 'MNDRS', 'MNVRL', 'MOBTL', 'MODEL', 'MOGAN', 'MOGYO',
-    'MPARK', 'MRGYO', 'MRSHL', 'MSGYO', 'MTRKS', 'MZHLD', 'NATEN', 'NETAS', 'NETCD', 'NIBAS',
-    'NTGAZ', 'NUGYO', 'NUHCM', 'NURLK', 'NVZMA', 'ODAS', 'ODINE', 'OFSYM', 'OSMEN', 'OSTIM',
-    'OTKAR', 'OYAKC', 'OYAYO', 'OYLUM', 'OZKGY', 'OZRDN', 'OZTEL', 'PAGYO', 'PAPIL', 'PARSN',
-    'PASEU', 'PEKGY', 'PENGD', 'PGSUS', 'PKART', 'PKENT', 'PLTUR', 'PNLSN', 'POLHO', 'POLTK',
-    'PRDGS', 'PRZMA', 'PSDTC', 'PSGYO', 'PTOFS', 'QUAGR', 'RAYSG', 'REEDR', 'RGYAS', 'RODRG',
-    'RTALB', 'RUBNS', 'RYGYO', 'RYSAS', 'SAFKR', 'SAHOL', 'SAMAT', 'SANEL', 'SANFM', 'SANKO',
-    'SARKY', 'SASA', 'SAYAS', 'SDTTR', 'SEGYO', 'SEKFK', 'SEKUR', 'SELEC', 'SELGD', 'SELVA',
-    'SEYKM', 'SILVR', 'SISE', 'SKBNK', 'SKYMD', 'SKYLP', 'SLCTR', 'SMART', 'SMRTG', 'SMRVA',
-    'SNKRN', 'SOKM', 'SONME', 'SRVGY', 'SUNTK', 'SURGY', 'SUWEN', 'TACTR', 'TATGD', 'TATEN',
-    'TAVHL', 'TBORG', 'TCELL', 'TCKRC', 'TDGYO', 'TEKTU', 'TEZOL', 'TKFEN', 'TKNSA', 'TLMAN',
-    'TMPOL', 'TNZTP', 'TOASO', 'TRCAS', 'TRHOL', 'TSGYO', 'TSKB', 'TSPOR', 'TTKOM', 'TTRAK',
-    'TUCLK', 'TUKAS', 'TUPRS', 'TUREX', 'TURGG', 'TURSG', 'THYAO', 'TKFEN', 'UCAYM', 'UFUK',
-    'UGUR', 'ULKER', 'ULUFA', 'ULUSE', 'ULUUN', 'UNLU', 'UNYEC', 'USAK', 'UZERB', 'VAKBN',
-    'VAKFN', 'VANGD', 'VBTYZ', 'VERUS', 'VESBE', 'VESTL', 'VKGYO', 'VKFYO', 'VSNMD', 'WENTO',
-    'YAKGYO', 'YAPRK', 'YAYLA', 'YBTAS', 'YEOTK', 'YESIL', 'YGGYO', 'YIGIT', 'YKBNK', 'YKSLN',
-    'YATAS', 'YUNSA', 'ZEDUR', 'ZOREN', 'ZPLIBT', 'ZRGYO', 'ZRSAN',
-}
+# BIST FD listesi — bist_fd.xlsx'ten dinamik yüklenir
+def _bist_fd_yukle() -> set:
+    try:
+        adaylar = [
+            Path(__file__).parent / "data" / "bist_fd.xlsx",
+            Path(__file__).parent.parent / "data" / "bist_fd.xlsx",
+            Path(__file__).parent.parent / "bist_fd.xlsx",
+            Path(__file__).parent / "bist_fd.xlsx",
+        ]
+        xlsx = next((p for p in adaylar if p.exists()), None)
+        if xlsx is None:
+            return set()
+        df = pd.read_excel(xlsx)
+        kol = next((c for c in df.columns if str(c).upper().strip() in ["SEMBOL","KOD","HISSE","TICKER"]), df.columns[0])
+        return set(df[kol].astype(str).str.strip().str.upper().tolist())
+    except Exception:
+        return set()
+
+BIST_FD = _bist_fd_yukle()
 
 KURUMLAR = [
     # Büyük Yerli
@@ -193,7 +156,16 @@ def takas_oku_kurum(kaynak, dosya_adi: str = None) -> pd.DataFrame:
     df["Oran_1"] = (df["1.Adet"] / df["Tks(2)"] * 100).round(4)
     df["Oran_2"] = (df["2.Adet"] / df["Tks(2)"] * 100).round(4)
     df["PP_Fark"] = (df["Oran_2"] - df["Oran_1"]).round(4)
-    df["Dolasim_Pct"] = (df["Adet Fark"] / df["Tks(2)"] * 100).round(4)
+
+    # Short kapama tespiti: önceki dönem 1.Adet negatifse (short pozisyon vardı)
+    # Bu durumda Adet Fark şişiyor — short kapama + yeni alım birleşiyor
+    # dolasim_pct için gerçek yeni giriş = sadece 2.Adet baz alınır
+    df["Short_Kapama"] = df["1.Adet"] < 0
+    df["Dolasim_Pct"] = df.apply(
+        lambda r: (r["2.Adet"] / r["Tks(2)"] * 100) if r["Short_Kapama"]
+                  else (r["Adet Fark"] / r["Tks(2)"] * 100),
+        axis=1
+    ).round(4)
 
     return df.reset_index(drop=True)
 
@@ -214,28 +186,35 @@ def dosyalar_yukle(dosya_listesi: list) -> tuple:
                 hatalar.append(f"❌ {dosya_adi}: Format tanınamadı")
                 continue
 
-            # Mükerrer kontrol
+            # Oku
+            df = takas_oku_kurum(dosya_obj, dosya_adi)
+
+            # Kayıt için hazırla
+            kayit = df[["Hisse", "2.Adet", "Adet Fark", "Tks(2)",
+                        "Oran_2", "PP_Fark", "Dolasim_Pct", "Short_Kapama"]].copy()
+            kayit.columns = ["hisse", "adet2", "adet_fark", "tks2",
+                             "oran2", "pp_fark", "dolasim_pct", "short_kapama"]
+            kayit["kurum"] = kurum
+            kayit["donem"] = donem
+            kayit["tip"] = tip
+            kayit["yukleme"] = _simdi()
+
+            # Mükerrer kontrol — bu kurum+dönem zaten kayıtlıysa
+            # sadece eksik hisseleri ekle, mevcut kayıtlara dokunma
             if not mevcut.empty:
                 var = mevcut[
                     (mevcut["kurum"] == kurum) &
                     (mevcut["donem"] == donem)
                 ]
                 if len(var) > 0:
-                    hatalar.append(f"⚠️ {dosya_adi}: Zaten kayıtlı")
+                    kayitli_hisseler = set(var["hisse"].unique())
+                    eksik = kayit[~kayit["hisse"].isin(kayitli_hisseler)]
+                    if eksik.empty:
+                        hatalar.append(f"⚠️ {dosya_adi}: Zaten kayıtlı (yeni hisse yok)")
+                        continue
+                    mevcut = pd.concat([mevcut, eksik], ignore_index=True)
+                    eklenen.append(f"✅ {dosya_adi} (+{len(eksik)} yeni hisse eklendi)")
                     continue
-
-            # Oku
-            df = takas_oku_kurum(dosya_obj, dosya_adi)
-
-            # Kayıt için hazırla
-            kayit = df[["Hisse", "2.Adet", "Adet Fark", "Tks(2)",
-                        "Oran_2", "PP_Fark", "Dolasim_Pct"]].copy()
-            kayit.columns = ["hisse", "adet2", "adet_fark", "tks2",
-                             "oran2", "pp_fark", "dolasim_pct"]
-            kayit["kurum"] = kurum
-            kayit["donem"] = donem
-            kayit["tip"] = tip
-            kayit["yukleme"] = _simdi()
 
             mevcut = pd.concat([mevcut, kayit], ignore_index=True)
             eklenen.append(f"✅ {dosya_adi} ({len(df)} hisse)")
@@ -481,7 +460,7 @@ def kurum_donemler(kurum: str, tip: str = None) -> list:
 
 def trend_analiz(min_hafta: int = 2) -> pd.DataFrame:
     """
-    Haftalık veride trend analizi.
+    Haftalık veride trend analizi — ALAN tarafı (eski davranış korundu).
     min_hafta üst üste artış gösteren hisseler.
     """
     df = _oku()
@@ -492,8 +471,6 @@ def trend_analiz(min_hafta: int = 2) -> pd.DataFrame:
     if haftalik.empty:
         return pd.DataFrame()
 
-    donemler = sorted(haftalik["donem"].astype(str).unique())
-
     sonuclar = []
     for hisse in haftalik["hisse"].unique():
         h_df = haftalik[haftalik["hisse"] == hisse]
@@ -502,7 +479,6 @@ def trend_analiz(min_hafta: int = 2) -> pd.DataFrame:
             if len(k_df) < min_hafta:
                 continue
             vals = k_df["dolasim_pct"].tolist()
-            # Son N dönem artıyor mu?
             son_n = vals[-min_hafta:]
             if all(v > 0 for v in son_n) and all(
                 son_n[i] >= son_n[i-1] for i in range(1, len(son_n))
@@ -529,3 +505,148 @@ def trend_analiz(min_hafta: int = 2) -> pd.DataFrame:
         return pd.DataFrame()
 
     return pd.DataFrame(sonuclar).sort_values("toplam_pct", ascending=False)
+
+
+def alan_satan_trend(donemler: list = None, min_donem: int = 2) -> dict:
+    """
+    Alan + Satan + Eşleşme analizi.
+
+    Dönem bazlı dolasim_pct kullanır:
+      - pozitif → o dönemde net ALIŞ
+      - negatif → o dönemde net SATIŞ
+
+    Short kapama şişmesi: short_kapama=True olan satırlar
+    oran2 bazında değerlendirilir (dolasim_pct değil).
+
+    Returns dict:
+      {
+        "alanlar":   DataFrame — hisse, kurum, son_pct, toplam_pct, donem_sayisi, trend, kurum_grup
+        "satanlar":  DataFrame — hisse, kurum, son_pct, toplam_pct, donem_sayisi, trend, kurum_grup
+        "eslesmeler": DataFrame — hisse, satan, alan, satan_grup, alan_grup, sinyal, satan_pct, alan_pct
+      }
+    """
+    df = _oku()
+    if df.empty:
+        return {"alanlar": pd.DataFrame(), "satanlar": pd.DataFrame(), "eslesmeler": pd.DataFrame()}
+
+    # Dönem filtresi
+    if donemler:
+        df = df[df["donem"].isin(donemler)]
+
+    if df.empty:
+        return {"alanlar": pd.DataFrame(), "satanlar": pd.DataFrame(), "eslesmeler": pd.DataFrame()}
+
+    def _grup(kurum):
+        if kurum in BUYUK_YERLI: return "Büyük Yerli"
+        if kurum in AKILLI_PARA: return "Akıllı Para"
+        if kurum in FON_YABANCI: return "Fon/Yabancı"
+        return "Diğer"
+
+    def _sinyal(satan_grup, alan_grup, alan):
+        """MAL DEĞİŞİMİ sinyal tipi."""
+        if alan in ["INFO"]:
+            return "⚠️ Dağıtım"
+        if satan_grup == "Büyük Yerli" and alan_grup == "Akıllı Para":
+            return "🟢 Birikim"
+        if satan_grup == "Büyük Yerli" and alan_grup == "Fon/Yabancı":
+            return "🟢 Fon Girişi"
+        if satan_grup == "Akıllı Para" and alan_grup == "Fon/Yabancı":
+            return "🟢 Akıllı→Fon"
+        if satan_grup == "Akıllı Para" and alan_grup == "Büyük Yerli":
+            return "🔄 Devir"
+        return "📊 Değişim"
+
+    # Short kapama düzeltmesi: short_kapama=True → dolasim_pct yerine oran2 kullan
+    if "short_kapama" in df.columns:
+        df = df.copy()
+        mask = df["short_kapama"] == True
+        df.loc[mask, "dolasim_pct"] = df.loc[mask, "oran2"]
+
+    # Her hisse+kurum için dönem bazlı dolasim_pct topla
+    ozet = df.groupby(["hisse", "kurum"]).agg(
+        toplam_pct  = ("dolasim_pct", "sum"),
+        son_pct     = ("dolasim_pct", "last"),
+        donem_sayisi= ("donem", "nunique"),
+        son_oran2   = ("oran2", "last"),
+    ).reset_index()
+
+    ozet["kurum_grup"] = ozet["kurum"].apply(_grup)
+
+    # Tüm dönemlerde pozitif mi? (sürekli artış)
+    def _trend_etiket(row):
+        h_df = df[(df["hisse"] == row["hisse"]) & (df["kurum"] == row["kurum"])].sort_values("donem")
+        vals = h_df["dolasim_pct"].tolist()
+        if len(vals) < min_donem:
+            return "—"
+        son = vals[-min_donem:]
+        if all(v > 0 for v in son) and all(son[i] >= son[i-1] for i in range(1, len(son))):
+            return "🚀 Sürekli Artış"
+        if all(v > 0 for v in son):
+            return "🟢 Pozitif"
+        if all(v < 0 for v in son) and all(son[i] <= son[i-1] for i in range(1, len(son))):
+            return "📉 Sürekli Azalış"
+        if all(v < 0 for v in son):
+            return "🔴 Negatif"
+        return "↔️ Karışık"
+
+    ozet["trend"] = ozet.apply(_trend_etiket, axis=1)
+
+    # ALANLAR — toplam_pct > 0
+    alanlar = ozet[ozet["toplam_pct"] > 0].copy()
+    alanlar = alanlar.sort_values("toplam_pct", ascending=False).reset_index(drop=True)
+
+    # SATANLAR — toplam_pct < 0
+    satanlar = ozet[ozet["toplam_pct"] < 0].copy()
+    satanlar["toplam_pct"] = satanlar["toplam_pct"].abs()
+    satanlar["son_pct"] = satanlar["son_pct"].abs()
+    satanlar = satanlar.sort_values("toplam_pct", ascending=False).reset_index(drop=True)
+
+    # EŞLEŞMELER — aynı hissede hem alan hem satan var
+    alan_hisseler  = set(alanlar["hisse"].unique())
+    satan_hisseler = set(satanlar["hisse"].unique())
+    ortak = alan_hisseler & satan_hisseler
+
+    eslesmeler = []
+    for hisse in ortak:
+        h_alanlar  = alanlar[alanlar["hisse"] == hisse]
+        h_satanlar = satanlar[satanlar["hisse"] == hisse]
+
+        for _, s_row in h_satanlar.iterrows():
+            for _, a_row in h_alanlar.iterrows():
+                if s_row["kurum"] == a_row["kurum"]:
+                    continue
+                sinyal = _sinyal(s_row["kurum_grup"], a_row["kurum_grup"], a_row["kurum"])
+                eslesmeler.append({
+                    "hisse"     : hisse,
+                    "satan"     : s_row["kurum"],
+                    "satan_grup": s_row["kurum_grup"],
+                    "satan_pct" : round(s_row["toplam_pct"], 2),
+                    "alan"      : a_row["kurum"],
+                    "alan_grup" : a_row["kurum_grup"],
+                    "alan_pct"  : round(a_row["toplam_pct"], 2),
+                    "sinyal"    : sinyal,
+                    "son_oran2" : round(a_row["son_oran2"], 2),
+                })
+
+    eslesme_df = pd.DataFrame(eslesmeler) if eslesmeler else pd.DataFrame()
+
+    # Sinyal öncelik sıralaması
+    if not eslesme_df.empty:
+        sinyal_sira = {
+            "⚠️ Dağıtım": 0,
+            "🟢 Fon Girişi": 1,
+            "🟢 Akıllı→Fon": 2,
+            "🟢 Birikim": 3,
+            "🔄 Devir": 4,
+            "📊 Değişim": 5,
+        }
+        eslesme_df["sinyal_sira"] = eslesme_df["sinyal"].map(sinyal_sira).fillna(9)
+        eslesme_df = eslesme_df.sort_values(
+            ["sinyal_sira", "satan_pct"], ascending=[True, False]
+        ).drop(columns="sinyal_sira").reset_index(drop=True)
+
+    return {
+        "alanlar"   : alanlar,
+        "satanlar"  : satanlar,
+        "eslesmeler": eslesme_df,
+    }

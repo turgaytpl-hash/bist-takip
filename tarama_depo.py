@@ -15,6 +15,7 @@ TARAMALAR = [
     "20 Reverse",
     "Minervini",
     "Haftalık MACD",
+    "Qullamaggie",
 ]
 
 # ─── Yükle / Kaydet ──────────────────────────────────────────────────────────

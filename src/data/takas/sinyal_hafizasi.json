@@ -1,0 +1,236 @@
+{
+  "SEKUR": {
+    "ilk_sinyal": "20260421",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 7.920000076293945,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 16.56,
+    "sinyal_sayisi": 1
+  },
+  "ENDAE": {
+    "ilk_sinyal": "20260421",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 16.6299991607666,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 19.04,
+    "sinyal_sayisi": 1
+  },
+  "AAGYO": {
+    "ilk_sinyal": "202604_02",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 18.5,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟡 Zayıflıyor",
+    "son_guc": 89.32,
+    "sinyal_sayisi": 6
+  },
+  "TRILC": {
+    "ilk_sinyal": "20260429",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 2.869999885559082,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 6.17,
+    "sinyal_sayisi": 6
+  },
+  "BYDNR": {
+    "ilk_sinyal": "202604_05",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 39.939998626708984,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 28.9,
+    "sinyal_sayisi": 4
+  },
+  "CGCAM": {
+    "ilk_sinyal": "20260421",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 42.959999084472656,
+    "son_guncelleme": "2026-05-22",
+    "durum": "🟢 Aktif",
+    "son_guc": 37.48,
+    "sinyal_sayisi": 5
+  },
+  "EGEGY": {
+    "ilk_sinyal": "20260421",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 31.040000915527344,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 20.1,
+    "sinyal_sayisi": 2
+  },
+  "BLCYT": {
+    "ilk_sinyal": "2026_04",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 36.36000061035156,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 32.8,
+    "sinyal_sayisi": 3
+  },
+  "TATEN": {
+    "ilk_sinyal": "2026_04",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 16.56999969482422,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 21.07,
+    "sinyal_sayisi": 9
+  },
+  "GOKNR": {
+    "ilk_sinyal": "202604_05",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 24.479999542236328,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 9.45,
+    "sinyal_sayisi": 1
+  },
+  "RUBNS": {
+    "ilk_sinyal": "2026_04",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 35.900001525878906,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 14.2,
+    "sinyal_sayisi": 2
+  },
+  "PASEU": {
+    "ilk_sinyal": "202604_01",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 104.9000015258789,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 8.31,
+    "sinyal_sayisi": 4
+  },
+  "ATATR": {
+    "ilk_sinyal": "2026_04",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 16.219999313354492,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟡 Zayıflıyor",
+    "son_guc": 6.73,
+    "sinyal_sayisi": 1
+  },
+  "NETCD": {
+    "ilk_sinyal": "20260420",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 162.10000610351562,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 8.55,
+    "sinyal_sayisi": 1
+  },
+  "DOAS": {
+    "ilk_sinyal": "20260421",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 182.6999969482422,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 19.56,
+    "sinyal_sayisi": 1
+  },
+  "HATEK": {
+    "ilk_sinyal": "20260421",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 16.360000610351562,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 53.05,
+    "sinyal_sayisi": 1
+  },
+  "CEMZY": {
+    "ilk_sinyal": "20260428",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 12.789999961853027,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 4.72,
+    "sinyal_sayisi": 3
+  },
+  "ONCSM": {
+    "ilk_sinyal": "2026_04",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 379.25,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 13.37,
+    "sinyal_sayisi": 5
+  },
+  "BESTE": {
+    "ilk_sinyal": "20260421",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 28.84000015258789,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 9.34,
+    "sinyal_sayisi": 2
+  },
+  "TCKRC": {
+    "ilk_sinyal": "20260421",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 128.10000610351562,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 10.18,
+    "sinyal_sayisi": 3
+  },
+  "JANTS": {
+    "ilk_sinyal": "20260421",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 17.8700008392334,
+    "son_guncelleme": "2026-05-20",
+    "durum": "🟢 Aktif",
+    "son_guc": 11.45,
+    "sinyal_sayisi": 3
+  },
+  "SVGYO": {
+    "ilk_sinyal": "2026_04",
+    "kayit_tarihi": "2026-05-20",
+    "giris_fiyat": 18.959999084472656,
+    "son_guncelleme": "2026-05-21",
+    "durum": "🟡 Zayıflıyor",
+    "son_guc": 23.21,
+    "sinyal_sayisi": 10
+  },
+  "USAK": {
+    "ilk_sinyal": "20260421",
+    "kayit_tarihi": "2026-05-21",
+    "giris_fiyat": 1.4800000190734863,
+    "son_guncelleme": "2026-05-21",
+    "durum": "🟢 Aktif",
+    "son_guc": 27.34,
+    "sinyal_sayisi": 1
+  },
+  "ERSU": {
+    "ilk_sinyal": "20260421",
+    "kayit_tarihi": "2026-05-22",
+    "giris_fiyat": 26.0,
+    "son_guncelleme": "2026-05-22",
+    "durum": "🟡 Zayıflıyor",
+    "son_guc": 20.36,
+    "sinyal_sayisi": 3
+  },
+  "OZATD": {
+    "ilk_sinyal": "2026_04",
+    "kayit_tarihi": "2026-05-22",
+    "giris_fiyat": 1051.0,
+    "son_guncelleme": "2026-05-22",
+    "durum": "🟢 Aktif",
+    "son_guc": 100.51,
+    "sinyal_sayisi": 52
+  },
+  "ENSRI": {
+    "ilk_sinyal": "202605_01",
+    "kayit_tarihi": "2026-05-22",
+    "giris_fiyat": 9.65999984741211,
+    "son_guncelleme": "2026-05-22",
+    "durum": "🟢 Aktif",
+    "son_guc": 34.26,
+    "sinyal_sayisi": 8
+  }
+}

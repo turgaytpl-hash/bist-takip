@@ -7448,6 +7448,712 @@
           "format": "klasik"
         }
       ]
+    },
+    "HVS MART": {
+      "fon_adi": "HVS - HSBC PORTFÖY HİSSE SENEDİ (TL) FONU",
+      "kurucu": "HSBC PORTFÖY YÖNETİMİ A.Ş.",
+      "nvd": 2663765437.93,
+      "hisseler": [
+        {
+          "hisse": "BIMAS",
+          "piyasa_fiy": 589.762857,
+          "alis_fiy": 683.0,
+          "alis_tarihi": "23/03/26",
+          "nominal": 390000.0,
+          "toplam_deger": 266370000.0,
+          "fpd_pct": 11.32,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TUPRS",
+          "piyasa_fiy": 226.953354,
+          "alis_fiy": 258.25,
+          "alis_tarihi": "31/03/26",
+          "nominal": 1000000.0,
+          "toplam_deger": 258250000.0,
+          "fpd_pct": 10.97,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ASELS",
+          "piyasa_fiy": 274.682361,
+          "alis_fiy": 320.25,
+          "alis_tarihi": "23/03/26",
+          "nominal": 790000.0,
+          "toplam_deger": 252997500.0,
+          "fpd_pct": 10.75,
+          "format": "klasik"
+        },
+        {
+          "hisse": "THYAO",
+          "piyasa_fiy": 296.776196,
+          "alis_fiy": 294.25,
+          "alis_tarihi": "11/03/26",
+          "nominal": 500000.16,
+          "toplam_deger": 147125046.49,
+          "fpd_pct": 6.25,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TOASO",
+          "piyasa_fiy": 239.701113,
+          "alis_fiy": 273.75,
+          "alis_tarihi": "25/03/26",
+          "nominal": 460000.0,
+          "toplam_deger": 125925000.0,
+          "fpd_pct": 5.35,
+          "format": "klasik"
+        },
+        {
+          "hisse": "AKBNK",
+          "piyasa_fiy": 67.973864,
+          "alis_fiy": 66.0,
+          "alis_tarihi": "25/03/26",
+          "nominal": 1750000.44,
+          "toplam_deger": 115500028.71,
+          "fpd_pct": 4.91,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ENKAI",
+          "piyasa_fiy": 75.129894,
+          "alis_fiy": 93.45,
+          "alis_tarihi": "27/03/26",
+          "nominal": 1200000.16,
+          "toplam_deger": 112140015.14,
+          "fpd_pct": 4.76,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ASTOR",
+          "piyasa_fiy": 156.711183,
+          "alis_fiy": 195.0,
+          "alis_tarihi": "06/03/26",
+          "nominal": 500000.0,
+          "toplam_deger": 97500000.0,
+          "fpd_pct": 4.14,
+          "format": "klasik"
+        },
+        {
+          "hisse": "MPARK",
+          "piyasa_fiy": 371.708104,
+          "alis_fiy": 425.5,
+          "alis_tarihi": "12/03/26",
+          "nominal": 200000.0,
+          "toplam_deger": 85100000.0,
+          "fpd_pct": 3.61,
+          "format": "klasik"
+        },
+        {
+          "hisse": "SAHOL",
+          "piyasa_fiy": 93.767921,
+          "alis_fiy": 89.4,
+          "alis_tarihi": "26/03/26",
+          "nominal": 900000.37,
+          "toplam_deger": 80460032.99,
+          "fpd_pct": 3.42,
+          "format": "klasik"
+        },
+        {
+          "hisse": "GARAN",
+          "piyasa_fiy": 145.564536,
+          "alis_fiy": 126.5,
+          "alis_tarihi": "06/02/26",
+          "nominal": 600000.0,
+          "toplam_deger": 75900000.0,
+          "fpd_pct": 3.22,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TURSG",
+          "piyasa_fiy": 7.378248,
+          "alis_fiy": 12.7,
+          "alis_tarihi": "06/02/26",
+          "nominal": 5500000.42,
+          "toplam_deger": 69850005.33,
+          "fpd_pct": 2.97,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TCELL",
+          "piyasa_fiy": 115.778978,
+          "alis_fiy": 105.9,
+          "alis_tarihi": "06/03/26",
+          "nominal": 650000.0,
+          "toplam_deger": 68835000.0,
+          "fpd_pct": 2.92,
+          "format": "klasik"
+        },
+        {
+          "hisse": "GLYHO",
+          "piyasa_fiy": 15.143703,
+          "alis_fiy": 13.87,
+          "alis_tarihi": "30/03/26",
+          "nominal": 4500000.0,
+          "toplam_deger": 62415000.0,
+          "fpd_pct": 2.65,
+          "format": "klasik"
+        },
+        {
+          "hisse": "BALSU",
+          "piyasa_fiy": 17.231374,
+          "alis_fiy": 14.2,
+          "alis_tarihi": "16/03/26",
+          "nominal": 4200000.0,
+          "toplam_deger": 59640000.0,
+          "fpd_pct": 2.53,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TTKOM",
+          "piyasa_fiy": 58.884737,
+          "alis_fiy": 58.05,
+          "alis_tarihi": "26/03/26",
+          "nominal": 1000000.0,
+          "toplam_deger": 58050000.0,
+          "fpd_pct": 2.47,
+          "format": "klasik"
+        },
+        {
+          "hisse": "EKGYO",
+          "piyasa_fiy": 23.86251,
+          "alis_fiy": 19.21,
+          "alis_tarihi": "26/03/26",
+          "nominal": 3000000.0,
+          "toplam_deger": 57630000.0,
+          "fpd_pct": 2.45,
+          "format": "klasik"
+        },
+        {
+          "hisse": "AKCNS",
+          "piyasa_fiy": 145.035461,
+          "alis_fiy": 199.2,
+          "alis_tarihi": "16/12/25",
+          "nominal": 280000.0,
+          "toplam_deger": 55776000.0,
+          "fpd_pct": 2.37,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ISCTR",
+          "piyasa_fiy": 14.805485,
+          "alis_fiy": 13.17,
+          "alis_tarihi": "25/03/26",
+          "nominal": 4000000.16,
+          "toplam_deger": 52680002.17,
+          "fpd_pct": 2.24,
+          "format": "klasik"
+        },
+        {
+          "hisse": "KCHOL",
+          "piyasa_fiy": 179.196828,
+          "alis_fiy": 194.8,
+          "alis_tarihi": "27/03/26",
+          "nominal": 260000.42,
+          "toplam_deger": 50648081.82,
+          "fpd_pct": 2.15,
+          "format": "klasik"
+        },
+        {
+          "hisse": "YKBNK",
+          "piyasa_fiy": 35.136692,
+          "alis_fiy": 33.02,
+          "alis_tarihi": "26/03/26",
+          "nominal": 1200000.6,
+          "toplam_deger": 39624019.85,
+          "fpd_pct": 1.68,
+          "format": "klasik"
+        },
+        {
+          "hisse": "CCOLA",
+          "piyasa_fiy": 70.635686,
+          "alis_fiy": 70.45,
+          "alis_tarihi": "11/03/26",
+          "nominal": 550000.0,
+          "toplam_deger": 38747500.0,
+          "fpd_pct": 1.65,
+          "format": "klasik"
+        },
+        {
+          "hisse": "FROTO",
+          "piyasa_fiy": 104.408874,
+          "alis_fiy": 101.1,
+          "alis_tarihi": "27/03/26",
+          "nominal": 350000.0,
+          "toplam_deger": 35385000.0,
+          "fpd_pct": 1.5,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ANHYT",
+          "piyasa_fiy": 104.544171,
+          "alis_fiy": 108.5,
+          "alis_tarihi": "06/02/26",
+          "nominal": 220000.0,
+          "toplam_deger": 23870000.0,
+          "fpd_pct": 1.01,
+          "format": "klasik"
+        },
+        {
+          "hisse": "SASA",
+          "piyasa_fiy": 2.419,
+          "alis_fiy": 2.34,
+          "alis_tarihi": "30/03/26",
+          "nominal": 10000000.0,
+          "toplam_deger": 23400000.0,
+          "fpd_pct": 0.99,
+          "format": "klasik"
+        },
+        {
+          "hisse": "EREGL",
+          "piyasa_fiy": 27.919999,
+          "alis_fiy": 28.22,
+          "alis_tarihi": "27/03/26",
+          "nominal": 600000.38,
+          "toplam_deger": 16932010.64,
+          "fpd_pct": 0.72,
+          "format": "klasik"
+        },
+        {
+          "hisse": "VAKBN",
+          "piyasa_fiy": 34.90863,
+          "alis_fiy": 30.0,
+          "alis_tarihi": "17/03/26",
+          "nominal": 500000.0,
+          "toplam_deger": 15000000.0,
+          "fpd_pct": 0.64,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TRALT",
+          "piyasa_fiy": 44.677593,
+          "alis_fiy": 41.9,
+          "alis_tarihi": "27/03/26",
+          "nominal": 200000.0,
+          "toplam_deger": 8380000.0,
+          "fpd_pct": 0.36,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ANSGR",
+          "piyasa_fiy": 20.740741,
+          "alis_fiy": 27.26,
+          "alis_tarihi": "06/02/26",
+          "nominal": 0.22,
+          "toplam_deger": 5.89,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "BIOEN",
+          "piyasa_fiy": 9.328358,
+          "alis_fiy": 16.59,
+          "alis_tarihi": "27/04/23",
+          "nominal": 0.67,
+          "toplam_deger": 11.12,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "GWIND",
+          "piyasa_fiy": 15.5,
+          "alis_fiy": 29.2,
+          "alis_tarihi": "29/12/23",
+          "nominal": 0.02,
+          "toplam_deger": 0.58,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ISGYO",
+          "piyasa_fiy": 2.78481,
+          "alis_fiy": 19.9,
+          "alis_tarihi": "10/01/22",
+          "nominal": 0.16,
+          "toplam_deger": 3.14,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "KRDMD",
+          "piyasa_fiy": 25.363636,
+          "alis_fiy": 30.9,
+          "alis_tarihi": "16/09/25",
+          "nominal": 0.66,
+          "toplam_deger": 20.39,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "MGROS",
+          "piyasa_fiy": 273.461538,
+          "alis_fiy": 602.5,
+          "alis_tarihi": "16/07/24",
+          "nominal": 0.03,
+          "toplam_deger": 15.67,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "OYAKC",
+          "piyasa_fiy": 21.423021,
+          "alis_fiy": 23.24,
+          "alis_tarihi": "18/09/25",
+          "nominal": 0.9,
+          "toplam_deger": 20.92,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "PETKM",
+          "piyasa_fiy": 28.488636,
+          "alis_fiy": 21.22,
+          "alis_tarihi": "28/03/24",
+          "nominal": 0.26,
+          "toplam_deger": 5.6,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "PGSUS",
+          "piyasa_fiy": 220.135417,
+          "alis_fiy": 175.5,
+          "alis_tarihi": "23/02/26",
+          "nominal": 0.96,
+          "toplam_deger": 168.48,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "SISE",
+          "piyasa_fiy": 47.515924,
+          "alis_fiy": 43.98,
+          "alis_tarihi": "27/02/24",
+          "nominal": 0.31,
+          "toplam_deger": 13.81,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "SNGYO",
+          "piyasa_fiy": 0.860215,
+          "alis_fiy": 3.41,
+          "alis_tarihi": "12/12/24",
+          "nominal": 0.19,
+          "toplam_deger": 0.63,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TRCAS",
+          "piyasa_fiy": 2.358491,
+          "alis_fiy": 40.36,
+          "alis_tarihi": "16/12/19",
+          "nominal": 0.11,
+          "toplam_deger": 4.28,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TSKB",
+          "piyasa_fiy": 2.543554,
+          "alis_fiy": 11.11,
+          "alis_tarihi": "23/02/26",
+          "nominal": 0.29,
+          "toplam_deger": 3.19,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ULKER",
+          "piyasa_fiy": 18.431734,
+          "alis_fiy": 117.8,
+          "alis_tarihi": "16/12/19",
+          "nominal": 0.54,
+          "toplam_deger": 63.85,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "VESBE",
+          "piyasa_fiy": 6.25,
+          "alis_fiy": 6.96,
+          "alis_tarihi": "09/03/22",
+          "nominal": 0.16,
+          "toplam_deger": 1.11,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        }
+      ]
+    },
+    "IIH MART": {
+      "fon_adi": "IIH-İSTANBUL PORTFÖY ÜÇÜNCÜ HİSSE SENEDİ FONU (HİSSE YOĞUN",
+      "kurucu": "İSTANBUL PORTFÖY YÖNETİMİ A.Ş.",
+      "nvd": 2221521403.33,
+      "hisseler": [
+        {
+          "hisse": "TUPRS",
+          "piyasa_fiy": 186.032846,
+          "alis_fiy": 258.25,
+          "alis_tarihi": "31/03/26",
+          "nominal": 721000.0,
+          "toplam_deger": 186198250.0,
+          "fpd_pct": 8.96,
+          "format": "klasik"
+        },
+        {
+          "hisse": "BIMAS",
+          "piyasa_fiy": 504.9342,
+          "alis_fiy": 683.0,
+          "alis_tarihi": "27/03/26",
+          "nominal": 180000.0,
+          "toplam_deger": 122940000.0,
+          "fpd_pct": 5.9,
+          "format": "klasik"
+        },
+        {
+          "hisse": "MEGMT",
+          "piyasa_fiy": 42.44,
+          "alis_fiy": 79.75,
+          "alis_tarihi": "26/03/26",
+          "nominal": 1500000.0,
+          "toplam_deger": 119625000.0,
+          "fpd_pct": 5.74,
+          "format": "klasik"
+        },
+        {
+          "hisse": "MGROS",
+          "piyasa_fiy": 518.3547,
+          "alis_fiy": 602.5,
+          "alis_tarihi": "16/03/26",
+          "nominal": 194000.0,
+          "toplam_deger": 116885000.0,
+          "fpd_pct": 5.61,
+          "format": "klasik"
+        },
+        {
+          "hisse": "THYAO",
+          "piyasa_fiy": 307.490973,
+          "alis_fiy": 294.25,
+          "alis_tarihi": "05/03/26",
+          "nominal": 380000.0,
+          "toplam_deger": 111815000.0,
+          "fpd_pct": 5.37,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ISCTR",
+          "piyasa_fiy": 2.154574,
+          "alis_fiy": 13.17,
+          "alis_tarihi": "27/03/26",
+          "nominal": 8050000.0,
+          "toplam_deger": 106018500.0,
+          "fpd_pct": 5.09,
+          "format": "klasik"
+        },
+        {
+          "hisse": "SAHOL",
+          "piyasa_fiy": 94.021013,
+          "alis_fiy": 89.4,
+          "alis_tarihi": "25/03/26",
+          "nominal": 1160000.0,
+          "toplam_deger": 103704000.0,
+          "fpd_pct": 4.98,
+          "format": "klasik"
+        },
+        {
+          "hisse": "AGESA",
+          "piyasa_fiy": 103.303609,
+          "alis_fiy": 228.2,
+          "alis_tarihi": "05/03/26",
+          "nominal": 453000.0,
+          "toplam_deger": 103374600.0,
+          "fpd_pct": 4.96,
+          "format": "klasik"
+        },
+        {
+          "hisse": "AKBNK",
+          "piyasa_fiy": 0.0,
+          "alis_fiy": 66.0,
+          "alis_tarihi": "26/02/26",
+          "nominal": 1500000.0,
+          "toplam_deger": 99000000.0,
+          "fpd_pct": 4.75,
+          "format": "klasik"
+        },
+        {
+          "hisse": "KCHOL",
+          "piyasa_fiy": 196.803405,
+          "alis_fiy": 194.8,
+          "alis_tarihi": "10/03/26",
+          "nominal": 480000.0,
+          "toplam_deger": 93504000.0,
+          "fpd_pct": 4.49,
+          "format": "klasik"
+        },
+        {
+          "hisse": "MPARK",
+          "piyasa_fiy": 348.461044,
+          "alis_fiy": 425.5,
+          "alis_tarihi": "25/03/26",
+          "nominal": 205000.0,
+          "toplam_deger": 87227500.0,
+          "fpd_pct": 4.19,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ISMEN",
+          "piyasa_fiy": 41.683891,
+          "alis_fiy": 43.16,
+          "alis_tarihi": "05/03/26",
+          "nominal": 2000000.0,
+          "toplam_deger": 86320000.0,
+          "fpd_pct": 4.15,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TCELL",
+          "piyasa_fiy": 94.055081,
+          "alis_fiy": 105.9,
+          "alis_tarihi": "25/03/26",
+          "nominal": 765000.0,
+          "toplam_deger": 81013500.0,
+          "fpd_pct": 3.89,
+          "format": "klasik"
+        },
+        {
+          "hisse": "YKBNK",
+          "piyasa_fiy": 0.0,
+          "alis_fiy": 33.02,
+          "alis_tarihi": "06/03/26",
+          "nominal": 2100000.0,
+          "toplam_deger": 69342000.0,
+          "fpd_pct": 3.33,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ENKAI",
+          "piyasa_fiy": 74.751502,
+          "alis_fiy": 93.45,
+          "alis_tarihi": "11/03/26",
+          "nominal": 645000.0,
+          "toplam_deger": 60275250.0,
+          "fpd_pct": 2.89,
+          "format": "klasik"
+        },
+        {
+          "hisse": "CCOLA",
+          "piyasa_fiy": 55.349102,
+          "alis_fiy": 70.45,
+          "alis_tarihi": "10/03/26",
+          "nominal": 835000.0,
+          "toplam_deger": 58825750.0,
+          "fpd_pct": 2.82,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TOASO",
+          "piyasa_fiy": 227.157057,
+          "alis_fiy": 273.75,
+          "alis_tarihi": "05/03/26",
+          "nominal": 212000.0,
+          "toplam_deger": 58035000.0,
+          "fpd_pct": 2.79,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TAVHL",
+          "piyasa_fiy": 254.950541,
+          "alis_fiy": 307.75,
+          "alis_tarihi": "27/02/26",
+          "nominal": 180000.0,
+          "toplam_deger": 55395000.0,
+          "fpd_pct": 2.66,
+          "format": "klasik"
+        },
+        {
+          "hisse": "RGYAS",
+          "piyasa_fiy": 133.477707,
+          "alis_fiy": 157.3,
+          "alis_tarihi": "05/03/26",
+          "nominal": 336000.0,
+          "toplam_deger": 52852800.0,
+          "fpd_pct": 2.54,
+          "format": "klasik"
+        },
+        {
+          "hisse": "EKGYO",
+          "piyasa_fiy": 13.143776,
+          "alis_fiy": 19.21,
+          "alis_tarihi": "27/03/26",
+          "nominal": 2450000.0,
+          "toplam_deger": 47064500.0,
+          "fpd_pct": 2.26,
+          "format": "klasik"
+        },
+        {
+          "hisse": "OTKAR",
+          "piyasa_fiy": 527.891665,
+          "alis_fiy": 364.0,
+          "alis_tarihi": "11/03/26",
+          "nominal": 111000.0,
+          "toplam_deger": 40404000.0,
+          "fpd_pct": 1.94,
+          "format": "klasik"
+        },
+        {
+          "hisse": "AKSEN",
+          "piyasa_fiy": 39.143003,
+          "alis_fiy": 77.1,
+          "alis_tarihi": "16/03/26",
+          "nominal": 400000.0,
+          "toplam_deger": 30840000.0,
+          "fpd_pct": 1.48,
+          "format": "klasik"
+        },
+        {
+          "hisse": "PGSUS",
+          "piyasa_fiy": 212.783046,
+          "alis_fiy": 175.5,
+          "alis_tarihi": "11/03/26",
+          "nominal": 120000.0,
+          "toplam_deger": 21060000.0,
+          "fpd_pct": 1.01,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TRCAS",
+          "piyasa_fiy": 50.973642,
+          "alis_fiy": 40.36,
+          "alis_tarihi": "23/02/26",
+          "nominal": 500000.0,
+          "toplam_deger": 20180000.0,
+          "fpd_pct": 0.97,
+          "format": "klasik"
+        },
+        {
+          "hisse": "GARAN",
+          "piyasa_fiy": 123.658523,
+          "alis_fiy": 126.5,
+          "alis_tarihi": "31/03/26",
+          "nominal": 110000.0,
+          "toplam_deger": 13915000.0,
+          "fpd_pct": 0.67,
+          "format": "klasik"
+        }
+      ]
+    },
+    "KPC MART": {
+      "fon_adi": "KPC-KATILIM HİSSE SENEDİ(TL) FONU(HİSSE YOĞUN FON)",
+      "kurucu": "KUVEYT TURK PORTFÖY YÖNETİMİ A.Ş.",
+      "nvd": 3134354096.73,
+      "hisseler": []
+    },
+    "MAC NİSAN": {
+      "fon_adi": "MARMARA CAPİTAL PORTFÖY HİSSE SENEDİ (TL) FONU (HİSSE SENEDİ YOĞUN FON)",
+      "kurucu": "ÜNVANI: MARMARA CAPİTAL PORTFÖY YÖNETİMİ A.Ş.",
+      "nvd": 0.0,
+      "hisseler": []
     }
   },
   "Nisan-2026": {
@@ -11282,6 +11988,667 @@
       "kurucu": "",
       "nvd": 0.0,
       "hisseler": []
+    },
+    "AK3 NISAN": {
+      "fon_adi": "AK3-AKPORTFÖY HISSE SENEDI(TL)FONU(HS YOGUN FON)",
+      "kurucu": "AKPORTFÖY YÖNETİMİ A.Ş.",
+      "nvd": 8601212581.24,
+      "hisseler": []
+    },
+    "IIH NISAN": {
+      "fon_adi": "IIH-İSTANBUL PORTFÖY ÜÇÜNCÜ HİSSE SENEDİ FONU (HİSSE YOĞUN",
+      "kurucu": "İSTANBUL PORTFÖY YÖNETİMİ A.Ş.",
+      "nvd": 2261354076.88,
+      "hisseler": [
+        {
+          "hisse": "TUPRS",
+          "piyasa_fiy": 186.032846,
+          "alis_fiy": 271.0,
+          "alis_tarihi": "29/04/26",
+          "nominal": 659000.0,
+          "toplam_deger": 178589000.0,
+          "fpd_pct": 8.49,
+          "format": "klasik"
+        },
+        {
+          "hisse": "BIMAS",
+          "piyasa_fiy": 504.9342,
+          "alis_fiy": 741.5,
+          "alis_tarihi": "24/04/26",
+          "nominal": 178000.0,
+          "toplam_deger": 131987000.0,
+          "fpd_pct": 6.27,
+          "format": "klasik"
+        },
+        {
+          "hisse": "MGROS",
+          "piyasa_fiy": 518.3547,
+          "alis_fiy": 641.5,
+          "alis_tarihi": "16/03/26",
+          "nominal": 194000.0,
+          "toplam_deger": 124451000.0,
+          "fpd_pct": 5.92,
+          "format": "klasik"
+        },
+        {
+          "hisse": "AKBNK",
+          "piyasa_fiy": 0.0,
+          "alis_fiy": 73.2,
+          "alis_tarihi": "26/02/26",
+          "nominal": 1500000.0,
+          "toplam_deger": 109800000.0,
+          "fpd_pct": 5.22,
+          "format": "klasik"
+        },
+        {
+          "hisse": "AGESA",
+          "piyasa_fiy": 103.303609,
+          "alis_fiy": 240.9,
+          "alis_tarihi": "05/03/26",
+          "nominal": 453000.0,
+          "toplam_deger": 109127700.0,
+          "fpd_pct": 5.19,
+          "format": "klasik"
+        },
+        {
+          "hisse": "SAHOL",
+          "piyasa_fiy": 94.021013,
+          "alis_fiy": 95.65,
+          "alis_tarihi": "01/04/26",
+          "nominal": 1125000.0,
+          "toplam_deger": 107606250.0,
+          "fpd_pct": 5.12,
+          "format": "klasik"
+        },
+        {
+          "hisse": "THYAO",
+          "piyasa_fiy": 307.490973,
+          "alis_fiy": 308.25,
+          "alis_tarihi": "24/04/26",
+          "nominal": 340000.0,
+          "toplam_deger": 104805000.0,
+          "fpd_pct": 4.98,
+          "format": "klasik"
+        },
+        {
+          "hisse": "MEGMT",
+          "piyasa_fiy": 59.48,
+          "alis_fiy": 81.05,
+          "alis_tarihi": "29/04/26",
+          "nominal": 1240000.0,
+          "toplam_deger": 100502000.0,
+          "fpd_pct": 4.78,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TCELL",
+          "piyasa_fiy": 96.340042,
+          "alis_fiy": 112.1,
+          "alis_tarihi": "10/04/26",
+          "nominal": 880000.0,
+          "toplam_deger": 98648000.0,
+          "fpd_pct": 4.69,
+          "format": "klasik"
+        },
+        {
+          "hisse": "KCHOL",
+          "piyasa_fiy": 196.803405,
+          "alis_fiy": 202.2,
+          "alis_tarihi": "10/03/26",
+          "nominal": 480000.0,
+          "toplam_deger": 97056000.0,
+          "fpd_pct": 4.61,
+          "format": "klasik"
+        },
+        {
+          "hisse": "MPARK",
+          "piyasa_fiy": 348.461044,
+          "alis_fiy": 444.75,
+          "alis_tarihi": "25/03/26",
+          "nominal": 205000.0,
+          "toplam_deger": 91173750.0,
+          "fpd_pct": 4.33,
+          "format": "klasik"
+        },
+        {
+          "hisse": "GARAN",
+          "piyasa_fiy": 125.570336,
+          "alis_fiy": 133.8,
+          "alis_tarihi": "24/04/26",
+          "nominal": 677000.0,
+          "toplam_deger": 90582600.0,
+          "fpd_pct": 4.31,
+          "format": "klasik"
+        },
+        {
+          "hisse": "YKBNK",
+          "piyasa_fiy": 2.980652,
+          "alis_fiy": 37.04,
+          "alis_tarihi": "07/04/26",
+          "nominal": 2300000.0,
+          "toplam_deger": 85192000.0,
+          "fpd_pct": 4.05,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ISMEN",
+          "piyasa_fiy": 41.683891,
+          "alis_fiy": 42.28,
+          "alis_tarihi": "05/03/26",
+          "nominal": 2000000.0,
+          "toplam_deger": 84560000.0,
+          "fpd_pct": 4.02,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ISCTR",
+          "piyasa_fiy": 2.154574,
+          "alis_fiy": 14.34,
+          "alis_tarihi": "15/04/26",
+          "nominal": 5000000.0,
+          "toplam_deger": 71700000.0,
+          "fpd_pct": 3.41,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ENKAI",
+          "piyasa_fiy": 74.751502,
+          "alis_fiy": 104.6,
+          "alis_tarihi": "11/03/26",
+          "nominal": 645000.0,
+          "toplam_deger": 67467000.0,
+          "fpd_pct": 3.21,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TOASO",
+          "piyasa_fiy": 227.157057,
+          "alis_fiy": 294.5,
+          "alis_tarihi": "05/03/26",
+          "nominal": 212000.0,
+          "toplam_deger": 62434000.0,
+          "fpd_pct": 2.97,
+          "format": "klasik"
+        },
+        {
+          "hisse": "RGYAS",
+          "piyasa_fiy": 133.477707,
+          "alis_fiy": 185.5,
+          "alis_tarihi": "07/04/26",
+          "nominal": 310000.0,
+          "toplam_deger": 57505000.0,
+          "fpd_pct": 2.73,
+          "format": "klasik"
+        },
+        {
+          "hisse": "EKGYO",
+          "piyasa_fiy": 13.143776,
+          "alis_fiy": 20.58,
+          "alis_tarihi": "27/03/26",
+          "nominal": 2450000.0,
+          "toplam_deger": 50421000.0,
+          "fpd_pct": 2.4,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TAVHL",
+          "piyasa_fiy": 254.950541,
+          "alis_fiy": 278.5,
+          "alis_tarihi": "02/04/26",
+          "nominal": 160000.0,
+          "toplam_deger": 44560000.0,
+          "fpd_pct": 2.12,
+          "format": "klasik"
+        },
+        {
+          "hisse": "AKSEN",
+          "piyasa_fiy": 39.143003,
+          "alis_fiy": 82.2,
+          "alis_tarihi": "16/03/26",
+          "nominal": 400000.0,
+          "toplam_deger": 32880000.0,
+          "fpd_pct": 1.56,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TRCAS",
+          "piyasa_fiy": 50.973642,
+          "alis_fiy": 46.28,
+          "alis_tarihi": "23/02/26",
+          "nominal": 500000.0,
+          "toplam_deger": 23140000.0,
+          "fpd_pct": 1.1,
+          "format": "klasik"
+        }
+      ]
+    },
+    "KPC NISAN": {
+      "fon_adi": "KPC-KATILIM HİSSE SENEDİ(TL) FONU(HİSSE YOĞUN FON)",
+      "kurucu": "KUVEYT TURK PORTFÖY YÖNETİMİ A.Ş.",
+      "nvd": 3645357638.55,
+      "hisseler": []
+    },
+    "PHE NİSAN": {
+      "fon_adi": "PHE-PUSULA PORT. HİS. SEN. FN.(HİSSE SENEDİ YĞN.)",
+      "kurucu": "PUSULA PORTFÖY YÖNETİMİ A.Ş.",
+      "nvd": 37187912120.5,
+      "hisseler": [
+        {
+          "hisse": "KTLEV",
+          "piyasa_fiy": 68.073628,
+          "alis_fiy": 115.0,
+          "alis_tarihi": "30/04/26",
+          "nominal": 31142438.0,
+          "toplam_deger": 3581380370.0,
+          "fpd_pct": 12.23,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ODINE",
+          "piyasa_fiy": 641.167495,
+          "alis_fiy": 1139.0,
+          "alis_tarihi": "30/04/26",
+          "nominal": 2549268.0,
+          "toplam_deger": 2903616252.0,
+          "fpd_pct": 9.92,
+          "format": "klasik"
+        },
+        {
+          "hisse": "THYAO",
+          "piyasa_fiy": 308.223101,
+          "alis_fiy": 308.25,
+          "alis_tarihi": "22/04/26",
+          "nominal": 6912459.0,
+          "toplam_deger": 2130765486.75,
+          "fpd_pct": 7.279999999999999,
+          "format": "klasik"
+        },
+        {
+          "hisse": "HEDEF",
+          "piyasa_fiy": 116.574601,
+          "alis_fiy": 149.0,
+          "alis_tarihi": "30/04/26",
+          "nominal": 13611686.0,
+          "toplam_deger": 2028141214.0,
+          "fpd_pct": 6.92,
+          "format": "klasik"
+        },
+        {
+          "hisse": "PASEU",
+          "piyasa_fiy": 123.704209,
+          "alis_fiy": 132.0,
+          "alis_tarihi": "30/04/26",
+          "nominal": 12288649.0,
+          "toplam_deger": 1622101668.0,
+          "fpd_pct": 5.54,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TCELL",
+          "piyasa_fiy": 114.403695,
+          "alis_fiy": 112.1,
+          "alis_tarihi": "30/04/26",
+          "nominal": 13646700.0,
+          "toplam_deger": 1529795070.0,
+          "fpd_pct": 5.22,
+          "format": "klasik"
+        },
+        {
+          "hisse": "AKBNK",
+          "piyasa_fiy": 69.718033,
+          "alis_fiy": 73.2,
+          "alis_tarihi": "30/04/26",
+          "nominal": 18653248.0,
+          "toplam_deger": 1365417753.6,
+          "fpd_pct": 4.66,
+          "format": "klasik"
+        },
+        {
+          "hisse": "YKBNK",
+          "piyasa_fiy": 36.666866,
+          "alis_fiy": 37.04,
+          "alis_tarihi": "30/04/26",
+          "nominal": 35792728.0,
+          "toplam_deger": 1325762645.12,
+          "fpd_pct": 4.53,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TRALT",
+          "piyasa_fiy": 47.313769,
+          "alis_fiy": 41.38,
+          "alis_tarihi": "28/04/26",
+          "nominal": 29293706.0,
+          "toplam_deger": 1212173554.28,
+          "fpd_pct": 4.14,
+          "format": "klasik"
+        },
+        {
+          "hisse": "MGROS",
+          "piyasa_fiy": 638.905802,
+          "alis_fiy": 641.5,
+          "alis_tarihi": "15/04/26",
+          "nominal": 1534045.0,
+          "toplam_deger": 984089867.5,
+          "fpd_pct": 3.36,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ISCTR",
+          "piyasa_fiy": 14.068038,
+          "alis_fiy": 14.34,
+          "alis_tarihi": "24/04/26",
+          "nominal": 66778141.0,
+          "toplam_deger": 957598541.94,
+          "fpd_pct": 3.26,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TATEN",
+          "piyasa_fiy": 12.520372,
+          "alis_fiy": 12.76,
+          "alis_tarihi": "29/04/26",
+          "nominal": 71089391.0,
+          "toplam_deger": 907100629.16,
+          "fpd_pct": 3.1,
+          "format": "klasik"
+        },
+        {
+          "hisse": "KCHOL",
+          "piyasa_fiy": 197.685833,
+          "alis_fiy": 202.2,
+          "alis_tarihi": "06/04/26",
+          "nominal": 4055455.0,
+          "toplam_deger": 820013001.0,
+          "fpd_pct": 2.8,
+          "format": "klasik"
+        },
+        {
+          "hisse": "SAHOL",
+          "piyasa_fiy": 97.490247,
+          "alis_fiy": 95.65,
+          "alis_tarihi": "20/04/26",
+          "nominal": 8250000.0,
+          "toplam_deger": 789112500.0,
+          "fpd_pct": 2.7,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TERA",
+          "piyasa_fiy": 244.353839,
+          "alis_fiy": 241.0,
+          "alis_tarihi": "30/04/26",
+          "nominal": 3255292.0,
+          "toplam_deger": 784525372.0,
+          "fpd_pct": 2.68,
+          "format": "klasik"
+        },
+        {
+          "hisse": "PEKGY",
+          "piyasa_fiy": 12.988343,
+          "alis_fiy": 16.39,
+          "alis_tarihi": "30/04/26",
+          "nominal": 38155000.0,
+          "toplam_deger": 625360450.0,
+          "fpd_pct": 2.14,
+          "format": "klasik"
+        },
+        {
+          "hisse": "DAPGM",
+          "piyasa_fiy": 12.233608,
+          "alis_fiy": 10.54,
+          "alis_tarihi": "30/04/26",
+          "nominal": 56574580.0,
+          "toplam_deger": 596296073.2,
+          "fpd_pct": 2.04,
+          "format": "klasik"
+        },
+        {
+          "hisse": "BIMAS",
+          "piyasa_fiy": 734.250027,
+          "alis_fiy": 741.5,
+          "alis_tarihi": "16/04/26",
+          "nominal": 669206.0,
+          "toplam_deger": 496216249.0,
+          "fpd_pct": 1.69,
+          "format": "klasik"
+        },
+        {
+          "hisse": "GARAN",
+          "piyasa_fiy": 134.034888,
+          "alis_fiy": 133.8,
+          "alis_tarihi": "16/04/26",
+          "nominal": 2946329.0,
+          "toplam_deger": 394218820.2,
+          "fpd_pct": 1.35,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TTKOM",
+          "piyasa_fiy": 61.982635,
+          "alis_fiy": 62.15,
+          "alis_tarihi": "15/04/26",
+          "nominal": 5107118.0,
+          "toplam_deger": 317407383.7,
+          "fpd_pct": 1.08,
+          "format": "klasik"
+        },
+        {
+          "hisse": "IZFAS",
+          "piyasa_fiy": 69.879028,
+          "alis_fiy": 68.55,
+          "alis_tarihi": "30/04/26",
+          "nominal": 4048937.0,
+          "toplam_deger": 277554631.35,
+          "fpd_pct": 0.95,
+          "format": "klasik"
+        },
+        {
+          "hisse": "GUBRF",
+          "piyasa_fiy": 530.238424,
+          "alis_fiy": 530.5,
+          "alis_tarihi": "28/04/26",
+          "nominal": 490000.0,
+          "toplam_deger": 259945000.0,
+          "fpd_pct": 0.89,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ENKAI",
+          "piyasa_fiy": 99.560283,
+          "alis_fiy": 104.6,
+          "alis_tarihi": "17/04/26",
+          "nominal": 2400000.0,
+          "toplam_deger": 251040000.0,
+          "fpd_pct": 0.86,
+          "format": "klasik"
+        },
+        {
+          "hisse": "ALVES",
+          "piyasa_fiy": 3.750314,
+          "alis_fiy": 3.26,
+          "alis_tarihi": "27/04/26",
+          "nominal": 71108087.0,
+          "toplam_deger": 231812363.62,
+          "fpd_pct": 0.79,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TAVHL",
+          "piyasa_fiy": 322.90591,
+          "alis_fiy": 278.5,
+          "alis_tarihi": "24/04/26",
+          "nominal": 750000.0,
+          "toplam_deger": 208875000.0,
+          "fpd_pct": 0.71,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TOASO",
+          "piyasa_fiy": 295.916649,
+          "alis_fiy": 294.5,
+          "alis_tarihi": "29/04/26",
+          "nominal": 700000.0,
+          "toplam_deger": 206150000.0,
+          "fpd_pct": 0.7,
+          "format": "klasik"
+        },
+        {
+          "hisse": "PGSUS",
+          "piyasa_fiy": 185.468777,
+          "alis_fiy": 180.6,
+          "alis_tarihi": "22/04/26",
+          "nominal": 1001425.0,
+          "toplam_deger": 180857355.0,
+          "fpd_pct": 0.62,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TRMET",
+          "piyasa_fiy": 135.823392,
+          "alis_fiy": 118.8,
+          "alis_tarihi": "28/04/26",
+          "nominal": 1261630.0,
+          "toplam_deger": 149881644.0,
+          "fpd_pct": 0.51,
+          "format": "klasik"
+        },
+        {
+          "hisse": "AKSEN",
+          "piyasa_fiy": 80.214939,
+          "alis_fiy": 82.2,
+          "alis_tarihi": "29/04/26",
+          "nominal": 1200000.0,
+          "toplam_deger": 98640000.0,
+          "fpd_pct": 0.34,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TEHOL",
+          "piyasa_fiy": 20.8,
+          "alis_fiy": 26.2,
+          "alis_tarihi": "30/04/26",
+          "nominal": 3500000.0,
+          "toplam_deger": 91700000.0,
+          "fpd_pct": 0.31,
+          "format": "klasik"
+        },
+        {
+          "hisse": "MPARK",
+          "piyasa_fiy": 453.878267,
+          "alis_fiy": 444.75,
+          "alis_tarihi": "23/03/26",
+          "nominal": 200000.0,
+          "toplam_deger": 88950000.0,
+          "fpd_pct": 0.3,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TRHOL",
+          "piyasa_fiy": 670.5,
+          "alis_fiy": 1264.0,
+          "alis_tarihi": "09/03/26",
+          "nominal": 50000.0,
+          "toplam_deger": 63200000.0,
+          "fpd_pct": 0.22,
+          "format": "klasik"
+        },
+        {
+          "hisse": "KONTR",
+          "piyasa_fiy": 11.737401,
+          "alis_fiy": 10.41,
+          "alis_tarihi": "30/04/26",
+          "nominal": 5345278.0,
+          "toplam_deger": 55644343.98,
+          "fpd_pct": 0.19,
+          "format": "klasik"
+        },
+        {
+          "hisse": "EKGYO",
+          "piyasa_fiy": 24.49644,
+          "alis_fiy": 20.58,
+          "alis_tarihi": "07/04/26",
+          "nominal": 2215150.0,
+          "toplam_deger": 45587787.0,
+          "fpd_pct": 0.16,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TRENJ",
+          "piyasa_fiy": 96.9424,
+          "alis_fiy": 91.8,
+          "alis_tarihi": "28/04/26",
+          "nominal": 446783.0,
+          "toplam_deger": 41014679.4,
+          "fpd_pct": 0.13999999999999999,
+          "format": "klasik"
+        },
+        {
+          "hisse": "TURSG",
+          "piyasa_fiy": 14.445238,
+          "alis_fiy": 14.06,
+          "alis_tarihi": "24/04/26",
+          "nominal": 1667517.66,
+          "toplam_deger": 23445298.3,
+          "fpd_pct": 0.08,
+          "format": "klasik"
+        }
+      ]
+    },
+    "ZJL NISAN": {
+      "fon_adi": "ZJL-ZİRAAT PORTFÖY BIST 100 DIŞI ŞİRKETLER HİSSE SENEDİ FONU HSYF",
+      "kurucu": "ZİRAAT PORTFÖY YÖNETİMİ A.Ş.",
+      "nvd": 408505726.61,
+      "hisseler": []
+    },
+    "ZJV NISAN": {
+      "fon_adi": "ZJV-ZİRAAT PORTFÖY BIST 30 DIŞI YILDIZ PAZAR ŞİRKETLERİ HİSSE SENEDİ FONU HSYF",
+      "kurucu": "ZİRAAT PORTFÖY YÖNETİMİ A.Ş.",
+      "nvd": 660688837.79,
+      "hisseler": []
+    },
+    "ZPE NISAN": {
+      "fon_adi": "ZPE-ZPY ZİRAAT PORTFÖY KATILIM HİSSE SENEDİ FONU (HSYF)",
+      "kurucu": "ZİRAAT PORTFÖY YÖNETİMİ A.Ş.",
+      "nvd": 1220666624.23,
+      "hisseler": []
+    },
+    "EBD NISAN": {
+      "fon_adi": "EBD-GLOBAL MD PORT. ĠKĠNCĠ DEGISKEN FON",
+      "kurucu": "GLOBAL MD PORTFÖY YÖNETĠMĠ A.ġ.",
+      "nvd": 48171361.75,
+      "hisseler": [
+        {
+          "hisse": "MARMR",
+          "piyasa_fiy": 4.439834,
+          "alis_fiy": 2.94,
+          "alis_tarihi": "19/09/25",
+          "nominal": 0.24,
+          "toplam_deger": 0.71,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "PGSUS",
+          "piyasa_fiy": 23.40625,
+          "alis_fiy": 180.6,
+          "alis_tarihi": "23/06/25",
+          "nominal": 0.32,
+          "toplam_deger": 57.79,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        },
+        {
+          "hisse": "POLHO",
+          "piyasa_fiy": 13.75,
+          "alis_fiy": 21.28,
+          "alis_tarihi": "08/01/26",
+          "nominal": 0.02,
+          "toplam_deger": 0.51,
+          "fpd_pct": 0.0,
+          "format": "klasik"
+        }
+      ]
     }
   }
 }
