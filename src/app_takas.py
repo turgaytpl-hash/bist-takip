@@ -838,124 +838,79 @@ def _detay_panel_inline(hisse: str, secili_donm: list = None):
 
 @st.cache_data(ttl=600)
 @st.cache_data(ttl=600)
-def _altin_oran_hesapla(tip: str, son_x_donem: int,
-                         min_kons: float = 0, min_net: float = 0) -> list:
+def _altin_oran_hesapla(tip: str = "haftalik", son_x_donem: int = 12,
+                         min_kons: float = 0, min_net: float = 0,
+                         kons_esik: float = 60) -> list:
     """
-    Altın Oran hesaplama.
-    - T2 konsantrasyonu: TÜM tiplerdeki en son snapshot'tan (tip bağımsız, sabit)
-    - Net değişim: seçilen tip + son_x_donem'den
-    - Kronoloji: seçilen tip'teki dönem bazlı hareketler (detay için)
+    Altın Oran — İlk 5 kurum diğerlerinden baskın mı?
     """
-    from takas_depo import _oku, BUYUK_YERLI, AKILLI_PARA, FON_YABANCI
+    from takas_depo import _oku
     df = _oku()
     if df.empty:
         return []
 
-    if "short_kapama" in df.columns:
-        df.loc[df["short_kapama"] == True, "dolasim_pct"] = \
-            df.loc[df["short_kapama"] == True, "oran2"]
-
-    def grup(k):
-        if k in BUYUK_YERLI: return "Büyük Yerli"
-        if k in AKILLI_PARA: return "Akıllı Para"
-        if k in FON_YABANCI: return "Fon/Yabancı"
-        return "Diğer"
-
-    # ── T2 Snapshot: tüm veri içinde her hisse+kurum için EN SON oran2 ────────
-    idx_son  = df.groupby(["hisse", "kurum"])["donem"].idxmax()
-    snap_df  = df.loc[idx_son][["hisse", "kurum", "oran2"]].copy()
-    snap_df  = snap_df[snap_df["oran2"] > 0]
-
-    # ── Seçilen tip + dönem için net değişim ve kronoloji ─────────────────────
-    df_tip   = df[df["tip"] == tip].copy()
-    donemler = sorted(df_tip["donem"].astype(str).unique())
-    if not donemler:
+    df = df[df["tip"] == tip].copy()
+    donemler = sorted(df["donem"].astype(str).unique())
+    if len(donemler) < 3:
         return []
 
-    son_donem   = donemler[-1]
     secili_donm = donemler[-son_x_donem:]
-
-    # Net değişim (seçili dönemde kurum bazlı toplam)
-    degisim_df = df_tip[df_tip["donem"].isin(secili_donm)].groupby(
-        ["hisse", "kurum"]
-    ).agg(net_degisim=("dolasim_pct", "sum")).reset_index()
-
-    # Kronoloji: dönem × kurum pivot (detay paneli için)
-    kronoloji_df = df_tip[df_tip["donem"].isin(secili_donm)][
-        ["hisse", "kurum", "donem", "dolasim_pct", "oran2"]
-    ].copy()
+    donem_sira  = {d: i for i, d in enumerate(donemler)}
 
     sonuclar = []
 
-    for hisse, h_snap in snap_df.groupby("hisse"):
-        h_snap = h_snap.sort_values("oran2", ascending=False)
-        toplam_t2 = h_snap["oran2"].sum()
-        if toplam_t2 < 5:
-            continue
+    for hisse, h_df in df.groupby("hisse"):
+        altin_kayit = []
 
-        ilk3    = h_snap.head(3)["kurum"].tolist()
-        ilk3_t2 = h_snap.head(3)["oran2"].sum()
-        kons    = round(ilk3_t2 / toplam_t2 * 100, 1)
-
-        h_deg     = degisim_df[degisim_df["hisse"] == hisse]
-        ilk3_deg  = round(h_deg[h_deg["kurum"].isin(ilk3)]["net_degisim"].sum(), 2) \
-                    if not h_deg.empty else 0.0
-        diger_deg = round(h_deg[~h_deg["kurum"].isin(ilk3)]["net_degisim"].sum(), 2) \
-                    if not h_deg.empty else 0.0
-
-        # Filtre
-        if min_kons > 0 and kons < min_kons:
-            continue
-        if min_net > 0 and ilk3_deg < min_net:
-            continue
-
-        skor = round(kons * 0.4 + max(ilk3_deg, 0) * 0.6, 1)
-
-        # Kurum detayları (T2 snapshot + net değişim)
-        kurum_detay = []
-        for _, kr in h_snap.head(5).iterrows():
-            k_deg = h_deg[h_deg["kurum"] == kr["kurum"]]["net_degisim"]
-            nd    = round(float(k_deg.iloc[0]), 2) if not k_deg.empty else 0.0
-            kurum_detay.append({
-                "kurum": kr["kurum"],
-                "oran2": round(float(kr["oran2"]), 2),
-                "net_degisim": nd,
-                "grup": grup(kr["kurum"]),
-            })
-
-        # Kronoloji verisi — dönem × (ilk3 kurumlar + diğer toplamı)
-        h_kron = kronoloji_df[kronoloji_df["hisse"] == hisse]
-        kron_rows = []
         for donem in secili_donm:
-            d_df = h_kron[h_kron["donem"] == donem]
+            d_df = h_df[h_df["donem"] == donem].copy()
             if d_df.empty:
                 continue
-            row = {"donem": donem}
-            for kurum in ilk3:
-                k_row = d_df[d_df["kurum"] == kurum]
-                row[kurum] = round(float(k_row["dolasim_pct"].iloc[0]), 2) \
-                             if not k_row.empty else None
-                # T2 pozisyon (oran2) da ekle
-                row[f"{kurum}_t2"] = round(float(k_row["oran2"].iloc[0]), 2) \
-                                     if not k_row.empty else None
-            diger = d_df[~d_df["kurum"].isin(ilk3)]["dolasim_pct"].sum()
-            row["Diğerleri"] = round(diger, 2)
-            kron_rows.append(row)
+
+            d_df = d_df[d_df["oran2"] > 0].drop_duplicates(subset=["kurum"])
+            toplam_oran = d_df["oran2"].sum()
+            if toplam_oran < 8:
+                continue
+
+            d_sorted    = d_df.sort_values("oran2", ascending=False)
+            ilk5_toplam = d_sorted.head(5)["oran2"].sum()
+            kons        = round((ilk5_toplam / toplam_oran) * 100, 1)
+
+            if kons >= kons_esik:
+                altin_kayit.append({
+                    "donem"       : donem,
+                    "kons"        : kons,
+                    "toplam_oran" : round(toplam_oran, 2),
+                    "ilk5"        : d_sorted.head(5)[["kurum","oran2"]].to_dict("records"),
+                })
+
+        if not altin_kayit:
+            continue
+
+        en_son = max(altin_kayit, key=lambda x: x["donem"])
+
+        if min_kons > 0 and en_son["kons"] < min_kons:
+            continue
 
         sonuclar.append({
-            "hisse": hisse,
-            "konsantrasyon": kons,
-            "ilk3_t2": round(ilk3_t2, 1),
-            "toplam_t2": round(toplam_t2, 1),
-            "ilk3_deg": ilk3_deg,
-            "diger_deg": diger_deg,
-            "skor": skor,
-            "kurumlar": kurum_detay,
-            "ilk3": ilk3,
-            "kronoloji": kron_rows,  # ← yeni
+            "hisse"          : hisse,
+            "son_altin_donem": en_son["donem"],
+            "konsantrasyon"  : en_son["kons"],
+            "altin_sayisi"   : len(altin_kayit),
+            "ilk5"           : en_son["ilk5"],
+            "ilk3"           : [k["kurum"] for k in en_son["ilk5"][:3]],
+            "ilk3_deg"       : 0.0,
+            "diger_deg"      : 0.0,
+            "kurumlar"       : [{"kurum": k["kurum"], "oran2": k["oran2"],
+                                  "net_degisim": 0.0, "grup": ""} for k in en_son["ilk5"]],
+            "kronoloji"      : [],
+            "kons_tarihleri" : [f"{k['donem']}(%{k['kons']})" for k in altin_kayit[-3:]],
+            "skor"           : donem_sira.get(en_son["donem"], 0),
         })
 
-    return sorted(sonuclar, key=lambda x: -x["skor"])
+    return sorted(sonuclar,
+                  key=lambda x: (x["son_altin_donem"], x["konsantrasyon"]),
+                  reverse=True)
 
 
 def _birikimli_tab():
@@ -979,8 +934,6 @@ def _birikimli_tab():
 
     with st.spinner("Hesaplanıyor..."):
         toplayanlar, satanlar, son_donem, secili_donm = _birikimli_hesapla(tip, son_x)
-        # min_kons ve min_net=0 ile tüm veriyi çek, filtreyi UI'da uygula
-        altin_liste = _altin_oran_hesapla(tip, son_x, min_kons=0, min_net=0)
 
     if son_donem is None:
         st.info(f"{tip.upper()} veri bulunamadı.")
@@ -988,8 +941,7 @@ def _birikimli_tab():
 
     st.caption(
         f"📅 Son dönem: **{son_donem}** · {len(secili_donm)} dönem · "
-        f"🟢 {len(toplayanlar)} alan · 🔴 {len(satanlar)} satan · "
-        f"🥇 {len(altin_liste)} altın oran"
+        f"🟢 {len(toplayanlar)} alan · 🔴 {len(satanlar)} satan"
     )
 
     # Grup filtresi
@@ -1099,15 +1051,17 @@ def _birikimli_tab():
         bg = "#FFF8E1" if secili else "#FAFAFA"
 
         kurum_satirlar = ""
-        for kr in r["kurumlar"][:3]:
-            nd_renk = "#1A7A3E" if kr["net_degisim"] > 0 else "#C0392B"
-            nd_str  = f"+{kr['net_degisim']:.1f}%" if kr["net_degisim"] > 0 \
-                      else f"{kr['net_degisim']:.1f}%"
+        for kr in r.get("ilk5", r.get("kurumlar", []))[:5]:
+            kurum = kr.get("kurum", "") if isinstance(kr, dict) else kr
+            oran2 = kr.get("oran2", 0) if isinstance(kr, dict) else 0
+            nd    = kr.get("net_degisim", 0) if isinstance(kr, dict) else 0
+            nd_renk = "#1A7A3E" if nd >= 0 else "#C0392B"
+            nd_str  = f"{nd:+.1f}%" if nd != 0 else ""
             kurum_satirlar += (
                 f"<div style='font-size:11px;padding:1px 0;'>"
-                f"<b style='color:#1A5276;'>{kr['kurum']}</b> "
-                f"T2:<b>%{kr['oran2']:.1f}</b> "
-                f"<span style='color:{nd_renk};font-weight:bold;'>{nd_str}</span></div>"
+                f"<b style='color:#1A5276;'>{kurum}</b> "
+                f"T2:<b>%{oran2:.1f}</b> "
+                f"<span style='color:{nd_renk};'>{nd_str}</span></div>"
             )
 
         diger_renk = "#C0392B" if r["diger_deg"] <= 0 else "#E67E22"
@@ -1122,6 +1076,9 @@ def _birikimli_tab():
                 fiyat_html = (f"<span style='font-size:11px;color:{d_renk};"
                               f"font-weight:bold;float:right;'>{fiyat:.2f}₺ {d_str}</span>")
 
+        son_donem_str = r.get("son_altin_donem", "")
+        altin_sayisi  = r.get("altin_sayisi", 0)
+
         st.markdown(
             f"<div style='border:2px solid {renk};border-radius:6px;"
             f"padding:8px 10px;margin:4px 0;background:{bg};'>"
@@ -1129,8 +1086,8 @@ def _birikimli_tab():
             f"padding:4px 10px;border-radius:4px 4px 0 0;"
             f"display:flex;justify-content:space-between;align-items:center;'>"
             f"<b style='font-size:14px;color:{renk};'>🥇 {hisse}</b>"
-            f"<span style='font-size:12px;color:{renk};font-weight:bold;'>"
-            f"Skor:{skor} · Kons:%{kons}</span></div>"
+            f"<span style='font-size:11px;color:{renk};font-weight:bold;'>"
+            f"Kons:%{kons} · {altin_sayisi}x · {son_donem_str}</span></div>"
             f"{kurum_satirlar}"
             f"<div style='font-size:11px;margin-top:4px;border-top:1px solid #eee;padding-top:3px;'>"
             f"<span style='color:#888;'>Diğerleri: "
@@ -1227,24 +1184,35 @@ def _birikimli_tab():
                 _kart(r, pozitif=False, col_idx=i)
 
     with col_altin:
-        st.markdown(f"### 🥇 Altın Oran ({len(altin_liste)})")
+        st.markdown("### 🥇 Altın Oran")
 
-        fa1, fa2 = st.columns(2)
+        fa1, fa2, fa3, fa4 = st.columns(4)
         with fa1:
-            min_kons = st.slider("Min Kons%:", 0, 80, 0, 5, key="altin_kons")
+            altin_tip = st.selectbox("Tip:", ["haftalik","aylik","gunluk"],
+                                      key="altin_tip")
         with fa2:
-            min_net = st.slider("Min Net Alış%:", 0, 20, 0, 1, key="altin_net")
+            altin_donm = st.select_slider("Dönem:", options=[6,8,10,12,16,20],
+                                           value=12, key="altin_donm")
+        with fa3:
+            kons_esik_ui = st.slider("Kons Eşik%:", 40, 90, 60, 5,
+                                      key="altin_kons_esik")
+        with fa4:
+            min_net = st.slider("Min Net%:", 0, 20, 0, 1, key="altin_net")
 
-        # Filtreyi cache dışında, UI'da uygula
-        gorulu = [
-            r for r in altin_liste
-            if r["konsantrasyon"] >= min_kons
-            and r["ilk3_deg"] >= min_net
-        ]
+        with st.spinner("Altın Oran hesaplanıyor..."):
+            altin_liste = _altin_oran_hesapla(
+                altin_tip, altin_donm,
+                min_kons=0, min_net=0,
+                kons_esik=kons_esik_ui
+            )
+
+        gorulu = [r for r in altin_liste if r["ilk3_deg"] >= min_net]
 
         st.caption(
-            f"{'Filtre yok' if min_kons==0 and min_net==0 else f'Kons≥%{min_kons} · Net≥%{min_net}'}"
-            f" → **{len(gorulu)}** hisse"
+            f"Tip:{altin_tip} · {altin_donm} dönem · "
+            f"Eşik≥%{kons_esik_ui}"
+            + (f" · Net≥%{min_net}" if min_net > 0 else "")
+            + f" → **{len(gorulu)}** hisse"
         )
 
         if not gorulu:
