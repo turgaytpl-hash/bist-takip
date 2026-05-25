@@ -914,348 +914,265 @@ def _altin_oran_hesapla(tip: str = "haftalik", son_x_donem: int = 12,
 
 
 def _birikimli_tab():
-    """📈 BİRİKMİŞ TAKİP — 3 kolonlu görünüm."""
+    """📈 BİRİKMİŞ TAKİP — Sol: Tahta hakimiyeti | Sağ: Kronolojik büyük girişler."""
+    from datetime import date, timedelta
+    from takas_depo import _oku as _t2_raw
 
-    # ── Filtreler ─────────────────────────────────────────────────────────────
-    f1, f2, f3, f4 = st.columns([2, 2, 3, 1])
-    with f1:
-        tip = st.selectbox("Veri Tipi:", ["haftalik", "aylik", "gunluk"],
-                           key="bir_tip")
-    with f2:
-        son_x = st.select_slider("Son dönem:", options=[2, 4, 6, 8, 10, 12],
-                                  value=6, key="bir_sonx")
-    with f3:
-        grup_f = st.multiselect("Grup:", ["Akıllı Para","Büyük Yerli","Fon/Yabancı","Diğer"],
-                                 default=[], key="bir_grup",
-                                 placeholder="Tümü göster")
-    with f4:
-        st.markdown("<br>", unsafe_allow_html=True)
-        fiyat_goster = st.checkbox("💰 Fiyat", value=True, key="bir_fiyat")
+    # ── Tarih aralığı seçimi ──────────────────────────────────────────────────
+    df_tum = _t2_raw()
+    bugun = date.today()
 
-    with st.spinner("Hesaplanıyor..."):
-        toplayanlar, satanlar, son_donem, secili_donm = _birikimli_hesapla(tip, son_x)
+    if not df_tum.empty:
+        # Tüm dönemlerin tarihlerini bul (günlük + haftalık + aylık)
+        tum_tarihler = []
+        for d in df_tum["donem"].astype(str).unique():
+            t = _donem_tarih_cevir(d)
+            if t:
+                tum_tarihler.append(t)
+        if tum_tarihler:
+            ilk_tarih = min(tum_tarihler)
+            son_tarih = max(tum_tarihler)
+        else:
+            son_tarih = bugun
+            ilk_tarih = bugun - timedelta(days=90)
+    else:
+        son_tarih = bugun
+        ilk_tarih = bugun - timedelta(days=90)
 
-    if son_donem is None:
-        st.info(f"{tip.upper()} veri bulunamadı.")
+    c1, c2, c3 = st.columns([1.5, 1.5, 1])
+    with c1:
+        bas_tarih = st.date_input(
+            "📅 Başlangıç:", value=ilk_tarih,
+            min_value=ilk_tarih, max_value=son_tarih,
+            key="bir_bas_tarih", format="DD.MM.YYYY"
+        )
+    with c2:
+        bit_tarih = st.date_input(
+            "📅 Bitiş:", value=son_tarih,
+            min_value=ilk_tarih, max_value=son_tarih,
+            key="bir_bit_tarih", format="DD.MM.YYYY"
+        )
+    with c3:
+        min_artis = st.number_input(
+            "Min Artış %:", value=5.0, step=1.0,
+            min_value=1.0, max_value=100.0,
+            key="bir_min_artis"
+        )
+
+    if bas_tarih > bit_tarih:
+        st.error("Başlangıç tarihi bitiş tarihinden büyük olamaz.")
         return
 
+    if df_tum.empty:
+        st.info("📂 Henüz veri yok.")
+        return
+
+    # ── Tarih aralığına giren dönemler (günlük öncelikli, yoksa haftalık, yoksa aylık) ──
+    def _tip_once(tip):
+        secili = []
+        for d in df_tum[df_tum["tip"] == tip]["donem"].astype(str).unique():
+            t = _donem_tarih_cevir(d)
+            if t and bas_tarih <= t <= bit_tarih:
+                secili.append(d)
+        return secili
+
+    secili_donemler = _tip_once("gunluk")
+    kullanilan_tip = "gunluk"
+    if not secili_donemler:
+        secili_donemler = _tip_once("haftalik")
+        kullanilan_tip = "haftalik"
+    if not secili_donemler:
+        secili_donemler = _tip_once("aylik")
+        kullanilan_tip = "aylik"
+
+    if not secili_donemler:
+        st.warning("Seçilen tarih aralığında veri bulunamadı.")
+        return
+
+    secili_donemler_sorted = sorted(secili_donemler)
+    son_donem = secili_donemler_sorted[-1]
+
     st.caption(
-        f"📅 Son dönem: **{son_donem}** · {len(secili_donm)} dönem · "
-        f"🟢 {len(toplayanlar)} alan · 🔴 {len(satanlar)} satan"
+        f"📅 **{bas_tarih.strftime('%d.%m.%Y')}** → **{bit_tarih.strftime('%d.%m.%Y')}** "
+        f"| {len(secili_donemler)} dönem ({kullanilan_tip}) | Son dönem: **{son_donem}**"
     )
 
-    # Grup filtresi
-    if grup_f:
-        toplayanlar = [r for r in toplayanlar if r["grup"] in grup_f]
-        satanlar    = [r for r in satanlar    if r["grup"] in grup_f]
+    # ── Veri hazırlık ─────────────────────────────────────────────────────────
+    df_sec = df_tum[df_tum["donem"].isin(secili_donemler)].copy()
+    df_son = df_tum[df_tum["donem"] == son_donem].copy()
 
-    # ── Hisse bazında birleştir ───────────────────────────────────────────────
-    def _hisse_ozet(liste):
-        ozet = {}
-        for r in liste:
-            h = r["hisse"]
-            if h not in ozet:
-                ozet[h] = {
-                    "hisse": h, "toplam": 0, "kurumlar": [],
-                    "grup": r["grup"], "surekli": r["surekli"],
-                    "donem_say": r["donem_say"], "oran2": r["oran2"],
-                    "trend_str": r["trend_str"],
-                }
-            ozet[h]["toplam"] = round(ozet[h]["toplam"] + r["toplam"], 2)
-            ozet[h]["kurumlar"].append({
-                "kurum": r["kurum"], "toplam": r["toplam"],
-                "oran2": r["oran2"], "surekli": r["surekli"]
-            })
-            if r["surekli"]:
-                ozet[h]["surekli"] = True
-        for h in ozet:
-            ozet[h]["kurumlar"].sort(key=lambda x: -x["toplam"])
-        return sorted(ozet.values(), key=lambda x: -x["toplam"])
+    # ── SOL TARAF: Son günün T2'si ile tahta hakimiyeti ───────────────────────
+    # ── SAĞ TARAF: Kronolojik büyük girişler ─────────────────────────────────
+    col_sol, col_sag = st.columns([1, 1.5])
 
-    top_ozet = _hisse_ozet(toplayanlar)
-    sat_ozet = _hisse_ozet(satanlar)
+    # ── SOL: %50+ tahta hakimiyeti ────────────────────────────────────────────
+    with col_sol:
+        st.markdown("### 🏆 Tahta Hakimiyeti (Son Gün T2)")
+        st.caption("İlk 5 kurumun T2 toplamı %50+ olan hisseler")
 
-    GRUP_BG = {"Akıllı Para":"#D5F5E3","Büyük Yerli":"#D6EAF8",
-               "Fon/Yabancı":"#F9EBEA","Diğer":"#F4F6F7"}
-    GRUP_FG = {"Akıllı Para":"#1A5276","Büyük Yerli":"#1A5276",
-               "Fon/Yabancı":"#922B21","Diğer":"#666"}
-
-    # ── Standart kart ────────────────────────────────────────────────────────
-    def _kart(r, pozitif, col_idx):
-        hisse   = r["hisse"]
-        surekli = r["surekli"]
-        grup    = r["grup"]
-        skey    = f"bir_sec_{'al' if pozitif else 'sat'}"
-        secili  = st.session_state.get(skey) == hisse
-        if pozitif:
-            renk = "#0E4D92" if surekli else "#1A7A3E"
-            ikon = "🚀" if surekli else "🟢"
-            pct_str = f"+{r['toplam']:.1f}%"
+        if df_son.empty:
+            st.info("Son dönem verisi yok.")
         else:
-            renk = "#7B0000" if surekli else "#C0392B"
-            ikon = "📉" if surekli else "🔴"
-            pct_str = f"-{r['toplam']:.1f}%"
+            # Her hisse için ilk 5 kurumun T2 toplamını hesapla
+            hakimiyet_list = []
+            for hisse, h_df in df_son.groupby("hisse"):
+                h_df = h_df[h_df["oran2"] > 0].drop_duplicates(subset=["kurum"])
+                toplam_oran = h_df["oran2"].sum()
+                if toplam_oran < 5:
+                    continue
+                ilk5 = h_df.sort_values("oran2", ascending=False).head(5)
+                ilk5_top = ilk5["oran2"].sum()
+                kons = round(ilk5_top / toplam_oran * 100, 1) if toplam_oran > 0 else 0
+                if kons >= 50:
+                    hakimiyet_list.append({
+                        "hisse": hisse,
+                        "kons": kons,
+                        "toplam_oran": round(toplam_oran, 1),
+                        "ilk5": ilk5[["kurum", "oran2"]].to_dict("records"),
+                    })
 
-        bg = "#DCF0FF" if secili else "#FAFAFA"
+            hakimiyet_list = sorted(hakimiyet_list, key=lambda x: -x["kons"])
+            st.caption(f"**{len(hakimiyet_list)}** hisse")
 
-        fiyat_html = ""
-        if fiyat_goster:
-            fiyat, degisim = _fiyat_cek(hisse)
-            if fiyat:
-                d_renk = "#1A7A3E" if (degisim or 0) >= 0 else "#C0392B"
-                d_str  = f"+{degisim:.1f}%" if (degisim or 0) >= 0 else f"{degisim:.1f}%"
-                fiyat_html = (f"<span style='float:right;font-size:11px;"
-                              f"color:{d_renk};font-weight:bold;'>"
-                              f"{fiyat:.2f}₺ {d_str}</span>")
-
-        kurum_html = " · ".join([
-            f"<b>{k['kurum']}</b>({'🚀' if k['surekli'] else ''}%{k['oran2']:.1f})"
-            for k in r["kurumlar"][:2]
-        ])
-
-        st.markdown(
-            f"<div style='border-left:4px solid {renk};padding:6px 10px;"
-            f"margin:3px 0;background:{bg};border-radius:0 6px 6px 0;'>"
-            f"<div style='display:flex;justify-content:space-between;'>"
-            f"<span><b style='font-size:13px;'>{hisse}</b> "
-            f"<span style='font-size:10px;background:{GRUP_BG.get(grup,'#eee')};"
-            f"color:{GRUP_FG.get(grup,'#666')};padding:1px 5px;border-radius:3px;'>{grup}</span>"
-            f"</span><b style='color:{renk};font-size:14px;'>{ikon} {pct_str}</b></div>"
-            f"<div style='font-size:11px;color:#555;margin-top:2px;'>{kurum_html}{fiyat_html}</div>"
-            f"<div style='font-size:10px;color:#aaa;'>{r['donem_say']} dönem · {r['trend_str']}</div>"
-            f"</div>",
-            unsafe_allow_html=True
-        )
-        if st.button("▲ Kapat" if secili else f"🔍 {hisse}",
-                     key=f"bir_btn_{'al' if pozitif else 'sat'}_{hisse}_{col_idx}",
-                     use_container_width=True):
-            st.session_state[skey] = None if secili else hisse
-        if secili:
-            _detay_panel_inline(hisse, secili_donm=list(secili_donm))
-
-    # ── Altın Oran kartı ─────────────────────────────────────────────────────
-    def _altin_kart(r, idx):
-        hisse  = r["hisse"]
-        skey   = "altin_sec"
-        secili = st.session_state.get(skey) == hisse
-        skor   = r["skor"]
-        kons   = r["konsantrasyon"]
-
-        if skor >= 50:
-            renk = "#7D6608"; bg_header = "#FEF9E7"
-        elif skor >= 35:
-            renk = "#1A5276"; bg_header = "#EAF4FB"
-        else:
-            renk = "#1A7A3E"; bg_header = "#EAFAF1"
-
-        bg = "#FFF8E1" if secili else "#FAFAFA"
-
-        kurum_satirlar = ""
-        for kr in r.get("ilk5", r.get("kurumlar", []))[:5]:
-            kurum = kr.get("kurum", "") if isinstance(kr, dict) else kr
-            oran2 = kr.get("oran2", 0) if isinstance(kr, dict) else 0
-            nd    = kr.get("net_degisim", 0) if isinstance(kr, dict) else 0
-            nd_renk = "#1A7A3E" if nd >= 0 else "#C0392B"
-            nd_str  = f"{nd:+.1f}%" if nd != 0 else ""
-            kurum_satirlar += (
-                f"<div style='font-size:11px;padding:1px 0;'>"
-                f"<b style='color:#1A5276;'>{kurum}</b> "
-                f"T2:<b>%{oran2:.1f}</b> "
-                f"<span style='color:{nd_renk};'>{nd_str}</span></div>"
-            )
-
-        diger_renk = "#C0392B" if r["diger_deg"] <= 0 else "#E67E22"
-        diger_str  = f"{r['diger_deg']:+.1f}%"
-
-        fiyat_html = ""
-        if fiyat_goster:
-            fiyat, degisim = _fiyat_cek(hisse)
-            if fiyat:
-                d_renk = "#1A7A3E" if (degisim or 0) >= 0 else "#C0392B"
-                d_str  = f"+{degisim:.1f}%" if (degisim or 0) >= 0 else f"{degisim:.1f}%"
-                fiyat_html = (f"<span style='font-size:11px;color:{d_renk};"
-                              f"font-weight:bold;float:right;'>{fiyat:.2f}₺ {d_str}</span>")
-
-        son_donem_str = r.get("son_altin_donem", "")
-        altin_sayisi  = r.get("altin_sayisi", 0)
-
-        st.markdown(
-            f"<div style='border:2px solid {renk};border-radius:6px;"
-            f"padding:8px 10px;margin:4px 0;background:{bg};'>"
-            f"<div style='background:{bg_header};margin:-8px -10px 6px -10px;"
-            f"padding:4px 10px;border-radius:4px 4px 0 0;"
-            f"display:flex;justify-content:space-between;align-items:center;'>"
-            f"<b style='font-size:14px;color:{renk};'>🥇 {hisse}</b>"
-            f"<span style='font-size:11px;color:{renk};font-weight:bold;'>"
-            f"Kons:%{kons} · {altin_sayisi}x · {son_donem_str}</span></div>"
-            f"{kurum_satirlar}"
-            f"<div style='font-size:11px;margin-top:4px;border-top:1px solid #eee;padding-top:3px;'>"
-            f"<span style='color:#888;'>Diğerleri: "
-            f"<b style='color:{diger_renk};'>{diger_str}</b></span>"
-            f"{fiyat_html}</div>"
-            f"</div>",
-            unsafe_allow_html=True
-        )
-        if st.button("▲ Kapat" if secili else f"🔍 {hisse}",
-                     key=f"altin_btn_{hisse}_{idx}",
-                     use_container_width=True):
-            st.session_state[skey] = None if secili else hisse
-
-        # ── Kronoloji detayı ─────────────────────────────────────────────────
-        if secili:
-            # Önce net alan/satan özeti
-            _detay_panel_inline(hisse, secili_donm=list(secili_donm))
-            st.markdown("---")
-            kron = r.get("kronoloji", [])
-            if not kron:
-                st.caption("Kronoloji verisi yok.")
-            else:
-                ilk3 = r["ilk3"]
-                # DataFrame oluştur
-                kron_df = pd.DataFrame(kron)
-
-                # Renklendirme fonksiyonu
-                def _kron_renk(val):
-                    if not isinstance(val, (int, float)) or pd.isna(val):
-                        return "color:#aaa"
-                    if val > 1:   return "background:#D5F5E3;color:#1A5276;font-weight:bold"
-                    if val > 0:   return "color:#1A7A3E;font-weight:bold"
-                    if val < -1:  return "background:#FADBD8;color:#C0392B;font-weight:bold"
-                    if val < 0:   return "color:#C0392B"
-                    return "color:#888"
-
-                # Gösterilecek kolonlar: dönem + ilk3 kurumlar + Diğerleri
-                # _t2 kolonlarını ayrı göster
-                degisim_cols = [c for c in kron_df.columns
-                                if c not in ["donem"] and not c.endswith("_t2")]
-                t2_cols      = [c for c in kron_df.columns if c.endswith("_t2")]
-
-                st.markdown(
-                    f"<div style='font-size:11px;font-weight:bold;color:#1A5276;"
-                    f"margin:6px 0 2px 0;'>📜 Dönem Kronolojisi — Net Değişim (%)</div>",
-                    unsafe_allow_html=True
-                )
-
-                fmt = {c: "{:+.2f}" for c in degisim_cols if c != "donem"}
-                styled = (
-                    kron_df[["donem"] + degisim_cols]
-                    .style
-                    .map(_kron_renk, subset=degisim_cols)
-                    .format(fmt, na_rep="—")
-                )
-                st.dataframe(styled, use_container_width=True,
-                             hide_index=True, height=min(200, 38 + 35*len(kron_df)))
-
-                # T2 pozisyon tablosu
-                if t2_cols:
-                    t2_display = kron_df[["donem"] + t2_cols].copy()
-                    t2_display.columns = ["donem"] + [c.replace("_t2","") for c in t2_cols]
+            for r in hakimiyet_list[:50]:
+                renk = "#C0392B" if r["kons"] >= 80 else "#E67E22" if r["kons"] >= 65 else "#1A5276"
+                kurumlar_str = " · ".join([
+                    f"{k['kurum']} %{k['oran2']:.1f}"
+                    for k in r["ilk5"][:3]
+                ])
+                with st.expander(
+                    f"{r['hisse']}  —  🏆 %{r['kons']:.0f} konsantrasyon",
+                    expanded=False
+                ):
                     st.markdown(
-                        "<div style='font-size:11px;font-weight:bold;color:#888;"
-                        "margin:6px 0 2px 0;'>📊 T2 Pozisyon (%)</div>",
+                        f"<div style='font-size:12px;'>"
+                        + "".join([
+                            f"<div style='padding:2px 0;'>"
+                            f"<b style='color:{renk};'>{k['kurum']}</b>"
+                            f"<span style='float:right;'>T2: %{k['oran2']:.2f}</span></div>"
+                            for k in r["ilk5"]
+                        ])
+                        + f"<div style='margin-top:4px;color:#888;font-size:11px;'>"
+                        f"Toplam T2: %{r['toplam_oran']:.1f} | İlk5: %{r['kons']:.1f}</div>"
+                        + "</div>",
                         unsafe_allow_html=True
                     )
-                    st.dataframe(
-                        t2_display.style.format(
-                            {c: "{:.2f}" for c in t2_display.columns if c != "donem"},
-                            na_rep="—"
-                        ),
-                        use_container_width=True, hide_index=True,
-                        height=min(200, 38 + 35*len(t2_display))
-                    )
 
-    # ── 3 Kolon ──────────────────────────────────────────────────────────────
-    col_al, col_sat, col_altin = st.columns(3)
+    # ── SAĞ: Kronolojik büyük girişler ───────────────────────────────────────
+    with col_sag:
+        st.markdown("### 📈 Kronolojik Büyük Girişler")
+        st.caption(f"Dönem içinde %{min_artis:.0f}+ oran artışı yapan hareketler")
 
-    with col_al:
-        st.markdown(f"### 🟢 Birikmiş Alanlar ({len(top_ozet)})")
-        if not top_ozet:
-            st.caption("Bulunamadı.")
+        # Her hisse+kurum için dönem bazında oran değişimi hesapla
+        # Önceki dönem oran2 vs şimdiki dönem oran2
+        buyuk_girisler = []
+
+        for (hisse, kurum), kdf in df_sec.sort_values("donem").groupby(["hisse", "kurum"]):
+            kdf = kdf.sort_values("donem")
+            donemler_list = kdf["donem"].tolist()
+            oran2_list = kdf["oran2"].tolist()
+
+            for i in range(1, len(donemler_list)):
+                onceki = oran2_list[i-1]
+                yeni   = oran2_list[i]
+                artis  = round(yeni - onceki, 2)
+                if artis >= min_artis:
+                    buyuk_girisler.append({
+                        "hisse":  hisse,
+                        "kurum":  kurum,
+                        "donem":  donemler_list[i],
+                        "onceki": round(onceki, 2),
+                        "yeni":   round(yeni, 2),
+                        "artis":  artis,
+                    })
+
+
+
+        buyuk_girisler = sorted(buyuk_girisler, key=lambda x: -x["artis"])
+
+        st.caption(f"**{len(buyuk_girisler)}** hareket tespit edildi")
+
+        if not buyuk_girisler:
+            st.info(f"Min %{min_artis:.0f} eşiğini geçen hareket yok.")
         else:
-            for i, r in enumerate(top_ozet[:40]):
-                _kart(r, pozitif=True, col_idx=i)
+            # Tablo olarak göster
+            import pandas as pd
+            df_goster = pd.DataFrame(buyuk_girisler)[["hisse","kurum","donem","onceki","yeni","artis"]]
+            df_goster.columns = ["Hisse","Kurum","Dönem","Önceki%","Yeni%","Artış%"]
+            df_goster = df_goster.sort_values("Artış%", ascending=False)
 
-    with col_sat:
-        st.markdown(f"### 🔴 Birikmiş Satanlar ({len(sat_ozet)})")
-        if not sat_ozet:
-            st.caption("Bulunamadı.")
-        else:
-            for i, r in enumerate(sat_ozet[:40]):
-                _kart(r, pozitif=False, col_idx=i)
-
-    with col_altin:
-        st.markdown("### 🥇 Altın Oran")
-
-        fa1, fa2, fa3, fa4 = st.columns(4)
-        with fa1:
-            altin_tip = st.selectbox("Tip:", ["haftalik","aylik","gunluk"],
-                                      key="altin_tip")
-        with fa2:
-            altin_donm = st.select_slider("Dönem:", options=[6,8,10,12,16,20],
-                                           value=12, key="altin_donm")
-        with fa3:
-            kons_esik_ui = st.slider("Kons Eşik%:", 40, 90, 60, 5,
-                                      key="altin_kons_esik")
-        with fa4:
-            min_net = st.slider("Min Net%:", 0, 20, 0, 1, key="altin_net")
-
-        with st.spinner("Altın Oran hesaplanıyor..."):
-            altin_liste = _altin_oran_hesapla(
-                altin_tip, altin_donm,
-                min_kons=0, min_net=0,
-                kons_esik=kons_esik_ui
+            st.dataframe(
+                df_goster,
+                use_container_width=True,
+                hide_index=True,
+                height=600,
+                column_config={
+                    "Artış%": st.column_config.NumberColumn(format="%.2f"),
+                    "Önceki%": st.column_config.NumberColumn(format="%.2f"),
+                    "Yeni%": st.column_config.NumberColumn(format="%.2f"),
+                }
             )
 
-        gorulu = [r for r in altin_liste if r["ilk3_deg"] >= min_net]
 
-        st.caption(
-            f"Tip:{altin_tip} · {altin_donm} dönem · "
-            f"Eşik≥%{kons_esik_ui}"
-            + (f" · Net≥%{min_net}" if min_net > 0 else "")
-            + f" → **{len(gorulu)}** hisse"
-        )
-
-        if not gorulu:
-            st.info("Sinyal yok.")
-        else:
-            for i, r in enumerate(gorulu[:50]):
-                _altin_kart(r, idx=i)
+def _donem_tarih_cevir(donem: str):
+    """
+    Dönem adını (tarih, haftalık, aylık) datetime.date'e çevirir.
+    20260420        → 2026-04-20
+    202604_01       → 2026-04-07  (1. hafta ≈ ilk Pazartesi)
+    2026_04         → 2026-04-01
+    2026_04_03      → 2026-04-01  (eski aylık format)
+    """
+    from datetime import date
+    import re
+    d = str(donem).strip()
+    # Günlük: 20260420
+    if re.match(r'^\d{8}$', d):
+        try:
+            return date(int(d[:4]), int(d[4:6]), int(d[6:8]))
+        except:
+            return None
+    # Haftalık: 202604_01
+    m = re.match(r'^(\d{4})(\d{2})_(\d{2})$', d)
+    if m:
+        yil, ay, hafta = int(m.group(1)), int(m.group(2)), int(m.group(3))
+        try:
+            # Ayın ilk Pazartesisi + (hafta-1)*7
+            from datetime import timedelta
+            ilk = date(yil, ay, 1)
+            # İlk Pazartesi
+            ilk_pzt = ilk + timedelta(days=(7 - ilk.weekday()) % 7)
+            return ilk_pzt + timedelta(weeks=hafta - 1)
+        except:
+            return None
+    # Aylık: 2026_04 veya 2026_04_03
+    m = re.match(r'^(\d{4})_(\d{2})', d)
+    if m:
+        try:
+            return date(int(m.group(1)), int(m.group(2)), 1)
+        except:
+            return None
+    return None
 
 
 def _takas_analiz_tab():
     """Takas Analizi sekmesi."""
+    from datetime import date, timedelta
 
-    # ── 4 Buton ──────────────────────────────────────────────────────────────
-    b1, b2, b3, b4, _sp = st.columns([1, 1, 1, 1.2, 2.8])
-
+    # ── BİRİKMİŞ TAKİP butonu ────────────────────────────────────────────────
     if "takas_mod" not in st.session_state:
-        st.session_state["takas_mod"] = "haftalik"
+        st.session_state["takas_mod"] = "tarih"
     mod = st.session_state["takas_mod"]
 
+    b1, _sp = st.columns([1.5, 6.5])
     with b1:
-        if st.button("📅 GÜNLÜK", use_container_width=True,
-                     type="primary" if mod == "gunluk" else "secondary",
-                     key="tb_gunluk"):
-            st.session_state["takas_mod"] = "gunluk"
-            st.rerun()
-    with b2:
-        if st.button("📆 HAFTALIK", use_container_width=True,
-                     type="primary" if mod == "haftalik" else "secondary",
-                     key="tb_haftalik"):
-            st.session_state["takas_mod"] = "haftalik"
-            st.rerun()
-    with b3:
-        if st.button("🗓️ AYLIK", use_container_width=True,
-                     type="primary" if mod == "aylik" else "secondary",
-                     key="tb_aylik"):
-            st.session_state["takas_mod"] = "aylik"
-            st.rerun()
-    with b4:
         if st.button("📈 BİRİKMİŞ TAKİP", use_container_width=True,
                      type="primary" if mod == "birikimli" else "secondary",
                      key="tb_birikimli"):
-            st.session_state["takas_mod"] = "birikimli"
-            st.cache_data.clear()
+            if mod == "birikimli":
+                st.session_state["takas_mod"] = "tarih"
+            else:
+                st.session_state["takas_mod"] = "birikimli"
+                st.cache_data.clear()
             st.rerun()
 
     st.markdown("---")
@@ -1265,31 +1182,78 @@ def _takas_analiz_tab():
         _birikimli_tab()
         return
 
-    # ── GÜNLÜK / HAFTALIK / AYLIK ─────────────────────────────────────────────
-    donemler = donemler_listele(mod)
-    if not donemler:
-        st.info(f"📂 {mod.upper()} veri yok. **Veri Yükle** sekmesinden ekleyin.")
-        return
+    # ── TARİH ARALIĞI SEÇİMİ ─────────────────────────────────────────────────
+    from takas_depo import _oku as _t2_raw
+    df_tumü = _t2_raw()
 
-    c1, c2, c3 = st.columns([3, 1, 1])
+    # Mevcut günlük dönemleri bul — tarih aralığı için min/max
+    gunluk_donemler = []
+    if not df_tumü.empty:
+        gd = df_tumü[df_tumü["tip"] == "gunluk"]["donem"].astype(str).unique()
+        gunluk_donemler = sorted(gd.tolist())
+
+    # Varsayılan tarih aralığı: son 5 iş günü
+    bugun = date.today()
+    if gunluk_donemler:
+        try:
+            son_tarih = _donem_tarih_cevir(gunluk_donemler[-1]) or bugun
+            ilk_tarih = _donem_tarih_cevir(gunluk_donemler[0]) or (bugun - timedelta(days=30))
+        except:
+            son_tarih = bugun
+            ilk_tarih = bugun - timedelta(days=30)
+    else:
+        son_tarih = bugun
+        ilk_tarih = bugun - timedelta(days=7)
+
+    c1, c2, c3, c4 = st.columns([1.5, 1.5, 1, 1])
     with c1:
-        lbl = {"gunluk": "Günler:", "haftalik": "Haftalar:", "aylik": "Aylar:"}
-        dfn = {"gunluk": 3, "haftalik": 4, "aylik": 3}
-        secili_donemler = st.multiselect(
-            lbl[mod], donemler, default=donemler[:dfn[mod]],
-            key="takas_donem_sec"
+        bas_tarih = st.date_input(
+            "📅 Başlangıç:", value=son_tarih - timedelta(days=6),
+            min_value=ilk_tarih, max_value=son_tarih,
+            key="takas_bas_tarih", format="DD.MM.YYYY"
         )
     with c2:
+        bit_tarih = st.date_input(
+            "📅 Bitiş:", value=son_tarih,
+            min_value=ilk_tarih, max_value=son_tarih,
+            key="takas_bit_tarih", format="DD.MM.YYYY"
+        )
+    with c3:
         min_pct = st.number_input("Min %:", value=0.5, step=0.1,
                                    min_value=0.0, max_value=10.0,
                                    key="takas_min_pct")
-    with c3:
+    with c4:
         st.markdown("<br>", unsafe_allow_html=True)
         ilk_giris = st.checkbox("🔵 İlk Giriş (%0→%3)", key="takas_ilk_giris")
 
-    if not secili_donemler:
-        st.warning("Dönem seçin.")
+    if bas_tarih > bit_tarih:
+        st.error("Başlangıç tarihi bitiş tarihinden büyük olamaz.")
         return
+
+    # ── Seçilen tarih aralığına giren dönemleri bul ───────────────────────────
+    if df_tumü.empty:
+        st.info("📂 Henüz veri yok. **Veri Yükle** sekmesinden ekleyin.")
+        return
+
+    tum_donemler = df_tumü["donem"].astype(str).unique().tolist()
+    secili_donemler = []
+    for d in tum_donemler:
+        t = _donem_tarih_cevir(d)
+        if t and bas_tarih <= t <= bit_tarih:
+            secili_donemler.append(d)
+
+    if not secili_donemler:
+        st.warning(f"⚠️ {bas_tarih.strftime('%d.%m.%Y')} — {bit_tarih.strftime('%d.%m.%Y')} aralığında veri bulunamadı.")
+        return
+
+    # Kullanıcıya özet bilgi
+    st.caption(
+        f"📊 **{bas_tarih.strftime('%d.%m.%Y')}** → **{bit_tarih.strftime('%d.%m.%Y')}** "
+        f"| {len(secili_donemler)} dönem: {', '.join(sorted(secili_donemler))}"
+    )
+
+    # mod değişkeni aşağıda takas_analiz() için gerekli — günlük olarak geçir
+    mod = "gunluk"
 
     # ── %3+ Artış Yapan Kurumlar ──────────────────────────────────────────────
     from takas_depo import _oku as _t2
@@ -1371,43 +1335,146 @@ def _takas_analiz_tab():
 
     st.markdown("---")
 
-    # ── Toplama Alarm Listesi (3 kolonlu) ─────────────────────────────────────
+    # ── Toplama Alarm Listesi (alan + satan + sinyal) ─────────────────────────
     st.markdown("### 🚨 Toplama Alarm Listesi")
-    alarm_df = alarm_listesi(secili_donemler, min_pct)
 
-    if alarm_df.empty:
+    # Tüm hisse+kurum kümülatif toplamları hesapla
+    from takas_depo import _oku as _t2_alarm
+    df_alarm_raw = _t2_alarm()
+    if not df_alarm_raw.empty:
+        df_alarm_raw = df_alarm_raw[df_alarm_raw["donem"].isin(secili_donemler)].copy()
+        if "short_kapama" in df_alarm_raw.columns:
+            mask = df_alarm_raw["short_kapama"] == True
+            df_alarm_raw.loc[mask, "dolasim_pct"] = df_alarm_raw.loc[mask, "oran2"]
+
+    if df_alarm_raw.empty:
         st.caption("Bu dönemde alarm yok.")
     else:
-        grp = {}
-        sira = {"🔴 KRİTİK": 0, "🟠 GÜÇLÜ": 1}
-        for _, r in alarm_df.iterrows():
-            h = r["hisse"]
-            if h not in grp:
-                grp[h] = {"alarm": r["alarm"], "kurumlar": []}
-            if sira.get(r["alarm"],9) < sira.get(grp[h]["alarm"],9):
-                grp[h]["alarm"] = r["alarm"]
-            grp[h]["kurumlar"].append(r)
+        # Her hisse+kurum kümülatif topla
+        net = df_alarm_raw.groupby(["hisse", "kurum"]).agg(
+            dolasim_pct=("dolasim_pct", "sum"),
+            oran2=("oran2", "last"),
+            tks2=("tks2", "last"),
+        ).reset_index()
+        net["dolasim_pct"] = net["dolasim_pct"].round(2)
 
-        items = list(grp.items())[:36]
-        cols3 = st.columns(3)
-        for i, (hisse, data) in enumerate(items):
-            alarm = data["alarm"]
-            renk  = {"🔴 KRİTİK":"#C0392B","🟠 GÜÇLÜ":"#E67E22"}.get(alarm,"#95A5A6")
-            k_html = "".join([
-                f"<div style='font-size:11px;padding:1px 0 1px 6px;'>"
-                f"<b style='color:{renk};'>{r['kurum']}</b> "
-                f"T2:%{r['oran2']:.2f} · <b>+{r['dolasim_pct']:.2f}%</b></div>"
-                for r in sorted(data["kurumlar"], key=lambda x: -x["dolasim_pct"])
-            ])
-            with cols3[i % 3]:
-                st.markdown(
-                    f"<div style='border-left:4px solid {renk};padding:6px 10px;"
-                    f"margin:4px 0;background:#FAFAFA;border-radius:0 4px 4px 0;'>"
-                    f"<b style='font-size:13px;'>{hisse}</b> "
-                    f"<span style='color:{renk};font-size:11px;font-weight:bold;'>"
-                    f"{alarm}</span>{k_html}</div>",
-                    unsafe_allow_html=True
-                )
+        # Hisse bazında alanlar ve satanlar
+        hisse_ozet = {}
+        for hisse, grp_df in net.groupby("hisse"):
+            alanlar = grp_df[grp_df["dolasim_pct"] >= min_pct].sort_values("dolasim_pct", ascending=False)
+            satanlar = grp_df[grp_df["dolasim_pct"] <= -min_pct].sort_values("dolasim_pct")
+
+            if alanlar.empty:
+                continue
+
+            toplam_alan  = alanlar["dolasim_pct"].sum()
+            toplam_satan = abs(satanlar["dolasim_pct"].sum())
+            alan_kurum   = len(alanlar)
+
+            # Alarm seviyesi
+            if toplam_alan >= 10:
+                alarm = "🔴 KRİTİK"
+                renk  = "#C0392B"
+            elif toplam_alan >= 5:
+                alarm = "🟠 GÜÇLÜ"
+                renk  = "#E67E22"
+            else:
+                continue  # min_pct altı gösterme
+
+            # ── Tks(2) değişimi ───────────────────────────────────────────────
+            h_df_donem = df_alarm_raw[
+                (df_alarm_raw["hisse"] == hisse) &
+                (df_alarm_raw["tip"] == "gunluk")
+            ].copy()
+            donem_sira = sorted(h_df_donem["donem"].unique())
+            tks2_bas = h_df_donem[h_df_donem["donem"] == donem_sira[0]]["tks2"].mean() if len(donem_sira) >= 1 else 0
+            tks2_son = h_df_donem[h_df_donem["donem"] == donem_sira[-1]]["tks2"].mean() if len(donem_sira) >= 1 else 0
+            tks2_degisim_pct = ((tks2_son - tks2_bas) / tks2_bas * 100) if tks2_bas > 0 else 0
+
+
+
+
+
+
+
+
+
+
+            # ── Sinyal tespiti ────────────────────────────────────────────────
+            satan_kurum = len(satanlar)
+            satan_var   = not satanlar.empty and toplam_satan >= min_pct
+
+            if tks2_degisim_pct > 0:
+                # FD arttı → yeni hisse çıkmış
+                sinyal = f"⚠️ Takas FD Değişti (+{tks2_degisim_pct:.0f}%)"
+                sinyal_renk = "#7D6608"
+            elif satan_var:
+                # FD sabit, bizim kurumlardan satan var → Mal Devri
+                if alan_kurum <= 2 and satan_kurum >= 5:
+                    # Az kurum alıyor, çok kurum satıyor → Birikim
+                    sinyal = "🎯 Birikim / Toplama"
+                    sinyal_renk = "#1A5276"
+                elif alan_kurum >= 5 and satan_kurum <= 2:
+                    # Çok kurum alıyor, az kurum satıyor → Toplu Dağıtım
+                    sinyal = "📤 Toplu Dağıtım"
+                    sinyal_renk = "#C0392B"
+                else:
+                    sinyal = "🔄 Mal Devri"
+                    sinyal_renk = "#1A5276"
+            else:
+                # FD sabit, bizim kurumlardan satan yok → piyasadan alıyor
+                sinyal = "📈 Birikim"
+                sinyal_renk = "#1A7A3E"
+
+            hisse_ozet[hisse] = {
+                "alarm": alarm, "renk": renk,
+                "sinyal": sinyal, "sinyal_renk": sinyal_renk,
+                "alanlar": alanlar, "satanlar": satanlar,
+                "toplam_alan": toplam_alan, "toplam_satan": toplam_satan,
+            }
+
+        if not hisse_ozet:
+            st.caption(f"Min %{min_pct} eşiğini geçen alarm yok.")
+        else:
+            # Kritik önce sırala
+            sira_map = {"🔴 KRİTİK": 0, "🟠 GÜÇLÜ": 1}
+            items = sorted(hisse_ozet.items(),
+                           key=lambda x: (sira_map.get(x[1]["alarm"], 9), -x[1]["toplam_alan"]))
+
+            cols3 = st.columns(3)
+            for i, (hisse, data) in enumerate(items[:36]):
+                renk  = data["renk"]
+                sinyal_renk = data["sinyal_renk"]
+
+                # Alan satırları
+                alan_html = "".join([
+                    f"<div style='font-size:11px;padding:1px 0 1px 6px;'>"
+                    f"📥 <b style='color:{renk};'>{r['kurum']}</b> "
+                    f"T2:%{r['oran2']:.1f} · <b style='color:#1A7A3E;'>+{r['dolasim_pct']:.2f}%</b></div>"
+                    for _, r in data["alanlar"].iterrows()
+                ])
+
+                # Satan satırları
+                if not data["satanlar"].empty:
+                    satan_html = "".join([
+                        f"<div style='font-size:11px;padding:1px 0 1px 6px;'>"
+                        f"📤 <b style='color:#888;'>{r['kurum']}</b> "
+                        f"T2:%{r['oran2']:.1f} · <b style='color:#C0392B;'>{r['dolasim_pct']:.2f}%</b></div>"
+                        for _, r in data["satanlar"].iterrows()
+                    ])
+                else:
+                    satan_html = "<div style='font-size:10px;color:#aaa;padding-left:6px;'>📤 Satan yok</div>"
+
+                with cols3[i % 3]:
+                    baslik = f"{hisse}  {data['alarm']}  · {data['sinyal']}"
+                    with st.expander(baslik, expanded=False):
+                        st.markdown(alan_html, unsafe_allow_html=True)
+                        st.markdown("<hr style='margin:4px 0;border-color:#ddd;'>", unsafe_allow_html=True)
+                        st.markdown(satan_html, unsafe_allow_html=True)
+                        net_str = f"Net Alan: **+{data['toplam_alan']:.1f}%**"
+                        if data['toplam_satan'] > 0:
+                            net_str += f"  |  Net Satan: **-{data['toplam_satan']:.1f}%**"
+                        st.caption(net_str)
 
     st.markdown("---")
 

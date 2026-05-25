@@ -1,0 +1,37 @@
+{
+  "hisse": "TUKAS",
+  "son_guncelleme": "2026-05-25",
+  "tarihsel_senaryolar": [
+    {
+      "donem": "202605_02",
+      "senaryo": "🔁 Re-Accumulation",
+      "wyckoff_faz": "Re_Accumulation",
+      "aciklama": "",
+      "guc_skoru": 6.0,
+      "ana_kurum": "YAT_FONLARI",
+      "net_alis": 5.48,
+      "net_satis": 2.23,
+      "fd_pct": 0.0,
+      "fd_supheli": false,
+      "mkk_trend": null,
+      "tarih": "2026-05-25"
+    }
+  ],
+  "mevcut_durum": {
+    "wyckoff_faz": "Re_Accumulation",
+    "en_guclu_kurum": "YAT_FONLARI",
+    "en_guclu_oran": 3.0,
+    "toplam_birikim_donemi": 1,
+    "fd_sabit_mi": true,
+    "ai_yorumu": "",
+    "guven_skoru": 6.0,
+    "son_senaryo": "🔁 Re-Accumulation"
+  },
+  "istatistikler": {
+    "toplam_kayit": 1,
+    "birikim_sayisi": 0,
+    "mal_devri_sayisi": 0,
+    "dagitim_sayisi": 0,
+    "en_uzun_birikim_serisi": 1
+  }
+}

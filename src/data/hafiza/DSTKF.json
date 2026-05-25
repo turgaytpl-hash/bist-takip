@@ -1,0 +1,37 @@
+{
+  "hisse": "DSTKF",
+  "son_guncelleme": "2026-05-25",
+  "tarihsel_senaryolar": [
+    {
+      "donem": "202605_02",
+      "senaryo": "🔄 Mal Devri",
+      "wyckoff_faz": "Distribution_B",
+      "aciklama": "",
+      "guc_skoru": 6.5,
+      "ana_kurum": "YAT_FONLARI",
+      "net_alis": 28.06,
+      "net_satis": 16.92,
+      "fd_pct": 0.0,
+      "fd_supheli": false,
+      "mkk_trend": null,
+      "tarih": "2026-05-25"
+    }
+  ],
+  "mevcut_durum": {
+    "wyckoff_faz": "Distribution_B",
+    "en_guclu_kurum": "YAT_FONLARI",
+    "en_guclu_oran": 18.6,
+    "toplam_birikim_donemi": 0,
+    "fd_sabit_mi": true,
+    "ai_yorumu": "",
+    "guven_skoru": 6.5,
+    "son_senaryo": "🔄 Mal Devri"
+  },
+  "istatistikler": {
+    "toplam_kayit": 1,
+    "birikim_sayisi": 0,
+    "mal_devri_sayisi": 1,
+    "dagitim_sayisi": 0,
+    "en_uzun_birikim_serisi": 0
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "hisse": "IEYHO",
+  "son_guncelleme": "2026-05-25",
+  "tarihsel_senaryolar": [
+    {
+      "donem": "202605_02",
+      "senaryo": "🎯 Toplama",
+      "wyckoff_faz": "Accumulation_C",
+      "aciklama": "",
+      "guc_skoru": 7.0,
+      "ana_kurum": "ALNUS",
+      "net_alis": 5.9,
+      "net_satis": 2.47,
+      "fd_pct": 0.0,
+      "fd_supheli": false,
+      "mkk_trend": null,
+      "tarih": "2026-05-25"
+    }
+  ],
+  "mevcut_durum": {
+    "wyckoff_faz": "Accumulation_C",
+    "en_guclu_kurum": "ALNUS",
+    "en_guclu_oran": 5.0,
+    "toplam_birikim_donemi": 1,
+    "fd_sabit_mi": true,
+    "ai_yorumu": "",
+    "guven_skoru": 7.0,
+    "son_senaryo": "🎯 Toplama"
+  },
+  "istatistikler": {
+    "toplam_kayit": 1,
+    "birikim_sayisi": 1,
+    "mal_devri_sayisi": 0,
+    "dagitim_sayisi": 0,
+    "en_uzun_birikim_serisi": 1
+  }
+}
